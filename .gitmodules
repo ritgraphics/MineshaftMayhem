@@ -1,0 +1,3 @@
+[submodule "VixenEngine"]
+	path = VixenEngine
+	url = https://github.com/ritgraphics/VixenEngine
