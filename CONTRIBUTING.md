@@ -4,7 +4,7 @@ git clone --recursive https://github.com/ritgraphics/Game
 ```
 or
 ```
-git clone --recursive https://github.com/ritgraphics/Game
+git clone https://github.com/ritgraphics/Game
 cd VixenEngine
 git submodule init
 git submodule update
