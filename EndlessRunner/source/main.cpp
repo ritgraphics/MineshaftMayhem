@@ -4,6 +4,7 @@
 #include <vix_pathmanager.h>
 #include <vix_resourcemanager.h>
 #include <vix_font.h>
+#include <vix_gameobject.h>
 
 using namespace Vixen;
 
@@ -21,7 +22,7 @@ private:
 	ICamera3D*  m_camera3D;
 	IModel*     m_floor;
 	IFont*      m_font;
-	Transform   floorTransform;
+	GameObject* m_go;
 	Transform   fontTransform;
 };
 
@@ -43,11 +44,12 @@ void EndlessRunner::VOnStartup()
 
 
 
-	floorTransform = Transform(0.0f, -5.0f, 5.0f,
+	m_go = new GameObject(Transform(0.0f, -5.0f, 5.0f,
 		0.0f, 0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f);
+		1.0f, 1.0f, 1.0f));
+	m_go->SetModel(m_floor);
 	fontTransform = Transform(20.0f, 20.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
-	m_floor->VSetTransform(&floorTransform);
+	
 
 	m_window->VToggleCursor();
 }
@@ -69,6 +71,11 @@ void EndlessRunner::VOnUpdate(float dt)
 	if (m_keyboard->KeyPress(IKEY::D))
 		m_camera3D->VStrafe(dt);
 
+	if (m_keyboard->KeyPress(IKEY::UP))
+	{
+		m_go->GetTransform()->TranslateY(dt);
+	}
+
 
 	int deltaX = m_mouse->DeltaX(m_window->VGetClientBounds().w / 2);
 	int deltaY = m_mouse->DeltaY(m_window->VGetClientBounds().h / 2);
@@ -82,9 +89,8 @@ void EndlessRunner::VOnUpdate(float dt)
 
 void EndlessRunner::VOnRender(float dt)
 {
-	//m_renderer->VRenderModel(m_model);
-	m_renderer->VRenderModel(m_floor);
-
+	
+	m_go->Render(m_camera3D);
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
 	USStream ss;
@@ -94,7 +100,8 @@ void EndlessRunner::VOnRender(float dt)
 
 void EndlessRunner::VOnShutdown()
 {
-	
+	delete m_floor;
+	delete m_font;
 }
 
 
