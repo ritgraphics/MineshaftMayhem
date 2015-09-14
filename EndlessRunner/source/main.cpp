@@ -8,7 +8,7 @@
 
 using namespace Vixen;
 
-class EndlessRunner : public IGame
+class EndlessRunner : public Game
 {
 public:
 	EndlessRunner();
@@ -29,7 +29,7 @@ private:
 };
 
 EndlessRunner::EndlessRunner()
-	: IGame()
+	: Game()
 {
 
 }
@@ -85,15 +85,15 @@ void EndlessRunner::VOnUpdate(float dt)
 	}
 
 
-	/*int deltaX = m_mouse->DeltaX(m_window->VGetClientBounds().w / 2);
-	int deltaY = m_mouse->DeltaY(m_window->VGetClientBounds().h / 2);
+	int deltaX = Input::DeltaX(m_window->VGetClientBounds().w / 2);
+	int deltaY = Input::DeltaY(m_window->VGetClientBounds().h / 2);
 	m_camera3D->VRotateX(deltaY * 0.25f);
 	m_camera3D->VRotateY(deltaX * 0.25f);
 
-	m_camera3D->VUpdate(dt);*/
+
 	m_camera3D->VUpdate(dt);
 
-	/*m_window->VTrapCursorCenter();*/
+	m_window->VTrapCursorCenter();
 }
 
 void EndlessRunner::VOnRender(float dt)
@@ -110,6 +110,7 @@ void EndlessRunner::VOnRender(float dt)
 
 void EndlessRunner::VOnShutdown()
 {
+    delete m_player;
 	delete m_floor;
 	delete m_font;
 }
