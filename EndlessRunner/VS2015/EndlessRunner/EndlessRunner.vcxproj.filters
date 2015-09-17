@@ -19,4 +19,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\Models\cube.mdl" />
+    <None Include="..\..\assets\Models\floor.mdl" />
+    <None Include="..\..\assets\Models\raptor.mdl" />
+  </ItemGroup>
 </Project>

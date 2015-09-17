@@ -23,8 +23,8 @@ float4 main(VertexToPixel input) : SV_TARGET
     float4 lightDiffuse = float4(1.0f, 1.0f, 1.0f, 1.0f);
     float3 color;
 
-    color = diffuse * ambientLight;
-    color += saturate(dot(lightDir, input.normal) * lightDiffuse * diffuse);
+    color = diffuse * ambientLight; //its blackish
+    color += saturate(dot(lightDir, input.normal) * lightDiffuse * diffuse); //its magentish
   
     
     return float4(color, diffuse.a);

@@ -159,6 +159,11 @@ xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\A
   <ItemGroup>
     <ClCompile Include="..\..\source\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\Models\cube.mdl" />
+    <None Include="..\..\assets\Models\floor.mdl" />
+    <None Include="..\..\assets\Models\raptor.mdl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

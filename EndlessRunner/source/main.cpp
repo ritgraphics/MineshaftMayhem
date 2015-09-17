@@ -22,9 +22,11 @@ private:
 	ICamera3D*  m_camera3D;
 	IModel*     m_floor;
 	IModel*     m_player;
+	IModel*     m_cube;
 	IFont*      m_font;
 	GameObject* m_go;
 	GameObject* m_po;
+	GameObject* m_co;
 	Transform   fontTransform;
 };
 
@@ -43,18 +45,26 @@ void EndlessRunner::VOnStartup()
 	m_camera3D->VSetSpeed(50.0f);
 
 	m_floor = ResourceManager::OpenModel(VTEXT("floor.mdl"));
-	m_player = ResourceManager::OpenModel(VTEXT("cube.mdl"));
+	m_player = ResourceManager::OpenModel(VTEXT("raptor.mdl"));
+	m_cube = ResourceManager::OpenModel(VTEXT("cube.mdl"));
 	m_font = ResourceManager::OpenFont(VTEXT("Consolas_24.fnt"));
 
 
 
-	m_go = new GameObject(Transform(0.0f, -5.0f, 5.0f,
+	m_go = new GameObject(new Transform(0.0f, -5.0f, 5.0f,
 		0.0f, 0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f));
+		1.0f,1.0f, 1.0f));
 	m_go->SetModel(m_floor);
 
-	m_po = new GameObject(Transform(0.0f, 0.0f, 5.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f));
-	m_po->SetModel(m_player);
+	m_po = new GameObject(new Transform(0.0f, 0.0f, 5.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f));
+	m_po->SetModel(m_cube);
+
+	m_co = new GameObject(new Transform(5.0f, 0.0f, 5.0f,
+		0.0f, 0.0f, 0.0f,
+		1.0f, 1.0f, 1.0f));
+	m_co->SetModel(m_cube);
+
+	m_po->AddChild(m_co);
 
 	fontTransform = Transform(20.0f, 20.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 	
@@ -81,9 +91,12 @@ void EndlessRunner::VOnUpdate(float dt)
 
 	if (Input::KeyPress(IKEY::UP))
 	{
-		m_go->GetTransform()->TranslateY(dt);
+		//m_go->GetTransform()->TranslateY(dt);
+		m_po->GetTransform()->TranslateY(dt*20.0f);
 	}
 
+	m_po->GetTransform()->RotateY(dt);
+		
 
 	int deltaX = Input::DeltaX(m_window->VGetClientBounds().w / 2);
 	int deltaY = Input::DeltaY(m_window->VGetClientBounds().h / 2);
@@ -101,11 +114,12 @@ void EndlessRunner::VOnRender(float dt)
 	
 	m_go->Render(m_camera3D);
 	m_po->Render(m_camera3D);
+	m_co->Render(m_camera3D);
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
 	USStream ss;
 	ss << "FPS: " << m_window->VFPS();
-	m_renderer->VRenderText2D(m_font, ss.str(), fontTransform);
+	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));
 }
 
 void EndlessRunner::VOnShutdown()
