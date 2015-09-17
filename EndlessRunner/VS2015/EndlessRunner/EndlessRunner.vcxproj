@@ -74,8 +74,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)..\..\VixenEngine\VixenEngine\include\;$(SolutionDir)..\..\VixenEngine\VixenEngine\include\vcore;$(SolutionDir)..\..\VixenEngine\VixenEngine\include\vgraphics;$(SolutionDir)..\..\VixenEngine\VixenEngine\include\vgame;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\SDL2\include;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\tinyxml2;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\SDL2;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\Vixen\VCore;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\Vixen\VGraphics;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\Vixen\VGame;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\..\VixenEngine\VixenEngine\include\;$(SolutionDir)..\..\VixenEngine\VixenEngine\include\vcore;$(SolutionDir)..\..\VixenEngine\VixenEngine\include\vgraphics;$(SolutionDir)..\..\VixenEngine\VixenEngine\include\vgame;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\SDL2\include;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\lua\include;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\luaintf\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\SDL2;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\Vixen\VCore;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\Vixen\VGraphics;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\Vixen\VGame;$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\x64\lua\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Temp\</IntDir>
   </PropertyGroup>
@@ -105,19 +105,20 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;LUAINTF_HEADERS_ONLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>VCored.lib;VGraphicsd.lib;VGamed.lib;tinyxml2.lib;FreeImage.lib;SDL2.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>VCored.lib;VGraphicsd.lib;VGamed.lib;tinyxml2.lib;FreeImage.lib;SDL2.lib;d3d11.lib;d3dcompiler.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\tinyxml2\tinyxml2.dll" "$(OutDir)"
 xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\FreeImage\FreeImage.dll" "$(OutDir)"
 xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\SDL2\SDL2.dll" "$(OutDir)"
-xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\Assimp\assimp.dll" "$(OutDir)"</Command>
+xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\Assimp\assimp.dll" "$(OutDir)"
+xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -165,6 +166,27 @@ xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\A
     <None Include="..\..\assets\Models\raptor.mdl" />
     <None Include="..\..\assets\Scenes\scene1.scene" />
     <None Include="..\..\assets\Scenes\scenes.config" />
+    <None Include="..\..\assets\Scripts\test.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\Model_PS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\PixelShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\SpriteBatch_PS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\SpriteBatch_VS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\VertexShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,6 +7,8 @@
 #include <vix_gameobject.h>
 #include <vix_scenemanager.h>
 #include <vix_modelmanager.h>
+#include <vix_luaengine.h>
+#include <vix_luascriptmanager.h>
 
 using namespace Vixen;
 
@@ -40,9 +42,13 @@ EndlessRunner::EndlessRunner()
 
 void EndlessRunner::VOnStartup()
 {
+    LuaEngine::Initialize();
+    LuaScriptManager::BindObjects();
     ModelManager::Initialize();
     SceneManager::Initialize();
     SceneManager::OpenScene(VTEXT("scene1"));
+
+    
 
 	m_renderer->VSetClearColor(Vixen::Colors::Black);
 
@@ -112,7 +118,7 @@ void EndlessRunner::VOnUpdate(float dt)
 
 	m_camera3D->VUpdate(dt);
 
-    //SceneManager::UpdateScene(dt);
+    SceneManager::UpdateScene(dt);
 
 	m_window->VTrapCursorCenter();
 }
@@ -132,6 +138,7 @@ void EndlessRunner::VOnRender(float dt)
 
 void EndlessRunner::VOnShutdown()
 {
+    LuaEngine::DeInitialize();
     ModelManager::DeInitialize();
     SceneManager::DeInitialize();
     delete m_font;

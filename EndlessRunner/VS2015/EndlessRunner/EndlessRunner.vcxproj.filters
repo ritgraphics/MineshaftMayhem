@@ -47,5 +47,28 @@
     <None Include="..\..\assets\Scenes\scenes.config">
       <Filter>Scenes</Filter>
     </None>
+    <None Include="..\..\assets\Scripts\test.lua">
+      <Filter>Scripts</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\Model_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\PixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\SpriteBatch_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\SpriteBatch_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\assets\Shaders\DirectX\VertexShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
