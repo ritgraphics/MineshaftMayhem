@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{60f3e5d6-db7d-421e-a5e4-07ddedd87fd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{00d75eff-b6b6-415f-b505-dfd2b9b22a5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{a2c7ac78-5437-44f9-80c9-d5bbb2f4c0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{1e61dcfc-5088-4f32-8909-40baf3060faf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\main.cpp">
@@ -20,8 +32,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\assets\Models\cube.mdl" />
-    <None Include="..\..\assets\Models\floor.mdl" />
-    <None Include="..\..\assets\Models\raptor.mdl" />
+    <None Include="..\..\assets\Models\cube.mdl">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\assets\Models\floor.mdl">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\assets\Models\raptor.mdl">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\assets\Scenes\scene1.scene">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\assets\Scenes\scenes.config">
+      <Filter>Scenes</Filter>
+    </None>
   </ItemGroup>
 </Project>

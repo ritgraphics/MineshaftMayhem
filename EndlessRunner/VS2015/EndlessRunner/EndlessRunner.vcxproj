@@ -163,6 +163,8 @@ xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\A
     <None Include="..\..\assets\Models\cube.mdl" />
     <None Include="..\..\assets\Models\floor.mdl" />
     <None Include="..\..\assets\Models\raptor.mdl" />
+    <None Include="..\..\assets\Scenes\scene1.scene" />
+    <None Include="..\..\assets\Scenes\scenes.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

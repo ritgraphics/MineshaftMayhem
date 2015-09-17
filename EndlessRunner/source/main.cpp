@@ -5,6 +5,8 @@
 #include <vix_resourcemanager.h>
 #include <vix_font.h>
 #include <vix_gameobject.h>
+#include <vix_scenemanager.h>
+#include <vix_modelmanager.h>
 
 using namespace Vixen;
 
@@ -38,20 +40,24 @@ EndlessRunner::EndlessRunner()
 
 void EndlessRunner::VOnStartup()
 {
+    ModelManager::Initialize();
+    SceneManager::Initialize();
+    SceneManager::OpenScene(VTEXT("scene1"));
+
 	m_renderer->VSetClearColor(Vixen::Colors::Black);
 
 	m_camera3D = m_renderer->Camera3D();
 	m_camera3D->VSetView(Vector3(0.0f, 5.0f,  -5.0f), Vector3(0.0f, 5.0f, 0.0f), Vector3(0.0f, 1.0f, 0.0f));
 	m_camera3D->VSetSpeed(50.0f);
 
-	m_floor = ResourceManager::OpenModel(VTEXT("floor.mdl"));
-	m_player = ResourceManager::OpenModel(VTEXT("raptor.mdl"));
-	m_cube = ResourceManager::OpenModel(VTEXT("cube.mdl"));
+	//m_floor = ResourceManager::OpenModel(VTEXT("floor.mdl"));
+	//m_player = ResourceManager::OpenModel(VTEXT("raptor.mdl"));
+	//m_cube = ResourceManager::OpenModel(VTEXT("cube.mdl"));
 	m_font = ResourceManager::OpenFont(VTEXT("Consolas_24.fnt"));
 
 
 
-	m_go = new GameObject(new Transform(0.0f, -5.0f, 5.0f,
+	/*m_go = new GameObject(new Transform(0.0f, -5.0f, 5.0f,
 		0.0f, 0.0f, 0.0f,
 		1.0f,1.0f, 1.0f));
 	m_go->SetModel(m_floor);
@@ -59,12 +65,12 @@ void EndlessRunner::VOnStartup()
 	m_po = new GameObject(new Transform(0.0f, 0.0f, 5.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f));
 	m_po->SetModel(m_cube);
 
-	m_co = new GameObject(new Transform(5.0f, 0.0f, 5.0f,
+	m_co = new GameObject(new Transform(15.0f, 0.0f, 15.0f,
 		0.0f, 0.0f, 0.0f,
 		1.0f, 1.0f, 1.0f));
 	m_co->SetModel(m_cube);
 
-	m_po->AddChild(m_co);
+	m_po->AddChild(m_co);*/
 
 	fontTransform = Transform(20.0f, 20.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 	
@@ -92,11 +98,11 @@ void EndlessRunner::VOnUpdate(float dt)
 	if (Input::KeyPress(IKEY::UP))
 	{
 		//m_go->GetTransform()->TranslateY(dt);
-		m_po->GetTransform()->TranslateY(dt*20.0f);
+		//m_po->GetTransform()->TranslateY(dt*20.0f);
 	}
 
-	m_po->GetTransform()->RotateY(dt);
-		
+	/*m_po->GetTransform()->RotateY(dt);
+    m_co->GetTransform()->RotateX(dt);*/
 
 	int deltaX = Input::DeltaX(m_window->VGetClientBounds().w / 2);
 	int deltaY = Input::DeltaY(m_window->VGetClientBounds().h / 2);
@@ -106,15 +112,17 @@ void EndlessRunner::VOnUpdate(float dt)
 
 	m_camera3D->VUpdate(dt);
 
+    //SceneManager::UpdateScene(dt);
+
 	m_window->VTrapCursorCenter();
 }
 
 void EndlessRunner::VOnRender(float dt)
 {
-	
-	m_go->Render(m_camera3D);
+    SceneManager::RenderScene(m_camera3D);
+	/*m_go->Render(m_camera3D);
 	m_po->Render(m_camera3D);
-	m_co->Render(m_camera3D);
+	m_co->Render(m_camera3D);*/
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
 	USStream ss;
@@ -124,9 +132,13 @@ void EndlessRunner::VOnRender(float dt)
 
 void EndlessRunner::VOnShutdown()
 {
-    delete m_player;
+    ModelManager::DeInitialize();
+    SceneManager::DeInitialize();
+    delete m_font;
+   /* delete m_player;
 	delete m_floor;
 	delete m_font;
+    delete m_cube;*/
 }
 
 
