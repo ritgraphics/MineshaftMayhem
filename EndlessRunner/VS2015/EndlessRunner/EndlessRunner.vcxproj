@@ -164,8 +164,11 @@ xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\l
     <None Include="..\..\assets\Models\cube.mdl" />
     <None Include="..\..\assets\Models\floor.mdl" />
     <None Include="..\..\assets\Models\raptor.mdl" />
-    <None Include="..\..\assets\Scenes\scene1.scene" />
+    <None Include="..\..\assets\Scenes\scene1.scene">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="..\..\assets\Scenes\scenes.config" />
+    <None Include="..\..\assets\Scripts\raptor.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
   </ItemGroup>
   <ItemGroup>

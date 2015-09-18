@@ -7,14 +7,27 @@
       <scripts>
         <script file="test.lua"/>
       </scripts>
+      <children>
+        
+      </children>
 		</gameobject>
-		<gameobject id="raptor1">
-			<transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.1" scaleY="0.1" scaleZ="0.1"/>
-			<model file="raptor.mdl"/>
-		</gameobject>
+		
 		<gameobject id="cube1">
 			<transform x="5.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
 			<model file="cube.mdl"/>
+       <scripts>
+        <script file="test.lua"/>
+      </scripts>
+      <children>
+        <gameobject id="raptor1">
+          <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.1" scaleY="0.1" scaleZ="0.1"/>
+          <model file="raptor.mdl"/>
+          <scripts>
+            <script file="test.lua"/>
+          </scripts>
+          <children></children>
+        </gameobject>
+      </children>
 		</gameobject>
 	</object-list>
 </scene>
