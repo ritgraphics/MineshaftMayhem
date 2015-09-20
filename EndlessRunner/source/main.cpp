@@ -43,7 +43,7 @@ EndlessRunner::EndlessRunner()
 void EndlessRunner::VOnStartup()
 {
     LuaEngine::Initialize();
-    LuaScriptManager::BindObjects();
+	LuaScriptManager::Initialize();
     ModelManager::Initialize();
     SceneManager::Initialize();
     SceneManager::OpenScene(VTEXT("scene1"));
@@ -138,9 +138,9 @@ void EndlessRunner::VOnRender(float dt)
 
 void EndlessRunner::VOnShutdown()
 {
-    LuaEngine::DeInitialize();
     ModelManager::DeInitialize();
     SceneManager::DeInitialize();
+    LuaEngine::DeInitialize();
     delete m_font;
    /* delete m_player;
 	delete m_floor;
