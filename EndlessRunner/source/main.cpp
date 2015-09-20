@@ -32,6 +32,7 @@ private:
 	GameObject* m_po;
 	GameObject* m_co;
 	Transform   fontTransform;
+	bool paused;
 };
 
 EndlessRunner::EndlessRunner()
@@ -48,7 +49,7 @@ void EndlessRunner::VOnStartup()
     SceneManager::Initialize();
     SceneManager::OpenScene(VTEXT("scene1"));
 
-    
+	paused = false;
 
 	m_renderer->VSetClearColor(Vixen::Colors::Black);
 
@@ -56,27 +57,7 @@ void EndlessRunner::VOnStartup()
 	m_camera3D->VSetView(Vector3(0.0f, 5.0f,  -5.0f), Vector3(0.0f, 5.0f, 0.0f), Vector3(0.0f, 1.0f, 0.0f));
 	m_camera3D->VSetSpeed(50.0f);
 
-	//m_floor = ResourceManager::OpenModel(VTEXT("floor.mdl"));
-	//m_player = ResourceManager::OpenModel(VTEXT("raptor.mdl"));
-	//m_cube = ResourceManager::OpenModel(VTEXT("cube.mdl"));
 	m_font = ResourceManager::OpenFont(VTEXT("Consolas_24.fnt"));
-
-
-
-	/*m_go = new GameObject(new Transform(0.0f, -5.0f, 5.0f,
-		0.0f, 0.0f, 0.0f,
-		1.0f,1.0f, 1.0f));
-	m_go->SetModel(m_floor);
-
-	m_po = new GameObject(new Transform(0.0f, 0.0f, 5.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f));
-	m_po->SetModel(m_cube);
-
-	m_co = new GameObject(new Transform(15.0f, 0.0f, 15.0f,
-		0.0f, 0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f));
-	m_co->SetModel(m_cube);
-
-	m_po->AddChild(m_co);*/
 
 	fontTransform = Transform(20.0f, 20.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 	
@@ -89,38 +70,47 @@ void EndlessRunner::VOnUpdate(float dt)
 	if (Input::SingleKeyPress(IKEY::F2))
 		m_window->VClose();
 
-	if (Input::KeyPress(IKEY::S))
-		m_camera3D->VWalk(-dt);
-
-	if (Input::KeyPress(IKEY::W))
-		m_camera3D->VWalk(dt);
-
-	if (Input::KeyPress(IKEY::A))
-		m_camera3D->VStrafe(-dt);
-
-	if (Input::KeyPress(IKEY::D))
-		m_camera3D->VStrafe(dt);
-
-	if (Input::KeyPress(IKEY::UP))
+	if (Input::SingleKeyPress(IKEY::P))
 	{
-		//m_go->GetTransform()->TranslateY(dt);
-		//m_po->GetTransform()->TranslateY(dt*20.0f);
+		m_window->VToggleCursor();
+		paused = !paused;
+		if (paused)
+			SceneManager::PauseScene(VTEXT("scene1"));
+		else
+			SceneManager::UnpauseScene(VTEXT("scene1"));
+
 	}
 
-	/*m_po->GetTransform()->RotateY(dt);
-    m_co->GetTransform()->RotateX(dt);*/
+	if (!paused)
+	{
+		if (Input::KeyPress(IKEY::S))
+			m_camera3D->VWalk(-dt);
 
-	int deltaX = Input::DeltaX(m_window->VGetClientBounds().w / 2);
-	int deltaY = Input::DeltaY(m_window->VGetClientBounds().h / 2);
-	m_camera3D->VRotateX(deltaY * 0.25f);
-	m_camera3D->VRotateY(deltaX * 0.25f);
+		if (Input::KeyPress(IKEY::W))
+			m_camera3D->VWalk(dt);
+
+		if (Input::KeyPress(IKEY::A))
+			m_camera3D->VStrafe(-dt);
+
+		if (Input::KeyPress(IKEY::D))
+			m_camera3D->VStrafe(dt);
+
+		int deltaX = Input::DeltaX(m_window->VGetClientBounds().w / 2);
+		int deltaY = Input::DeltaY(m_window->VGetClientBounds().h / 2);
+		m_camera3D->VRotateX(deltaY * 0.25f);
+		m_camera3D->VRotateY(deltaX * 0.25f);
 
 
-	m_camera3D->VUpdate(dt);
+		m_camera3D->VUpdate(dt);
 
-    SceneManager::UpdateScene(dt);
+		SceneManager::UpdateScene(dt);
 
-	m_window->VTrapCursorCenter();
+		
+	    m_window->VTrapCursorCenter();
+	}
+
+
+	
 }
 
 void EndlessRunner::VOnRender(float dt)

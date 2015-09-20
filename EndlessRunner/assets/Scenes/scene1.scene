@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scene id="scene1">
 	<object-list>
-		<gameobject id="floor">
+		<gameobject id="floor" enabled = "true">
 			<transform x="0.0" y="-5.0" z="10.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
 			<model file="floor.mdl"/>
       <children>
@@ -9,88 +9,47 @@
       </children>
 		</gameobject>
 		
-		<gameobject id="cube1">
+		<gameobject id="cube1" enabled = "true">
 			<transform x="5.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
 			<model file="cube.mdl"/>
 		  <children>
-			<gameobject id="raptor1">
+			<gameobject id="raptor1" enabled = "true">
 			  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5"/>
 			  <model file="raptor.mdl"/>
-			  <children>
-				<gameobject id="raptor2">
-				  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
-				  <model file="raptor.mdl"/>
-				  <children>
-					<gameobject id="raptor3">
-					  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
-					  <model file="raptor.mdl"/>
-					  <children>
-						<gameobject id="raptor4">
-						  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
-						  <model file="raptor.mdl"/>
-						  <children>
-						  </children>
-						  <scripts>
-							<script file="raptor.lua"/>
-						  </scripts>
-						</gameobject>
-					  </children>
-					  <scripts>
-						<script file="raptor.lua"/>
-					  </scripts>
-					</gameobject>
-				  </children>
-				  <scripts>
-					<script file="raptor.lua"/>
-				  </scripts>
-				</gameobject>
-			  </children>
 			  <scripts>
 				<script file="raptor.lua"/>
 			  </scripts>
-			</gameobject>
-			
-		  </children>
-		</gameobject>
-		<gameobject id="cube2">
-			<transform x="5.0" y="0.0" z="-10.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
-			<model file="cube.mdl"/>
-		  <children>
-			<gameobject id="raptor5">
-			  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5"/>
-			  <model file="raptor.mdl"/>
 			  <children>
-				<gameobject id="raptor6">
+				<gameobject id="raptor2" enabled = "false">
 				  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
 				  <model file="raptor.mdl"/>
-				  <children>
-					<gameobject id="raptor7">
-					  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
-					  <model file="raptor.mdl"/>
-					  <children>
-						<gameobject id="raptor8">
-						  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
-						  <model file="raptor.mdl"/>
-						  <children>
-						  </children>
-						  <scripts>
-							<script file="raptor.lua"/>
-						  </scripts>
-						</gameobject>
-					  </children>
-					  <scripts>
-						<script file="raptor.lua"/>
-					  </scripts>
-					</gameobject>
-				  </children>
 				  <scripts>
 					<script file="raptor.lua"/>
 				  </scripts>
+				  <children>
+					<gameobject id="raptor3" enabled = "false">
+					  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
+					  <model file="raptor.mdl"/>
+					  <scripts>
+						<script file="raptor.lua"/>
+					  </scripts>
+					  <children>
+						<gameobject id="raptor4" enabled = "false">
+						  <transform x="0.0" y="0.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.9" scaleY="0.9" scaleZ="0.9"/>
+						  <model file="raptor.mdl"/>
+						  <scripts>
+							<script file="raptor.lua"/>
+						  </scripts>
+						  <children>
+						  </children>
+						</gameobject>
+					  </children>
+					</gameobject>
+				  </children>
+				  
 				</gameobject>
 			  </children>
-			  <scripts>
-				<script file="raptor.lua"/>
-			  </scripts>
+			  
 			</gameobject>
 			
 		  </children>
