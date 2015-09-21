@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<prefab id="floor">
+  <gameobject defaultName="floor">
+    <transform x="0.0" y="-5.0" z="10.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+    <model file="floor.mdl"/>
+    <scripts>
+      <!-- scripts go here -->
+    </scripts>
+    <children>
+      <!-- children go here -->
+    </children>
+  </gameobject>
+</prefab>

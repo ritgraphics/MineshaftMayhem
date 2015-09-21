@@ -25,6 +25,9 @@
     <Filter Include="Scripts">
       <UniqueIdentifier>{1e61dcfc-5088-4f32-8909-40baf3060faf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Prefabs">
+      <UniqueIdentifier>{2cb3bec1-3486-446b-b271-ccd62d480a76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\main.cpp">
@@ -52,6 +55,18 @@
     </None>
     <None Include="..\..\assets\Scripts\raptor.lua">
       <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\cube.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\prefabs.master">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\floor.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Models\models.config">
+      <Filter>Models</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
