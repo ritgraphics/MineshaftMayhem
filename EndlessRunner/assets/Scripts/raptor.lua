@@ -1,12 +1,9 @@
 function raptor.OnInit()
-	print("oninit " .. this.GameObject:GetName());
-	
-	print("GameObject: " .. this.GameObject:GetName() .. " ID: " .. this.GameObject:GetID())
-	
+	--print("oninit " .. this.GameObject:GetName() .. " ID: " .. this.GameObject:GetID());
 end
 
 function raptor.OnEnable()
-	print("onenabled " .. this.GameObject:GetName());
+	--print("onenabled " .. this.GameObject:GetName());
 	this.yVelocity = 0;
 
 	this.spawnOffsetX = 0;
@@ -32,27 +29,27 @@ function raptor.Update(dt)
 		this.yVelocity = this.yVelocity + 10.0;
 	end
 
-	if Input.SingleKeyPress(IKEY.LEFT) then
-		local p = SpawnPrefab("cube.pfb")
-		local t = p:GetTransform();
-		local z = t.Position:Z()
-		local y = t.Position:Y()
-		t.Position = Vector3(this.spawnOffsetX, y, z)
-		this.spawnOffsetX = this.spawnOffsetX + 50;
-		local size = this.GameObject:GetTransform().Scale:X() * .5;
-		t.Scale = Vector3(size, size, size);
+	if Input.KeyPress(IKEY.LEFT) then
+		local p = Prefab.Load("cube.pfb");
+		local g = p:CreateObject();
+		
+		p:MarkStore();
+		p:MarkDelete();
+		g:Delete();
+
+		FileManager.PrintOpen();
 	end
+
+	
 
 	transform:TranslateY(this.yVelocity * dt)
 	
 end
 
 function raptor.OnDisable()
-	print("ondisabled " .. this.GameObject:GetName());
+	--print("ondisabled " .. this.GameObject:GetName());
 end
 
 function raptor.OnDestroy()
-	print("ondestroy " .. this.GameObject:GetName());
-
-	print("GameObject: " .. this.GameObject:GetName() .. " ID: " .. this.GameObject:GetID())
+	--print("ondestroy " .. this.GameObject:GetName() .. " ID: " .. this.GameObject:GetID());
 end

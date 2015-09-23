@@ -9,6 +9,7 @@
 #include <vix_modelmanager.h>
 #include <vix_luaengine.h>
 #include <vix_luascriptmanager.h>
+#include <vix_objectmanager.h>
 
 using namespace Vixen;
 
@@ -43,6 +44,7 @@ EndlessRunner::EndlessRunner()
 
 void EndlessRunner::VOnStartup()
 {
+	ObjectManager::Initialize();
     LuaEngine::Initialize();
 	LuaScriptManager::Initialize();
     ModelManager::Initialize();
@@ -116,9 +118,7 @@ void EndlessRunner::VOnUpdate(float dt)
 void EndlessRunner::VOnRender(float dt)
 {
     SceneManager::RenderScene(m_camera3D);
-	/*m_go->Render(m_camera3D);
-	m_po->Render(m_camera3D);
-	m_co->Render(m_camera3D);*/
+
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
 	USStream ss;
@@ -129,13 +129,10 @@ void EndlessRunner::VOnRender(float dt)
 void EndlessRunner::VOnShutdown()
 {
     ModelManager::DeInitialize();
+	ObjectManager::DeInitialize();
     SceneManager::DeInitialize();
     LuaEngine::DeInitialize();
     delete m_font;
-   /* delete m_player;
-	delete m_floor;
-	delete m_font;
-    delete m_cube;*/
 }
 
 

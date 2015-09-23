@@ -175,6 +175,7 @@ xcopy /y "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\l
     </None>
     <None Include="..\..\assets\Scenes\scenes.config" />
     <None Include="..\..\assets\Scripts\raptor.lua" />
+    <None Include="..\..\assets\Scripts\rotate.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
   </ItemGroup>
   <ItemGroup>
