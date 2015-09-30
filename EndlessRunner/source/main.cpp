@@ -24,14 +24,7 @@ public:
 	void VOnRender(float dt);
 
 private:
-	ICamera3D*  m_camera3D;
-	IModel*     m_floor;
-	IModel*     m_player;
-	IModel*     m_cube;
 	IFont*      m_font;
-	GameObject* m_go;
-	GameObject* m_po;
-	GameObject* m_co;
 	Transform   fontTransform;
 	bool paused;
 };
@@ -54,10 +47,6 @@ void EndlessRunner::VOnStartup()
 	paused = false;
 
 	m_renderer->VSetClearColor(Vixen::Colors::Black);
-
-	m_camera3D = m_renderer->Camera3D();
-	m_camera3D->VSetView(Vector3(0.0f, 5.0f,  -5.0f), Vector3(0.0f, 5.0f, 0.0f), Vector3(0.0f, 1.0f, 0.0f));
-	m_camera3D->VSetSpeed(50.0f);
 
 	m_font = ResourceManager::OpenFont(VTEXT("Consolas_24.fnt"));
 
@@ -85,7 +74,7 @@ void EndlessRunner::VOnUpdate(float dt)
 
 	if (!paused)
 	{
-		if (Input::KeyPress(IKEY::S))
+		/*if (Input::KeyPress(IKEY::S))
 			m_camera3D->VWalk(-dt);
 
 		if (Input::KeyPress(IKEY::W))
@@ -103,7 +92,7 @@ void EndlessRunner::VOnUpdate(float dt)
 		m_camera3D->VRotateY(deltaX * 0.25f);
 
 
-		m_camera3D->VUpdate(dt);
+		m_camera3D->VUpdate(dt);*/
 
 		SceneManager::UpdateScene(dt);
 
@@ -117,7 +106,7 @@ void EndlessRunner::VOnUpdate(float dt)
 
 void EndlessRunner::VOnRender(float dt)
 {
-    SceneManager::RenderScene(m_camera3D);
+    SceneManager::RenderScene();
 
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
