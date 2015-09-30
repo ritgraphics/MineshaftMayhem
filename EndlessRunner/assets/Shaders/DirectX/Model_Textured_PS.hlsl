@@ -20,7 +20,7 @@ float4 main(VertexToPixel input) : SV_TARGET
     float4 ambientLight = float4(0.1f, 0.1f, 0.1f, 1.0f);
     float4 diffuse = txDiffuse.Sample(samLinear, input.uv);
     float3 lightDir = float3(0.0f, 1.0f, 0.0f);
-    float4 lightDiffuse = float4(1.0f, 0.0f, 0.0f, 1.0f);
+    float4 lightDiffuse = float4(1.0f, 1.0f, 1.0f, 1.0f);
     float3 color;
    
 
