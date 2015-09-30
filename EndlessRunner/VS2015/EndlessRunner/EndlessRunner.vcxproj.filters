@@ -71,6 +71,9 @@
     <None Include="..\..\assets\Scripts\rotate.lua">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="..\..\assets\Scripts\camera.lua">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_PS.hlsl">

@@ -11,9 +11,10 @@
 
     <gameobject name="camera" enabled="true">
       <transform x="0.0" y="0.0" z="-10.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
-      <camera mainCamera="true">
-        <view eyeX="0.0" eyeY="0.0" eyeZ="-10.0" targetX="0.0" targetY="0.0" targetZ="1.0" upX="0.0" upY="1.0" upZ="0.0"/>
-      </camera>
+      <camera mainCamera="true"/>
+      <scripts>
+        <script file="camera.lua"/>
+      </scripts>
       <children>
       </children>
     </gameobject>
