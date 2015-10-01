@@ -164,17 +164,23 @@ xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\lua\
     <None Include="..\..\assets\Models\cube.mdl" />
     <None Include="..\..\assets\Models\floor.mdl" />
     <None Include="..\..\assets\Models\models.config" />
+    <None Include="..\..\assets\Models\rail.mdl" />
     <None Include="..\..\assets\Models\raptor.mdl" />
+    <None Include="..\..\assets\Models\wall.mdl" />
     <None Include="..\..\assets\Prefabs\cube.pfb" />
     <None Include="..\..\assets\Prefabs\floor.pfb" />
     <None Include="..\..\assets\Prefabs\prefabs.master">
       <SubType>ASPXCodeBehind</SubType>
     </None>
+    <None Include="..\..\assets\Prefabs\rail.pfb" />
+    <None Include="..\..\assets\Prefabs\wall.pfb" />
     <None Include="..\..\assets\Scenes\scene1.scene">
       <SubType>Designer</SubType>
     </None>
     <None Include="..\..\assets\Scenes\scenes.config" />
     <None Include="..\..\assets\Scripts\camera.lua" />
+    <None Include="..\..\assets\Scripts\player.lua" />
+    <None Include="..\..\assets\Scripts\railspawn.lua" />
     <None Include="..\..\assets\Scripts\raptor.lua" />
     <None Include="..\..\assets\Scripts\rotate.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
@@ -204,6 +210,9 @@ xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\lua\
     <FxCompile Include="..\..\assets\Shaders\DirectX\VertexShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\assets\Models\minecart.mdl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

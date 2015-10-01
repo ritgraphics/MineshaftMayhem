@@ -20,6 +20,7 @@ struct VertexToPixel
     float4 position		: SV_POSITION;
     float2 uv		    : TEXCOORD;
     float3 normal       : NORMAL;
+	float  depth		:TEXCOORD1;
 };
 
 
@@ -32,7 +33,7 @@ VertexToPixel main(VertexShaderInput input)
     output.position = mul(float4(input.position, 1.0f), worldViewProj);
     output.normal = mul(input.normal, (float3x3)world);
     output.uv = input.uv;
-
+	output.depth = output.position.z / output.position.w;
     
     return output;
 }

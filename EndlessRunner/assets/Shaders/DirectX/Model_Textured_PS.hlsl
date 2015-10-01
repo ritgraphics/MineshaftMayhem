@@ -28,7 +28,7 @@ float4 main(VertexToPixel input) : SV_TARGET
 	float diffuseValue = dot(lightDir, input.normal);
 	diffuseValue = round((diffuseValue+ .5) * 2.0) / 3;
     color += saturate(diffuseValue * lightDiffuse * diffuse);
-  
+	color *= input.position.z;
     
-    return float4(color, diffuse.a);
+	return float4(color, diffuse.a);
 }

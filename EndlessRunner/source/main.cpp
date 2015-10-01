@@ -46,7 +46,7 @@ void EndlessRunner::VOnStartup()
 
 	paused = false;
 
-	m_renderer->VSetClearColor(Vixen::Colors::CornflowerBlue);
+	m_renderer->VSetClearColor(Vixen::Colors::Black);
 
 	m_font = ResourceManager::OpenFont(VTEXT("Consolas_24.fnt"));
 
