@@ -161,6 +161,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\lua\
     <ClCompile Include="..\..\source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\assets\Models\brace.mdl" />
     <None Include="..\..\assets\Models\cube.mdl" />
     <None Include="..\..\assets\Models\floor.mdl" />
     <None Include="..\..\assets\Models\models.config" />
