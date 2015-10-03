@@ -114,11 +114,14 @@
       <AdditionalDependencies>VCored.lib;VGraphicsd.lib;VGamed.lib;tinyxml2.lib;FreeImage.lib;SDL2.lib;d3d11.lib;d3dcompiler.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\tinyxml2\tinyxml2.dll" "$(TargetDir)" /y /v
-xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\FreeImage\FreeImage.dll" "$(TargetDir)" /y /v
-xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\SDL2\SDL2.dll" "$(TargetDir)" /y /v
-xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\Assimp\assimp.dll" "$(TargetDir)" /y /v
-xcopy "$(SolutionDir)..\..\VixenEngine\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(TargetDir)" /y /v</Command>
+      <Command>xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\Vixen\VCore\VCored.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\Vixen\VGraphics\VGraphicsd.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\Vixen\VGame\VGamed.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\tinyxml2\tinyxml2.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\FreeImage\FreeImage.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\SDL2\SDL2.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\Assimp\assimp.dll" "$(TargetDir)" /y /v
+xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(TargetDir)" /y /v</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
