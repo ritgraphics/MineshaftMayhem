@@ -73,46 +73,23 @@ void EndlessRunner::VOnUpdate(float dt)
 	}
 
 	if (!paused)
-	{
-		/*if (Input::KeyPress(IKEY::S))
-			m_camera3D->VWalk(-dt);
-
-		if (Input::KeyPress(IKEY::W))
-			m_camera3D->VWalk(dt);
-
-		if (Input::KeyPress(IKEY::A))
-			m_camera3D->VStrafe(-dt);
-
-		if (Input::KeyPress(IKEY::D))
-			m_camera3D->VStrafe(dt);
-
-		int deltaX = Input::DeltaX(m_window->VGetClientBounds().w / 2);
-		int deltaY = Input::DeltaY(m_window->VGetClientBounds().h / 2);
-		m_camera3D->VRotateX(deltaY * 0.25f);
-		m_camera3D->VRotateY(deltaX * 0.25f);
-
-
-		m_camera3D->VUpdate(dt);*/
-
+    {
 		SceneManager::UpdateScene(dt);
 
 		
 	    m_window->VTrapCursorCenter();
 	}
-
-
-	
 }
 
 void EndlessRunner::VOnRender(float dt)
 {
-    SceneManager::RenderScene();
+    SceneManager::RenderScene(dt);
 
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
-	USStream ss;
+	/*USStream ss;
 	ss << "FPS: " << m_window->VFPS();
-	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));
+	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));*/
 }
 
 void EndlessRunner::VOnShutdown()

@@ -1,10 +1,16 @@
 
+cbuffer externalData : register(b0)
+{
+    float time;
+};
+
+
 struct VertexToPixel
 {
 	float4 position		: SV_POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
-	float  depth    : TEXCOORD1;
+	float  depth        : TEXCOORD1;
 };
 
 
@@ -25,5 +31,7 @@ float4 main(VertexToPixel input) : SV_TARGET
 	diffuseValue = round((diffuseValue + .5) * 2.0) / 3;
 	color += saturate(diffuseValue * lightDiffuse * diffuse);
 
-	return float4(color, diffuse.a);
+    
+
+    return float4(color, diffuse.a);
 }
