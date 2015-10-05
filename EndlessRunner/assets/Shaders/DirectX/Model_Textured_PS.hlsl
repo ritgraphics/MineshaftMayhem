@@ -14,7 +14,7 @@ struct VertexToPixel
     float4 position		: SV_POSITION;
     float2 uv		    : TEXCOORD;
     float3 normal       : NORMAL;
-    float  time : TEXCOORD1;
+    float  time			: TEXCOORD1;
 };
 
 

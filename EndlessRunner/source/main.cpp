@@ -21,7 +21,7 @@ public:
 	void VOnStartup();
 	void VOnShutdown();
 	void VOnUpdate(float dt);
-	void VOnRender(float dt);
+	void VOnRender(float dt, float totalTime);
 
 private:
 	IFont*      m_font;
@@ -81,9 +81,9 @@ void EndlessRunner::VOnUpdate(float dt)
 	}
 }
 
-void EndlessRunner::VOnRender(float dt)
+void EndlessRunner::VOnRender(float dt, float totalTime)
 {
-    SceneManager::RenderScene(dt);
+    SceneManager::RenderScene(dt, totalTime);
 
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
