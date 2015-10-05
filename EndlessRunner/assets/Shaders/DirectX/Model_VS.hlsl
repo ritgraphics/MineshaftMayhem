@@ -33,10 +33,14 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
     matrix worldViewProj = mul(mul(world, view), projection);
     matrix viewProj = mul(view, projection);
 
-    output.position = mul(float4(input.position, 1.0f), worldViewProj);
+	// offset x and y position for turn effect
+	float4 worldPos = mul(mul(float4(input.position,1.0f), world), view);
+	float4 offset = float4(mul(mul(worldPos.z, worldPos.z), -0.002f), mul(mul(worldPos.z, worldPos.z), -0.002f), 0.0f, 0.0f);
+	output.position = mul(worldPos + offset, projection);
+
     output.normal = mul(input.normal, (float3x3)world);
     output.uv = input.uv;
     output.time = time;
-    
+
     return output;
 }
