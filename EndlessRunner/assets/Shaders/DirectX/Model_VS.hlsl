@@ -1,5 +1,3 @@
-
-
 cbuffer externalData : register(b0)
 {
 	matrix   view;
@@ -21,7 +19,7 @@ struct VertexToPixel
 	float4 position		: SV_POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
-	float  time : TEXCOORD1;
+	float  time			: TEXCOORD1;
 };
 
 VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)

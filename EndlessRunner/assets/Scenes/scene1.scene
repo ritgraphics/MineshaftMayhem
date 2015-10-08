@@ -16,6 +16,7 @@
       <transform x="0.0" y="0.0" z="0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <model file="minecart.mdl"/>
       <components>
+        <light kind="point" x="0.0" y="0.0" z="0.0" r="1.0" g="1.0" b="1.0" />
         <script file="player.lua"/>
       </components>
       <children>
