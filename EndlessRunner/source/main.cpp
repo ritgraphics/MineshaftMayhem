@@ -87,9 +87,9 @@ void EndlessRunner::VOnRender(float dt, float totalTime)
 
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
-	/*USStream ss;
+	USStream ss;
 	ss << "FPS: " << m_window->VFPS();
-	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));*/
+	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));
 }
 
 void EndlessRunner::VOnShutdown()

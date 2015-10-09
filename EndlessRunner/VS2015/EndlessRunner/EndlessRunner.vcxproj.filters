@@ -95,6 +95,21 @@
     <None Include="..\..\assets\Models\brace.mdl">
       <Filter>Models</Filter>
     </None>
+    <None Include="..\..\assets\Scripts\gemspawner.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\wallLeft.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\wallRight.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\floor.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\wall.lua">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">
