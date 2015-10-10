@@ -35,8 +35,11 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 
 	float t = time * .0157 + depth;
 
-	float curvex = (sin(t*.01) + cos(t*.05) - cos(t*.03))*2;
-	float curvey = cos(t*.07) - sin(t*.11) - sin(t*.02);
+	float curvex = (sin(t*.03) + cos(t*.05) - sin(t*.07)) * 2.0;
+	float curvey = (cos(t*.03) + sin(t*.07) - cos(t*.13)) * 1.0;
+	float ddx = (.03*cos(time*.0157*.03) - .05*sin(time*.0157*.05) - .07*cos(time*.0157*.07)) * 2.0;
+	float ddz = 1;
+	float rot = -atan2(ddx, ddz);
 
 	matrix depthDistortion = {
 		1.0, 0.0, 0.0, 0.0,
@@ -50,13 +53,13 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 		0.0, 0.0, 1.0, 0.0,
 		0.0, 0.0, 0.0, 1.0 };
 
-	/*matrix depthDistortion = {
-		cos(depth*curvex*.002), 0.0, -sin(depth*curvex*.002), 0.0,
+	matrix depthDistortion3 = {
+		cos(rot), 0.0, -sin(rot), 0.0,
 		0.0, 1.0, 0.0, 0.0,
-		sin(depth*curvex*.002), 0.0, cos(depth*curvex*.002), 0.0,
-		0.0, 0.0, 0.0, 1.0 };*/
+		sin(rot), 0.0, cos(rot), 0.0,
+		0.0, 0.0, 0.0, 1.0 };
 
-	depthDistortion = mul(depthDistortion, depthDistortion2);
+	depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
 	
 	/*matrix curve = {
 		cos((t + output.depth) * .01), 0.0, 0.0, 0.0,
