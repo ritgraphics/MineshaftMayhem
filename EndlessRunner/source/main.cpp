@@ -20,8 +20,8 @@ public:
 
 	void VOnStartup();
 	void VOnShutdown();
-	void VOnUpdate(float dt);
-	void VOnRender(float dt, float totalTime);
+	void VOnUpdate();
+	void VOnRender();
 
 private:
 	IFont*      m_font;
@@ -56,7 +56,7 @@ void EndlessRunner::VOnStartup()
 	m_window->VToggleCursor();
 }
 
-void EndlessRunner::VOnUpdate(float dt)
+void EndlessRunner::VOnUpdate()
 {
 	if (Input::SingleKeyPress(IKEY::F2))
 		m_window->VClose();
@@ -74,21 +74,21 @@ void EndlessRunner::VOnUpdate(float dt)
 
 	if (!paused)
     {
-		SceneManager::UpdateScene(dt);
+		SceneManager::UpdateScene();
 
 		
 	    m_window->VTrapCursorCenter();
 	}
 }
 
-void EndlessRunner::VOnRender(float dt, float totalTime)
+void EndlessRunner::VOnRender()
 {
-    SceneManager::RenderScene(dt, totalTime);
+    SceneManager::RenderScene();
 
 
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
 	USStream ss;
-	ss << "FPS: " << m_window->VFPS();
+	ss << "FPS: " << Time::FPS();
 	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));
 }
 

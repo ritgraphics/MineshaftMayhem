@@ -3,7 +3,7 @@ struct PointLight
 	float3	ambientColor;
 	float3	position;
 	float	radius;
-} pointLights[70];
+};
 
 struct DirectionLight
 {
@@ -37,7 +37,7 @@ float4 main(VertexToPixel input) : SV_TARGET
     float4 ambientLight = float4(0.1f, 0.1f, 0.1f, 1.0f);
     float4 diffuse = txDiffuse.Sample(samLinear, input.uv);
     float3 lightDir = float3(0.0f, 1.0f, 0.0f);
-    float4 lightDiffuse = float4(1.0f, 1.0f, 1.0f, 1.0f);
+    float4 lightDiffuse = float4(0.6f, 0.6f, 0.6f, 1.0f);
     float3 color;
    
     color = diffuse * ambientLight;
@@ -46,6 +46,7 @@ float4 main(VertexToPixel input) : SV_TARGET
     color += saturate(diffuseValue * lightDiffuse * diffuse);
 
 	color *= (1 - input.depth*input.depth*.0001);
-    
+	//return (1-input.depth*input.depth*.0001);
+	//return float4((1 + input.normal)*.5, 1.0);
 	return float4(color, diffuse.a);
 }

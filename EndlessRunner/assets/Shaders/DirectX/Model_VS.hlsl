@@ -1,9 +1,20 @@
+
+
+struct PointLight
+{
+	float3	ambientColor;
+	float3	position;
+	float	radius;
+};
+
 cbuffer externalData : register(b0)
 {
-	matrix   view;
-	matrix   projection;
-	float4x4 transforms[1000];
-	float    time;
+	matrix		view;
+	matrix		projection;
+	float4x4	transforms[1000];
+	float		time;
+	PointLight	pLights[4];
+	int			numPLights;
 };
 
 struct VertexShaderInput
