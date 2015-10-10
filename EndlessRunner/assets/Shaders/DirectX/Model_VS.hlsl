@@ -15,28 +15,45 @@ struct VertexShaderInput
 
 struct VertexToPixel
 {
-
 	float4 position		: SV_POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
-	float  time			: TEXCOORD1;
+	float  depth		: TEXCOORD1;
+	float  time			: TEXCOORD2;
 };
 
 VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 {
 	VertexToPixel output;
-	
+
 	matrix world = transforms[instanceID];
-	matrix worldViewProj = mul(mul(world, view), projection);
-	matrix viewProj = mul(view, projection);
 
-	// offset x and y position for turn effect
-	float2 curvature = float2(sin(time / 1000.0f), cos(time / 1000.0f) - 1) / 1000.0f;
-	float4 worldPos = mul(mul(float4(input.position, 1.0f), world), view);
-	float4 offset = float4(mul(mul(worldPos.z, worldPos.z), curvature.x), mul(mul(worldPos.z, worldPos.z), curvature.y), 0.0f, 0.0f);
-	output.position = mul(worldPos + offset, projection);
+	output.position = mul(float4(input.position, 1.0f), world);
 
-	output.normal = mul(input.normal, (float3x3)world);
+	output.depth = output.position.z / output.position.w;
+
+	float curvex = (sin((time*.0157 + output.depth)*.022) + cos((time*.0157 + output.depth)*.055)) * 2.0;
+	float curvey = (cos((time*.0157 + output.depth)*.033) + -sin((time*.0157 + output.depth)*.077));
+	/*matrix depthDistortion = { cos(output.depth*.1), -sin(output.depth*.1), 0.0, 0.0,
+	sin(output.depth * .1), cos(output.depth*.1), 0.0, 0.0,
+	0.0, 0.0, 1.0, 0.0,
+	0.0, 0.0, 0.0, 1.0 };*/
+
+	matrix depthDistortion = { 1.0, 0.0, 0.0, 0.0,
+		0.0, 1.0, 0.0, 0.0,
+		0.0, 0.0, 1.0, 0.0,
+		curvex, curvey, 0.0, 1.0 };
+
+	/*matrix depthDistortion = { 1.0, 0.0, 0.0, 0.0,
+	0.0, 1.0, 0.0, 0.0,
+	0.0, 0.0, 1.0, 0.0,
+	0.0, 0.0, 0.0, 1.0 };*/
+
+	output.position = mul(output.position, depthDistortion);
+
+	output.position = mul(mul(output.position, view), projection);
+
+	output.normal = mul(input.normal, (float3x3)mul(world, depthDistortion));
 	output.uv = input.uv;
 	output.time = time;
 
