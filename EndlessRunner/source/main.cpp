@@ -25,6 +25,8 @@ public:
 
 private:
 	IFont*      m_font;
+	IFont*      m_fps;
+	IFont*      m_header;
 	Transform   fontTransform;
 	bool paused;
 };
@@ -43,12 +45,15 @@ void EndlessRunner::VOnStartup()
     ModelManager::Initialize();
     SceneManager::Initialize();
     SceneManager::OpenScene(VTEXT("scene1"));
+	SceneManager::PauseScene(VTEXT("scene1"));
 
-	paused = false;
+	paused = true;
 
 	m_renderer->VSetClearColor(Vixen::Colors::Black);
 
-	m_font = ResourceManager::OpenFont(VTEXT("Consolas_24.fnt"));
+	m_font = ResourceManager::OpenFont(VTEXT("mineshaft.fnt"));
+	m_fps = ResourceManager::OpenFont(VTEXT("Consolas_14.fnt"));
+	m_header = ResourceManager::OpenFont(VTEXT("mineshaft_72.fnt"));
 
 	fontTransform = Transform(20.0f, 20.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 	
@@ -61,9 +66,9 @@ void EndlessRunner::VOnUpdate()
 	if (Input::SingleKeyPress(IKEY::F2))
 		m_window->VClose();
 
-	if (Input::SingleKeyPress(IKEY::P))
+	if (Input::SingleKeyPress(IKEY::SPACE))
 	{
-		m_window->VToggleCursor();
+		
 		paused = !paused;
 		if (paused)
 			SceneManager::PauseScene(VTEXT("scene1"));
@@ -89,7 +94,13 @@ void EndlessRunner::VOnRender()
 	//ALL 2D UI IS DRAW AFTER SCENE IS DRAWN
 	USStream ss;
 	ss << "FPS: " << Time::FPS();
-	m_renderer->VRenderText2D(m_font, ss.str(), Vector2(20, 20));
+	m_renderer->VRenderText2D(m_fps, ss.str(), Vector2(20, 20));
+
+	if (paused) {
+		m_renderer->VRenderText2D(m_header, VTEXT("Mineshaft Mayhem"), Vector2(-1, 60));
+		m_renderer->VRenderText2D(m_font, VTEXT("Press Space to Start"), Vector2(-1, 550));
+	}
+		
 }
 
 void EndlessRunner::VOnShutdown()
@@ -99,6 +110,8 @@ void EndlessRunner::VOnShutdown()
     SceneManager::DeInitialize();
     LuaEngine::DeInitialize();
     delete m_font;
+	delete m_fps;
+	delete m_header;
 }
 
 
