@@ -34,31 +34,32 @@
     </gameobject>-->
 
 
-    <gameobject name="floorspawner" enabled="true">
+    <!--<gameobject name="floorspawner" enabled="true">
       <transform x="0.0" y="0.0" z="-1.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
         <script file="floorspawn.lua"/>
       </components>
       <children>
       </children>
-    </gameobject>
+    </gameobject>-->
 
     <gameobject name="railspawner" enabled="true">
       <transform x="0.0" y="0.0" z="-1.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
-        <script file="railspawn.lua"/>
+        <script file="MineShaft.lua"/>
       </components>
       <children>
       </children>
     </gameobject>
 
-    <gameobject name="wallspawner" enabled="true">
+    <!-- <gameobject name="wallspawner" enabled="true">
       <transform x="0.0" y="0.0" z="-1.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
         <script file="wallspawn.lua"/>
       </components>
       <children>
       </children>
-    </gameobject>
+    </gameobject>-->
+    
   </object-list>
 </scene>

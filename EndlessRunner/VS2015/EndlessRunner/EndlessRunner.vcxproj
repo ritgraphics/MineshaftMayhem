@@ -190,7 +190,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Scripts\floorspawn.lua" />
     <None Include="..\..\assets\Scripts\gemspawner.lua" />
     <None Include="..\..\assets\Scripts\player.lua" />
-    <None Include="..\..\assets\Scripts\railspawn.lua" />
+    <None Include="..\..\assets\Scripts\MineShaft.lua" />
     <None Include="..\..\assets\Scripts\raptor.lua" />
     <None Include="..\..\assets\Scripts\rotate.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
@@ -224,6 +224,12 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\..\assets\Models\minecart.mdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EndlessRunner.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

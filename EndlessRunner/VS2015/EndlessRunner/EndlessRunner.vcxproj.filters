@@ -80,9 +80,6 @@
     <None Include="..\..\assets\Prefabs\rail.pfb">
       <Filter>Prefabs</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\railspawn.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Scripts\player.lua">
       <Filter>Scripts</Filter>
     </None>
@@ -116,6 +113,9 @@
     <None Include="..\..\assets\Prefabs\ceiling.pfb">
       <Filter>Prefabs</Filter>
     </None>
+    <None Include="..\..\assets\Scripts\MineShaft.lua">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">
@@ -144,5 +144,15 @@
     <Xml Include="..\..\assets\Models\minecart.mdl">
       <Filter>Models</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EndlessRunner.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
