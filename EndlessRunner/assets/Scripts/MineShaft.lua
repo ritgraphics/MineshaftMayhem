@@ -1,64 +1,38 @@
 function MineShaft.OnInit()
-end
-
-function MineShaft.MakeSegment()
-
-	local railPrefab = Prefab.Load("rail.pfb");
-	local rail1 = railPrefab:CreateObject();
-	rail1:GetTransform().Position = Vector3(-5.0, 0.0, 0.0);
-	
-	local rail2 = railPrefab:CreateObject();
-	rail2:GetTransform().Position = Vector3(0.0, 0.0, 0.0);
-	
-	local rail3 = railPrefab:CreateObject();
-	rail3:GetTransform().Position = Vector3(5.0, 0.0, 0.0);
-	
-	rail2:AddChild(rail1);
-	rail2:AddChild(rail3);
-	
-	rail1:Delete();
-	
+	this.railPrefab = Prefab.Load("rail.pfb");
+	this.railPrefab:MarkStore();
+	this.speed = 5.0;
+	this.position = 0.0;
+	this.test = 0.0;
+	this.track = {};
 end
 
 function MineShaft.OnEnable()
-	
-	local numRails = 30;
-	local go = this.GameObject;
-	MineShaft.MakeSegment();
-	
-	--[[
-	for i=0, numRails, 1
-	do
-		local rail = railPrefab:CreateObject();
-
-		rail:GetTransform().Position = transform.Position + Vector3(0.0, 0.0, 0.0 + (7.5 * i));
-	end
-
-	for i=0, numRails, 1
-	do
-		local rail = railPrefab:CreateObject();
-
-		rail:GetTransform().Position = transform.Position + Vector3(-5, 0.0, 0.0 + (7.5 * i));
-	end
-	
-
-	for i=0, numRails, 1
-	do
-		local rail = railPrefab:CreateObject();
-
-		rail:GetTransform().Position = transform.Position + Vector3(5, 0.0, 0.0 + (7.5 * i));
-	end ]]--
-
-	--local rail2 = railPrefab:CreateObject();
-	
 end
 
 
+function MineShaft.MakeSegment()
+	local row = {};
+	row.left = SpawnRail(-1, this.railPrefab);
+	row.middle = SpawnRail(0, this.railPrefab);
+	row.right = SpawnRail(1, this.railPrefab);
+	this.track[0] = row;
+end
+
+function SpawnRail(column, prefab)
+	local rail = prefab:CreateObject();
+	rail:GetTransform().Position = Vector3(5.0 * column, 0.0, this.test);
+	return rail;
+end
 
 function MineShaft.Update(dt)
-
+	this.position = this.position + (dt*this.speed);
+	this.test = this.test + (dt*this.speed);
+	if (this.position > 6.0) then
+		this.position = this.position - 6.0;
+		MineShaft.MakeSegment();
+	end
 	
-
 end
 
 function MineShaft.OnDisable()
@@ -67,5 +41,5 @@ end
 
 
 function MineShaft.OnDestroy()
-	
+	this.railPrefab:MarkDelete();
 end
