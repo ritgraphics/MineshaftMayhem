@@ -191,6 +191,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Scripts\gemspawner.lua" />
     <None Include="..\..\assets\Scripts\player.lua" />
     <None Include="..\..\assets\Scripts\MineShaft.lua" />
+    <None Include="..\..\assets\Scripts\Rail.lua" />
     <None Include="..\..\assets\Scripts\raptor.lua" />
     <None Include="..\..\assets\Scripts\rotate.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
