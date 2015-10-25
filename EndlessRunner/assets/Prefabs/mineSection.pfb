@@ -1,57 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <prefab id="mineSection">
-  <gameobject defaultName="mineSection" enabled="true">
+  <gameobject name="mineSection" enabled="true">
     <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
     <model file=""/>
-    <scripts>
-    </scripts>
     <children>
-      <gameobject defaultName="leftWall" enabled="true">
-        <transform x="-7.5" y="0.0" z="0.0" rotX="0.0" rotY="90.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <gameobject name="leftWall" enabled="true">
+        <transform x="-4.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="wall.mdl"/>
-        <scripts>
-        </scripts>
         <children>
-          <gameobject defaultName="brace" enabled="true">
-            <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
-            <model file="brace.mdl"/>
-            <scripts>
-            </scripts>
-            <children>
-            </children>
-          </gameobject>
         </children>
       </gameobject>
-      <gameobject defaultName="cieling" enabled="true">
-        <transform x="0.0" y="9.5" z="0.0" rotX="0.0" rotY="0.0" rotZ="180.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <gameobject name="cieling" enabled="true">
+        <transform x="0.0" y="9.5" z="0.0" rotX="0.0" rotY="90.0" rotZ="180.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="floor.mdl"/>
-        <scripts>
-        </scripts>
         <children>
         </children>
       </gameobject>
-      <gameobject defaultName="floor" enabled="true">
-        <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <gameobject name="floor" enabled="true">
+        <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="90.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="floor.mdl"/>
-        <scripts>
-        </scripts>
         <children>
         </children>
       </gameobject>
-      <gameobject defaultName="rightWall" enabled="true">
-        <transform x="7.5" y="0.0" z="0.0" rotX="0.0" rotY="-90.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <gameobject name="rightWall" enabled="true">
+        <transform x="4.0" y="0.0" z="0.0" rotX="0.0" rotY="180.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="wall.mdl"/>
-        <scripts>
-        </scripts>
         <children>
-          <gameobject defaultName="brace" enabled="true">
-            <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
-            <model file="brace.mdl"/>
-            <scripts>
-            </scripts>
-            <children>
-            </children>
-          </gameobject>
         </children>
       </gameobject>
     </children>

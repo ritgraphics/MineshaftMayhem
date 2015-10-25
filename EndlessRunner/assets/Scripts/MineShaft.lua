@@ -78,7 +78,6 @@ function MineShaft.Update(dt)
     this.moveSpeed = this.moveSpeed + dt * 0.1;
 	
 	this.score = this.score + (this.moveSpeed * dt);
-	print(math.floor(this.score));
 
 	this.loopPosition = this.loopPosition + (dt*this.moveSpeed);
 	if (this.loopPosition > this.sectionLength) then
