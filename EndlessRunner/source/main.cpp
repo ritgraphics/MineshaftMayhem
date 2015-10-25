@@ -11,6 +11,8 @@
 #include <vix_luascriptmanager.h>
 #include <vix_objectmanager.h>
 
+#include "MineshaftMayhem.h"
+
 using namespace Vixen;
 
 class EndlessRunner : public Game
@@ -39,6 +41,15 @@ EndlessRunner::EndlessRunner()
 
 void EndlessRunner::VOnStartup()
 {
+    std::stringstream ss;
+    ss << "Mineshaft Mayhem " << MineshaftMayhem_VERSION_MAJOR
+        << "."
+        << MineshaftMayhem_VERSION_MINOR
+        << "."
+        << MineshaftMayhem_VERSION_BUILD;
+    m_window->VSetTitle(ss.str());
+
+
 	ObjectManager::Initialize();
     LuaEngine::Initialize();
 	LuaScriptManager::Initialize();
