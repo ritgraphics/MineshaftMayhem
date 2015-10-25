@@ -3,7 +3,7 @@ function gem.OnInit()
 end
 
 function gem.OnEnable()
-	this.moveSpeed = 15.0;
+    this.player = Scene.FindObjectWithName("minecart1");
 end
 
 function gem.Update(dt)
@@ -13,24 +13,13 @@ function gem.Update(dt)
 	
 	local transform = go:GetTransform();
 
-	transform:TranslateZ(-dt * this.moveSpeed);
+    local distance = transform.WorldPosition - this.player:GetTransform().WorldPosition;
+    local distanceSqrd = distance:Z() * distance:Z() + distance:X() * distance:X();
 
-    local player = Scene.FindObjectWithName("minecart1");
-
-    distance = transform.Position - player:GetTransform().Position;
-
-    if distance:Z() < 2.0 and distance:X() <= 1.0 then
+    if distanceSqrd <= 16.0 then
         go:Delete();
-
         go = nil;
     end
-
-	if transform.Position:Z() < -15.0 then
-
-        go:Delete();
-
-        go = nil;
-	end
 
 end
 

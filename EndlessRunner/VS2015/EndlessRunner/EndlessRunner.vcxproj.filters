@@ -119,6 +119,18 @@
     <None Include="..\..\assets\Scripts\Rail.lua">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="..\..\assets\Prefabs\GemRail.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\gem_red.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\gem.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Models\Wheel.mdl">
+      <Filter>Models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">

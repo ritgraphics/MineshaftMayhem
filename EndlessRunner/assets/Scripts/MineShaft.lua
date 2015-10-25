@@ -1,42 +1,57 @@
 function MineShaft.OnInit()
 	this.railPrefab = Prefab.Load("rail.pfb");
+	this.gemPrefab = Prefab.Load("GemRail.pfb");
 	this.railPrefab:MarkStore();
+	this.gemPrefab:MarkStore();
+
     this.maxDist = 120.0; --furthest rail position
     this.moveSpeed = 10.0;
 	this.loopPosition = 0.0;
-    this.sectionLength = 6.0;
+    this.sectionLength = 12.0;
 	this.track = {};
 end
 
 function MineShaft.OnEnable()
+    math.randomseed(os.time());
     MineShaft.SpawnStartingTrack();
 end
 
 function MineShaft.SpawnStartingTrack()
-    for i = 0, 20, 1 do
+    for i = 0, 10, 1 do
         this.loopPosition = -1 * i * this.sectionLength;
         MineShaft.MakeSegment();
     end
     this.loopPosition = 0.0;
 end
 
-function MineShaft.MakeSegment()
-	local row = {};
-	row.left = SpawnRail(-1, this.railPrefab);
-	row.middle = SpawnRail(0, this.railPrefab);
-	row.right = SpawnRail(1, this.railPrefab);
-	this.track[0] = row;
+function MineShaft.GetRandomRailPrefab()
+    if (math.random() > 0.1) then
+        return this.railPrefab;
+    else
+        return this.gemPrefab;
+    end
 end
 
-function SpawnRail(column, prefab)
+function MineShaft.MakeSegment()
+    -- spawn row of rails with obstacles
+	SpawnRail(-1, 0, MineShaft.GetRandomRailPrefab());
+	SpawnRail(0, 0, MineShaft.GetRandomRailPrefab());
+	SpawnRail(1, 0, MineShaft.GetRandomRailPrefab());
+
+    --spawn secondary row of rails
+    SpawnRail(-1, 1, this.railPrefab);
+	SpawnRail(0, 1, this.railPrefab);
+	SpawnRail(1, 1, this.railPrefab);
+end
+
+function SpawnRail(column, row, prefab)
 	local rail = prefab:CreateObject();
-	rail:GetTransform().Position = Vector3(5.0 * column, 0.0, this.maxDist + this.loopPosition);
+	rail:GetTransform().Position = Vector3(5.0 * column, 0.0, this.maxDist + this.loopPosition - (row * this.sectionLength/2) );
     
     local id = rail:GetID();
     local scriptName = "Rail";
 
     Rail.hash[""..id].manager = this;
-    
 
 	return rail;
 end
@@ -48,7 +63,6 @@ function MineShaft.Update(dt)
 		this.loopPosition = this.loopPosition - this.sectionLength;
 		MineShaft.MakeSegment();
 	end
-	
 end
 
 function MineShaft.OnDisable()

@@ -171,9 +171,12 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Models\rail.mdl" />
     <None Include="..\..\assets\Models\raptor.mdl" />
     <None Include="..\..\assets\Models\wall.mdl" />
+    <None Include="..\..\assets\Models\Wheel.mdl" />
     <None Include="..\..\assets\Prefabs\ceiling.pfb" />
     <None Include="..\..\assets\Prefabs\cube.pfb" />
     <None Include="..\..\assets\Prefabs\floor.pfb" />
+    <None Include="..\..\assets\Prefabs\GemRail.pfb" />
+    <None Include="..\..\assets\Prefabs\gem_red.pfb" />
     <None Include="..\..\assets\Prefabs\prefabs.master">
       <SubType>ASPXCodeBehind</SubType>
     </None>
@@ -188,6 +191,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Scripts\camera.lua" />
     <None Include="..\..\assets\Scripts\floor.lua" />
     <None Include="..\..\assets\Scripts\floorspawn.lua" />
+    <None Include="..\..\assets\Scripts\gem.lua" />
     <None Include="..\..\assets\Scripts\gemspawner.lua" />
     <None Include="..\..\assets\Scripts\player.lua" />
     <None Include="..\..\assets\Scripts\MineShaft.lua" />
