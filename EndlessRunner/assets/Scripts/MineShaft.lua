@@ -9,6 +9,7 @@ function MineShaft.OnInit()
 	this.loopPosition = 0.0;
     this.sectionLength = 12.0;
 	this.track = {};
+	this.score = 0;
 end
 
 function MineShaft.OnEnable()
@@ -58,6 +59,10 @@ end
 
 function MineShaft.Update(dt)
     this.moveSpeed = this.moveSpeed + dt * 0.1;
+	
+	this.score = this.score + (this.moveSpeed * dt);
+	print(math.floor(this.score));
+
 	this.loopPosition = this.loopPosition + (dt*this.moveSpeed);
 	if (this.loopPosition > this.sectionLength) then
 		this.loopPosition = this.loopPosition - this.sectionLength;
