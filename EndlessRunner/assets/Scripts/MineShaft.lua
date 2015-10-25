@@ -5,6 +5,8 @@ function MineShaft.OnInit()
 	this.railPrefab:MarkStore();
 	this.gemPrefab:MarkStore();
     this.brokenPrefab:MarkStore();
+	this.wallPrefab = Prefab.Load("mineSection.pfb");
+	this.wallPrefab:MarkStore();
 
     this.maxDist = 120.0; --furthest rail position
     this.moveSpeed = 10.0;
@@ -61,6 +63,10 @@ function MineShaft.MakeSegment()
     MineShaft.SpawnRail(-1, 1, this.railPrefab);
 	MineShaft.SpawnRail(0, 1, this.railPrefab);
 	MineShaft.SpawnRail(1, 1, this.railPrefab);
+
+	-- wall section
+	MineShaft.SpawnWall(0, this.wallPrefab);
+	MineShaft.SpawnWall(1, this.wallPrefab);
 end
 
 function MineShaft.SpawnRail(column, row, prefab)
@@ -72,6 +78,16 @@ function MineShaft.SpawnRail(column, row, prefab)
     Rail.hash[""..id].manager = this;
 
 	return rail;
+end
+
+function MineShaft.SpawnWall(row, prefab)
+	local wall = prefab:CreateObject();
+	wall:GetTransform().Position = Vector3(0.0, 0.0, this.maxDist + this.loopPosition - (row * this.sectionLength/2) );
+
+	local id = wall:GetID();
+	MineSection.hash[""..id].manager = this;
+
+	return wall;
 end
 
 function MineShaft.Update(dt)
@@ -95,4 +111,5 @@ function MineShaft.OnDestroy()
 	this.railPrefab:MarkDelete();
 	this.gemPrefab:MarkDelete();
 	this.brokenPrefab:MarkDelete();
+	this.wallPrefab:MarkDelete();
 end
