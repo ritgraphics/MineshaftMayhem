@@ -172,6 +172,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Models\raptor.mdl" />
     <None Include="..\..\assets\Models\wall.mdl" />
     <None Include="..\..\assets\Models\Wheel.mdl" />
+    <None Include="..\..\assets\Prefabs\BrokenRail.pfb" />
     <None Include="..\..\assets\Prefabs\ceiling.pfb" />
     <None Include="..\..\assets\Prefabs\cube.pfb" />
     <None Include="..\..\assets\Prefabs\floor.pfb" />
@@ -200,6 +201,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Scripts\rotate.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
     <None Include="..\..\assets\Scripts\wall.lua" />
+    <None Include="BrokenRail.mdl" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_Textured_PS.hlsl">

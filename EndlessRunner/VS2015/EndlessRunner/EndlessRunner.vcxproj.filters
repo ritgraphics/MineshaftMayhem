@@ -131,6 +131,12 @@
     <None Include="..\..\assets\Models\Wheel.mdl">
       <Filter>Models</Filter>
     </None>
+    <None Include="BrokenRail.mdl">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\assets\Prefabs\BrokenRail.pfb">
+      <Filter>Prefabs</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">

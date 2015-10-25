@@ -1,8 +1,10 @@
 function MineShaft.OnInit()
 	this.railPrefab = Prefab.Load("rail.pfb");
 	this.gemPrefab = Prefab.Load("GemRail.pfb");
+	this.brokenPrefab = Prefab.Load("BrokenRail.pfb");
 	this.railPrefab:MarkStore();
 	this.gemPrefab:MarkStore();
+    this.brokenPrefab:MarkStore();
 
     this.maxDist = 120.0; --furthest rail position
     this.moveSpeed = 10.0;
@@ -25,32 +27,47 @@ function MineShaft.SpawnStartingTrack()
     this.loopPosition = 0.0;
 end
 
-function MineShaft.GetRandomRailPrefab()
-    if (math.random() > 0.1) then
+function MineShaft.GetRandomHazardRail()
+    local rand = math.random();
+    if (rand > 0.0) then
+        return this.brokenPrefab;
+    end
+end
+
+function MineShaft.GetRandomSafeRail()
+    local rand = math.random();
+    if (rand > 0.1) then
         return this.railPrefab;
-    else
+    elseif (rand > 0.0) then
         return this.gemPrefab;
     end
 end
 
 function MineShaft.MakeSegment()
     -- spawn row of rails with obstacles
-	SpawnRail(-1, 0, MineShaft.GetRandomRailPrefab());
-	SpawnRail(0, 0, MineShaft.GetRandomRailPrefab());
-	SpawnRail(1, 0, MineShaft.GetRandomRailPrefab());
+    local numHazards = math.random()*math.random()*1.5;
+    local startPoint = math.floor(math.random()*3);
+
+    for i = startPoint, startPoint+2, 1 do
+        if(numHazards > 0) then
+	        MineShaft.SpawnRail((i%3)-1, 0, MineShaft.GetRandomHazardRail());
+            numHazards = numHazards - 1;
+        else
+	        MineShaft.SpawnRail((i%3)-1, 0, MineShaft.GetRandomSafeRail());
+        end
+    end
 
     --spawn secondary row of rails
-    SpawnRail(-1, 1, this.railPrefab);
-	SpawnRail(0, 1, this.railPrefab);
-	SpawnRail(1, 1, this.railPrefab);
+    MineShaft.SpawnRail(-1, 1, this.railPrefab);
+	MineShaft.SpawnRail(0, 1, this.railPrefab);
+	MineShaft.SpawnRail(1, 1, this.railPrefab);
 end
 
-function SpawnRail(column, row, prefab)
+function MineShaft.SpawnRail(column, row, prefab)
 	local rail = prefab:CreateObject();
 	rail:GetTransform().Position = Vector3(5.0 * column, 0.0, this.maxDist + this.loopPosition - (row * this.sectionLength/2) );
     
     local id = rail:GetID();
-    local scriptName = "Rail";
 
     Rail.hash[""..id].manager = this;
 
@@ -77,4 +94,6 @@ end
 
 function MineShaft.OnDestroy()
 	this.railPrefab:MarkDelete();
+	this.gemPrefab:MarkDelete();
+	this.brokenPrefab:MarkDelete();
 end
