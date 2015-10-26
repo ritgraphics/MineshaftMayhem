@@ -35,7 +35,7 @@
           </components>
           <children>
           </children>
-        </gameobject>
+        </gameobject>        
       </children>
     </gameobject>
     <gameobject name="railspawner" enabled="true">

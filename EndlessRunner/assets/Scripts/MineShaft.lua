@@ -8,17 +8,43 @@ function MineShaft.OnInit()
 	this.wallPrefab = Prefab.Load("mineSection.pfb");
 	this.wallPrefab:MarkStore();
 
+	this.speedBoostPrefab = Prefab.Load("SpeedBoostRail.pfb");
+	this.speedBoostPrefab:MarkStore();
+
     this.maxDist = 120.0; --furthest rail position
     this.moveSpeed = 10.0;
 	this.loopPosition = 0.0;
     this.sectionLength = 12.0;
 	this.track = {};
 	this.score = 0;
+
+	--Speed Boost
+	this.boostAmt = 10.0;
+	this.boostLife = 0.0;
+	this.boostDuration = 0.0;
 end
 
 function MineShaft.OnEnable()
     math.randomseed(os.time());
     MineShaft.SpawnStartingTrack();
+end
+
+function MineShaft.CalcBoostSpeed(dt)
+	if this.boostDuration == 0 or this.boostLife== 0 or this.boostAmt == 0 then
+		return 0;
+	end
+
+	this.boostLife = this.boostLife - dt;
+
+	if this.boostLife < 0 then
+		this.boostLife = 0;
+		this.boostDuration = 0;
+		this.boostAmt = 0;
+		
+		return 0;
+	end
+
+	return 40;
 end
 
 function MineShaft.SpawnStartingTrack()
@@ -38,16 +64,18 @@ end
 
 function MineShaft.GetRandomSafeRail()
     local rand = math.random();
-    if (rand > 0.1) then
-        return this.railPrefab;
-    elseif (rand > 0.0) then
+    if (rand > 0.95) then
+		return this.speedBoostPrefab;
+    elseif (rand > 0.5) then
         return this.gemPrefab;
-    end
+    else
+        return this.railPrefab;
+	end
 end
 
 function MineShaft.MakeSegment()
     -- spawn row of rails with obstacles
-    local numHazards = math.random()*math.random()*1.5;
+    local numHazards = math.random()*math.random()*1.1;
     local startPoint = math.floor(math.random()*3);
 
     for i = startPoint, startPoint+2, 1 do
@@ -95,7 +123,7 @@ function MineShaft.Update(dt)
 	
 	this.score = this.score + (this.moveSpeed * dt);
 
-	this.loopPosition = this.loopPosition + (dt*this.moveSpeed);
+	this.loopPosition = this.loopPosition + (dt*(this.moveSpeed));
 	if (this.loopPosition > this.sectionLength) then
 		this.loopPosition = this.loopPosition - this.sectionLength;
 		MineShaft.MakeSegment();
@@ -112,4 +140,5 @@ function MineShaft.OnDestroy()
 	this.gemPrefab:MarkDelete();
 	this.brokenPrefab:MarkDelete();
 	this.wallPrefab:MarkDelete();
+	this.speedBoostPrefab:MarkDelete();
 end

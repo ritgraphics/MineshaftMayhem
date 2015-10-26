@@ -167,6 +167,7 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Models\brace.mdl" />
     <None Include="..\..\assets\Models\cube.mdl" />
     <None Include="..\..\assets\Models\floor.mdl" />
+    <None Include="..\..\assets\Models\gem_red.mdl" />
     <None Include="..\..\assets\Models\models.config" />
     <None Include="..\..\assets\Models\rail.mdl" />
     <None Include="..\..\assets\Models\raptor.mdl" />
@@ -178,10 +179,12 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Prefabs\floor.pfb" />
     <None Include="..\..\assets\Prefabs\GemRail.pfb" />
     <None Include="..\..\assets\Prefabs\gem_red.pfb" />
+    <None Include="..\..\assets\Prefabs\mineSection.pfb" />
     <None Include="..\..\assets\Prefabs\prefabs.master">
       <SubType>ASPXCodeBehind</SubType>
     </None>
     <None Include="..\..\assets\Prefabs\rail.pfb" />
+    <None Include="..\..\assets\Prefabs\SpeedBoostRail.pfb" />
     <None Include="..\..\assets\Prefabs\wall.pfb" />
     <None Include="..\..\assets\Prefabs\wallLeft.pfb" />
     <None Include="..\..\assets\Prefabs\wallRight.pfb" />
@@ -194,11 +197,13 @@ xcopy "$(SolutionDir)..\..\VixenEngine\dependencies\$(Platform)\lua\lua.dll" "$(
     <None Include="..\..\assets\Scripts\floorspawn.lua" />
     <None Include="..\..\assets\Scripts\gem.lua" />
     <None Include="..\..\assets\Scripts\gemspawner.lua" />
+    <None Include="..\..\assets\Scripts\Hazard.lua" />
     <None Include="..\..\assets\Scripts\player.lua" />
     <None Include="..\..\assets\Scripts\MineShaft.lua" />
     <None Include="..\..\assets\Scripts\Rail.lua" />
     <None Include="..\..\assets\Scripts\raptor.lua" />
     <None Include="..\..\assets\Scripts\rotate.lua" />
+    <None Include="..\..\assets\Scripts\SpeedBoost.lua" />
     <None Include="..\..\assets\Scripts\test.lua" />
     <None Include="..\..\assets\Scripts\wall.lua" />
     <None Include="BrokenRail.mdl" />
