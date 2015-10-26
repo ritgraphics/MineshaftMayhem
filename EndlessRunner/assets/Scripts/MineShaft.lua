@@ -18,6 +18,9 @@ function MineShaft.OnInit()
 	this.track = {};
 	this.score = 0;
 
+    this.level = 1;
+    this.scoreForNextLevel = 1000;
+
 	--Speed Boost
 	this.boostAmt = 10.0;
 	this.boostLife = 0.0;
@@ -50,7 +53,7 @@ end
 function MineShaft.SpawnStartingTrack()
     for i = 0, 10, 1 do
         this.loopPosition = -1 * i * this.sectionLength;
-        MineShaft.MakeSegment();
+        MineShaft.MakeSegment(i/10.0); --start 0 difficulty then ramp up to level 1
     end
     this.loopPosition = 0.0;
 end
@@ -73,13 +76,14 @@ function MineShaft.GetRandomSafeRail()
 	end
 end
 
-function MineShaft.MakeSegment()
+function MineShaft.MakeSegment(level)
     -- spawn row of rails with obstacles
-    local numHazards = math.random()*math.random()*1.1;
+    local numHazards = math.random() * (3.0 - (3.0 / (1.0 + level)));
+    --which column we start spawning with
     local startPoint = math.floor(math.random()*3);
 
     for i = startPoint, startPoint+2, 1 do
-        if(numHazards > 0) then
+        if(numHazards > 1) then
 	        MineShaft.SpawnRail((i%3)-1, 0, MineShaft.GetRandomHazardRail());
             numHazards = numHazards - 1;
         else
@@ -123,10 +127,15 @@ function MineShaft.Update(dt)
 	
 	this.score = this.score + (this.moveSpeed * dt);
 
+    if this.score > this.scoreForNextLevel then
+        this.level = this.level + 1;
+        this.scoreForNextLevel = this.scoreForNextLevel + this.level * 1000;
+    end
+
 	this.loopPosition = this.loopPosition + (dt*(this.moveSpeed));
 	if (this.loopPosition > this.sectionLength) then
 		this.loopPosition = this.loopPosition - this.sectionLength;
-		MineShaft.MakeSegment();
+		MineShaft.MakeSegment(this.level);
 	end
 end
 

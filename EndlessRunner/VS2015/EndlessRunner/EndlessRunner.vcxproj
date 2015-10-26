@@ -74,7 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)..\..\VixenEngine\include\;$(SolutionDir)..\..\VixenEngine\include\vcore;$(SolutionDir)..\..\VixenEngine\include\vgraphics;$(SolutionDir)..\..\VixenEngine\include\vgame;$(SolutionDir)..\..\VixenEngine\dependencies\x64\SDL2\include;$(SolutionDir)..\..\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\dependencies\x64\lua\include;$(SolutionDir)..\..\VixenEngine\dependencies\x64\luaintf\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\VixenEngine\include\;$(SolutionDir)..\..\EndlessRunner\include\;$(SolutionDir)..\..\VixenEngine\include\vcore;$(SolutionDir)..\..\VixenEngine\include\vgraphics;$(SolutionDir)..\..\VixenEngine\include\vgame;$(SolutionDir)..\..\VixenEngine\dependencies\x64\SDL2\include;$(SolutionDir)..\..\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\dependencies\x64\lua\include;$(SolutionDir)..\..\VixenEngine\dependencies\x64\luaintf\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\..\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\dependencies\x64\SDL2;$(SolutionDir)..\..\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\dependencies\x64\Vixen\VCore;$(SolutionDir)..\..\VixenEngine\dependencies\x64\Vixen\VGraphics;$(SolutionDir)..\..\VixenEngine\dependencies\x64\Vixen\VGame;$(SolutionDir)..\..\VixenEngine\dependencies\x64\lua\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Temp\</IntDir>
@@ -84,6 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\..\VixenEngine\include\;$(SolutionDir)..\..\EndlessRunner\include\;$(SolutionDir)..\..\VixenEngine\include\vcore;$(SolutionDir)..\..\VixenEngine\include\vgraphics;$(SolutionDir)..\..\VixenEngine\include\vgame;$(SolutionDir)..\..\VixenEngine\dependencies\x64\SDL2\include;$(SolutionDir)..\..\VixenEngine\dependencies\x64\FreeImage;$(SolutionDir)..\..\VixenEngine\dependencies\x64\tinyxml2;$(SolutionDir)..\..\VixenEngine\dependencies\x64\lua\include;$(SolutionDir)..\..\VixenEngine\dependencies\x64\luaintf\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
