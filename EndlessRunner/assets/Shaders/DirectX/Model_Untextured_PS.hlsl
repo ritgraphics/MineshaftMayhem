@@ -21,8 +21,8 @@ float4 main(VertexToPixel input) : SV_TARGET
 
 	
 	float4 ambientLight = float4(0.5f, 0.5f, 0.5f, 1.0f);
-	//float4 diffuse = float4(0.25f, 0.25f, 0.25f, 1.0f);
-	float4 diffuse = float4(sin(input.depth * .05 + input.time * .01)*.5+.5, cos(input.depth * .05 + input.time * .01)*.5 + .5, -sin(input.depth *.05 + input.time * .01)*.5 + .5, 1.0f);
+	float4 diffuse = float4(0.25f, 0.25f, 0.25f, 1.0f);
+	//float4 diffuse = float4(sin(input.depth * .05 + input.time * .01)*.5+.5, cos(input.depth * .05 + input.time * .01)*.5 + .5, -sin(input.depth *.05 + input.time * .01)*.5 + .5, 1.0f);
 	float3 lightDir = float3(0.0f, 1.0f, 0.0f);
 	float4 lightDiffuse = float4(1.0f, 1.0f, 1.0f, 1.0f);
 	float3 color;
@@ -30,7 +30,7 @@ float4 main(VertexToPixel input) : SV_TARGET
 
 	color = diffuse * ambientLight;
 	float diffuseValue = dot(lightDir, input.normal);
-	//diffuseValue = round((diffuseValue + .5) * 2.0) / 3;
+	diffuseValue = round((diffuseValue + .5) * 2.0) / 3;
 	color += saturate(diffuseValue * lightDiffuse * diffuse);
 
 	color *= (1 - input.depth*input.depth*.0001);
