@@ -8,7 +8,7 @@
     </components>
     <children>
       <gameobject name="leftWall" enabled="true">
-        <transform x="-4.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+        <transform x="-2.5" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="wall.mdl"/>
         <children>
         </children>
@@ -26,7 +26,7 @@
         </children>
       </gameobject>
       <gameobject name="rightWall" enabled="true">
-        <transform x="4.0" y="0.0" z="0.0" rotX="0.0" rotY="180.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+        <transform x="2.5" y="0.0" z="0.0" rotX="0.0" rotY="180.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="wall.mdl"/>
         <children>
         </children>
