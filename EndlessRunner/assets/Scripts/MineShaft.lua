@@ -11,7 +11,7 @@ function MineShaft.OnInit()
 	this.speedBoostPrefab = Prefab.Load("SpeedBoostRail.pfb");
 
 	this.speedBoostPrefab:MarkStore();
-    this.extraSpeed = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
+    this.acceleration = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
     this.moveSpeed = 10.0;
     
 
@@ -24,9 +24,9 @@ function MineShaft.OnInit()
     this.scoreForNextLevel = 1000;
 
 	--Speed Boost
-	this.boostAmt = 10.0;
-	this.boostLife = 0.0;
-	this.boostDuration = 0.0;
+	this.boostAmt = 0.0; --strength of boost
+	this.boostDuration = 0.0; --length of boost remaining
+    this.boostSpeed = 0.0; --actual quantity added to speed
 end
 
 function MineShaft.OnEnable()
@@ -34,22 +34,20 @@ function MineShaft.OnEnable()
     MineShaft.SpawnMoreRails();
 end
 
-function MineShaft.CalcBoostSpeed(dt)
-	if this.boostDuration == 0 or this.boostLife == 0 or this.boostAmt == 0 then
-		return 0;
+function MineShaft.UpdateBoost(dt)
+	if this.boostDuration == 0 or this.boostAmt == 0 then
+		return;
 	end
 
-	this.boostLife = this.boostLife - dt;
+	this.boostDuration = this.boostDuration - dt;
 
-	if this.boostLife < 0 then
-		this.boostLife = 0;
+	if this.boostDuration < 0 then
 		this.boostDuration = 0;
 		this.boostAmt = 0;
-		
-		return 0;
 	end
+    
+    this.boostSpeed = this.boostAmt;
 
-	return 40;
 end
 
 function MineShaft.GetRandomHazardRail()
@@ -129,16 +127,18 @@ function MineShaft.SpawnWall(row, prefab)
 	return wall;
 end
 
+
 function MineShaft.Update(dt)
-    this.moveSpeed = this.moveSpeed + this.extraSpeed;
-    this.extraSpeed = 0.0;
-    this.moveSpeed = this.moveSpeed + dt * 0.1;
+    MineShaft.UpdateBoost(dt);
+    this.moveSpeed = this.moveSpeed + this.acceleration;
+    this.acceleration = 0.0;
 	
 	this.score = this.score + (this.moveSpeed * dt);
 
     if this.score > this.scoreForNextLevel then
         this.level = this.level + 1;
         this.scoreForNextLevel = this.scoreForNextLevel + this.level * 1000;
+        this.moveSpeed = this.moveSpeed * 1.2;
     end
 
     MineShaft.SpawnMoreRails();

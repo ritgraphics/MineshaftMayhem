@@ -8,7 +8,7 @@ end
 
 function Rail.Update(dt)
 
-    local moveSpeed = this.manager.moveSpeed;
+    local moveSpeed = this.manager.moveSpeed + this.manager.boostSpeed;
 
 	GameObject.TranslateZ(-dt * moveSpeed);
 	if GameObject.GetTransformZ() < -9.0 then
