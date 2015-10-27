@@ -27,7 +27,7 @@ function SpeedBoost.Update(dt)
 		SpeedBoost.mineShaft.boostLife = 500;
 
 		--Temp
-		SpeedBoost.mineShaft.moveSpeed = SpeedBoost.mineShaft.moveSpeed + 5;
+		SpeedBoost.mineShaft.extraSpeed = SpeedBoost.mineShaft.extraSpeed + 5;
 
         go:Delete();
         go = nil;

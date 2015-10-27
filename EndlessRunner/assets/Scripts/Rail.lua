@@ -14,9 +14,8 @@ function Rail.Update(dt)
 	if GameObject.GetTransformZ() < -9.0 then
 		this.GameObject:Delete();
 	end
-	
-	
 end
+
 
 function Rail.OnDisable()
 end
