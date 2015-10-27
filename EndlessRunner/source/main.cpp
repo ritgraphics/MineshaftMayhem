@@ -74,7 +74,7 @@ void EndlessRunner::VOnStartup()
 
 void EndlessRunner::VOnUpdate()
 {
-	if (Input::SingleKeyPress(IKEY::F2))
+	if (Input::SingleKeyPress(IKEY::ESC) || Input::SingleKeyPress(IKEY::F2))
 		m_window->VClose();
 
 	if (Input::SingleKeyPress(IKEY::SPACE))
