@@ -22,7 +22,7 @@ function Hazard.Update(dt)
     local distanceSqrd = distance:Z() * distance:Z() + distance:X() * distance:X();
 
     if distanceSqrd <= 2.0 then
-		Hazard.mineShaft.extraSpeed = -Hazard.mineShaft.moveSpeed;
+		Hazard.mineShaft.moveSpeed = 0;
     end
 end
 
