@@ -147,6 +147,7 @@ function MineShaft.Update(dt)
     end
 
     MineShaft.SpawnMoreRails();
+
 end
 
 function MineShaft.OnDisable()

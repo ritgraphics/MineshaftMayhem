@@ -11,6 +11,8 @@ function camera.OnEnable()
 
     this.position = this.GameObject:GetTransform().Position;
     this.rotation = this.GameObject:GetTransform().Rotation;
+
+    Window.ToggleCursor();
 end
 
 function camera.Update(dt)
@@ -60,13 +62,14 @@ function camera.Update(dt)
 
 	    --Handle Mouse Look Controls
 
-	    deltaX = Input.MouseDeltaX(1280/2);
-	    deltaY = Input.MouseDeltaY(720/2);
+	    deltaX = Input.MouseDeltaX(Window.Width/2);
+	    deltaY = Input.MouseDeltaY(Window.Height/2);
 	    transform:RotateX(deltaY * this.mouseLook);
 	    transform:RotateY(deltaX * this.mouseLook);
 
     end
 
+    Window.TrapCursorCenter();
 end
 
 function camera.OnDisable()
