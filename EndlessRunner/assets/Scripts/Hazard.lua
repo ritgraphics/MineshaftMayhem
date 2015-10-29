@@ -21,8 +21,9 @@ function Hazard.Update(dt)
     local distance = transform.WorldPosition - this.player:GetTransform().WorldPosition;
     local distanceSqrd = distance:Z() * distance:Z() + distance:X() * distance:X();
 
-    if distanceSqrd <= 2.0 then
-		Hazard.mineShaft.moveSpeed = 0;
+    if distanceSqrd <= 3.0 then
+		Scene.OpenScene("GameOver");
+		Scene.PauseScene("scene1");
     end
 end
 

@@ -20,6 +20,7 @@
       <children></children>
     </gameobject>
     
+    <!--
     <gameobject name="ui-title" enabled="true">
       <transform x="-1.0" y="60.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
@@ -27,7 +28,8 @@
       </components>
       <children></children>
     </gameobject>
-
+    -->
+    
     <gameobject name="camera" enabled="true">
       <transform x="0.0" y="6.0" z="-5.0" rotX="15.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>

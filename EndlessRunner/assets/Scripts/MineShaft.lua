@@ -24,6 +24,7 @@ function MineShaft.OnInit()
     this.scoreForNextLevel = 1000;
 
     MineShaft.score = this.score;
+	this.hazardHits = 0.0;
 
 	--Speed Boost
 	this.boostAmt = 0.0; --strength of boost
@@ -131,6 +132,7 @@ end
 
 
 function MineShaft.Update(dt)
+
     MineShaft.UpdateBoost(dt);
     this.moveSpeed = this.moveSpeed + this.acceleration;
     this.acceleration = 0.0;
