@@ -13,10 +13,10 @@ function game.Update(dt)
         Game.Exit();
     end
 
-    if Input.SingleKeyPress(IKEY.SPACE) then
+    if Input.SingleKeyPress(IKEY.P) then
         Scene.ShowScene("pause");
         Scene.UnpauseScene("pause");
-        --Scene.PauseScene("scene1");
+        Scene.PauseScene("scene1");
         --Scene.SetOrder("pause", 1);
     end
 

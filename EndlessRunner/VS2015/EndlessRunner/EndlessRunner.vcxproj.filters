@@ -155,6 +155,18 @@
     <None Include="..\..\assets\Scripts\MineSection.lua">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="..\..\assets\Scripts\game.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\pause.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scenes\GameOver.scene">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\GameOver.lua">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\assets\Shaders\DirectX\Model_VS.hlsl">
