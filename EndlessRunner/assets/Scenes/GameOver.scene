@@ -5,7 +5,7 @@
     <gameobject name="game-manager" enabled="true">
       <transform x="0.0" y="6.0" z="-5.0" rotX="15.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
-        <script file="game.lua"/>
+        <script file="GameOver.lua"/>
       </components>
       <children>
       </children>
