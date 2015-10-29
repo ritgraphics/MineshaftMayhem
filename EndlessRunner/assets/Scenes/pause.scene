@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene id="pause">
+  <object-list>
+
+    <gameobject name="pause" enabled="true">
+      <transform x="-1.0" y="-1.0" z="-5.0" rotX="15.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <components>
+        <script file="pause.lua"/>
+        <ui-text text="Pause Menu" font="Consolas_14.fnt"/>
+      </components>
+      <children>
+      </children>
+    </gameobject>
+   
+  </object-list>
+</scene>
