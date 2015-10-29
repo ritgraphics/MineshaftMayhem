@@ -4,6 +4,7 @@ end
 
 function SpeedBoost.OnEnable()
     this.player = Scene.FindObjectWithName("minecart1");
+    SpeedBoost.mineShaft = nil;
 end
 
 function SpeedBoost.Update(dt)
