@@ -19,7 +19,7 @@ function MineShaft.OnInit()
     this.sectionLength = 12.0;
     this.lastRailSpawned = nil;
 
-    this.level = 1;
+    this.level = 0;
 	this.score = 0;
     this.scoreForNextLevel = 1000;
 
@@ -75,8 +75,14 @@ function MineShaft.SpawnMoreRails()
     local z = 0;
     if this.lastRailSpawned ~= nil then
         z = this.lastRailSpawned:GetTransform().Position:Z();
+    else
+        --first time running this, make first few have no difficulty
+        while z < 60 do
+            MineShaft.MakeSegment(z + this.sectionLength);
+            z = this.lastRailSpawned:GetTransform().Position:Z();
+        end
     end
-
+    this.level = 1;
     while z < this.maxDist do
         MineShaft.MakeSegment(z + this.sectionLength);
         z = this.lastRailSpawned:GetTransform().Position:Z();
@@ -85,16 +91,20 @@ end
 
 function MineShaft.MakeSegment(z)
     -- spawn row of rails with obstacles
-    local numHazards = math.random() * (3.0 - (3.0 / (1.0 + this.level)));
+    local numHazards = 0;
+    if this.level ~= 0 then
+        numHazards = math.random() * (3.0 - (3.0 / (1.0 + this.level)));
+    end
     --which column we start spawning with
-    local startPoint = math.floor(math.random() * 3);
+    local columns = { -1, 0, 1 };
+    MineShaft.ShuffleArray(columns, 3);
 
-    for i = startPoint, startPoint+2, 1 do
+    for i = 1, 3, 1 do
         if(numHazards > 1) then
-	        MineShaft.SpawnRail((i%3)-1, z - 6.0, MineShaft.GetRandomHazardRail());
+	        MineShaft.SpawnRail(columns[i], z - 6.0, MineShaft.GetRandomHazardRail());
             numHazards = numHazards - 1;
         else
-	        MineShaft.SpawnRail((i%3)-1, z - 6.0, MineShaft.GetRandomSafeRail());
+	        MineShaft.SpawnRail(columns[i], z - 6.0, MineShaft.GetRandomSafeRail());
         end
     end
 
@@ -106,6 +116,13 @@ function MineShaft.MakeSegment(z)
 	-- wall section
 	MineShaft.SpawnWall(z - 6.0, this.wallPrefab);
 	MineShaft.SpawnWall(z, this.wallPrefab);
+end
+
+function MineShaft.ShuffleArray(array, size)
+    for i = 0, 2 * size, 1 do
+        local j, k = math.random(size), math.random(size);
+        array[j], array[k] = array[k], array[j];
+    end
 end
 
 function MineShaft.SpawnRail(column, row, prefab)
