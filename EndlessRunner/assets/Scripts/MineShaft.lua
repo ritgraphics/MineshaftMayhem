@@ -23,6 +23,8 @@ function MineShaft.OnInit()
 	this.score = 0;
     this.scoreForNextLevel = 1000;
 
+    MineShaft.score = this.score;
+
 	--Speed Boost
 	this.boostAmt = 0.0; --strength of boost
 	this.boostDuration = 0.0; --length of boost remaining
@@ -135,6 +137,9 @@ function MineShaft.Update(dt)
 	
 	this.score = this.score + (this.moveSpeed * dt);
 
+    --Update score ui-text with score value
+    this.GameObject:GetTextComponent().Text = "Score: " .. math.floor(this.score);
+
     if this.score > this.scoreForNextLevel then
         this.level = this.level + 1;
         this.scoreForNextLevel = this.scoreForNextLevel + this.level * 1000;
@@ -142,6 +147,7 @@ function MineShaft.Update(dt)
     end
 
     MineShaft.SpawnMoreRails();
+
 end
 
 function MineShaft.OnDisable()

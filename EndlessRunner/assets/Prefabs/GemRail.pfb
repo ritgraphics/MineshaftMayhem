@@ -8,10 +8,11 @@
     </components>
     <children>
       <gameobject name="GemRed" enabled="true">
-        <transform x="0.0" y="2.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+        <transform x="0.0" y="2.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="10.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <model file="gem_red.mdl"/>
         <components>
           <script file="gem.lua"/>
+          <script file="rotate.lua"/>
         </components>
         <children>
           <!-- children go here -->

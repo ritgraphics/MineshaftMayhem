@@ -8,8 +8,8 @@
     </components>
     <children>
       <gameobject name="SpeedBoost" enabled="true">
-        <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="-90.0" rotZ="0.0" scaleX="0.04" scaleY="0.04" scaleZ="0.04"/>
-        <model file="raptor.mdl"/>
+        <transform x="0.0" y="2.0" z="0.0" rotX="0.0" rotY="90.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+        <model file="SpeedBoost.mdl"/>
         <components>
           <script file = "SpeedBoost.lua"></script>
         </components>
