@@ -50,12 +50,6 @@
     <None Include="..\..\assets\Scenes\scenes.config">
       <Filter>Scenes</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\test.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\raptor.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Prefabs\cube.pfb">
       <Filter>Prefabs</Filter>
     </None>
@@ -68,20 +62,11 @@
     <None Include="..\..\assets\Models\models.config">
       <Filter>Models</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\rotate.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\camera.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Models\rail.mdl">
       <Filter>Models</Filter>
     </None>
     <None Include="..\..\assets\Prefabs\rail.pfb">
       <Filter>Prefabs</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\player.lua">
-      <Filter>Scripts</Filter>
     </None>
     <None Include="..\..\assets\Prefabs\wall.pfb">
       <Filter>Prefabs</Filter>
@@ -92,41 +77,20 @@
     <None Include="..\..\assets\Models\brace.mdl">
       <Filter>Models</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\gemspawner.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Prefabs\wallLeft.pfb">
       <Filter>Prefabs</Filter>
     </None>
     <None Include="..\..\assets\Prefabs\wallRight.pfb">
       <Filter>Prefabs</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\floor.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\wall.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\floorspawn.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Prefabs\ceiling.pfb">
       <Filter>Prefabs</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\MineShaft.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\Rail.lua">
-      <Filter>Scripts</Filter>
     </None>
     <None Include="..\..\assets\Prefabs\GemRail.pfb">
       <Filter>Prefabs</Filter>
     </None>
     <None Include="..\..\assets\Prefabs\gem_red.pfb">
       <Filter>Prefabs</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\gem.lua">
-      <Filter>Scripts</Filter>
     </None>
     <None Include="..\..\assets\Models\Wheel.mdl">
       <Filter>Models</Filter>
@@ -137,34 +101,40 @@
     <None Include="..\..\assets\Prefabs\BrokenRail.pfb">
       <Filter>Prefabs</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\SpeedBoost.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Prefabs\mineSection.pfb">
       <Filter>Prefabs</Filter>
     </None>
     <None Include="..\..\assets\Prefabs\SpeedBoostRail.pfb">
       <Filter>Prefabs</Filter>
     </None>
-    <None Include="..\..\assets\Scripts\Hazard.lua">
-      <Filter>Scripts</Filter>
-    </None>
     <None Include="..\..\assets\Models\gem_red.mdl">
       <Filter>Models</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\MineSection.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\game.lua">
-      <Filter>Scripts</Filter>
-    </None>
-    <None Include="..\..\assets\Scripts\pause.lua">
-      <Filter>Scripts</Filter>
     </None>
     <None Include="..\..\assets\Scenes\GameOver.scene">
       <Filter>Scenes</Filter>
     </None>
+    <None Include="..\..\assets\Scripts\game.lua">
+      <Filter>Scripts</Filter>
+    </None>
     <None Include="..\..\assets\Scripts\GameOver.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\MineShaft.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\player.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\camera.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\fps.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\assets\Scenes\pause.scene">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\assets\Scripts\pause.lua">
       <Filter>Scripts</Filter>
     </None>
   </ItemGroup>
