@@ -12,7 +12,7 @@ function MineShaft.OnInit()
 
 	this.speedBoostPrefab:MarkStore();
     this.acceleration = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
-    this.moveSpeed = 10.0;
+    this.moveSpeed = 15.0;
     
 
     this.maxDist = 120.0; --furthest rail position
@@ -46,7 +46,7 @@ function MineShaft.UpdateBoost(dt)
 		this.boostAmt = 0;
 	end
     
-    this.boostSpeed = this.boostAmt;
+    this.boostSpeed = this.boostAmt * math.sqrt(this.boostDuration);
 
 end
 
@@ -138,7 +138,7 @@ function MineShaft.Update(dt)
     if this.score > this.scoreForNextLevel then
         this.level = this.level + 1;
         this.scoreForNextLevel = this.scoreForNextLevel + this.level * 1000;
-        this.moveSpeed = this.moveSpeed * 1.2;
+        this.moveSpeed = this.moveSpeed + 5;
     end
 
     MineShaft.SpawnMoreRails();

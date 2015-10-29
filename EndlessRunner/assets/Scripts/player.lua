@@ -3,7 +3,7 @@ function player.OnInit()
     this.targetX = 0;
     this.isJumping = false;
     this.jumpCount = 0;
-    this.moveSpeed = 20.0;
+    this.moveSpeed = 5.0;
 end
 
 function player.OnEnable()
@@ -36,7 +36,7 @@ function player.Update(dt)
     end
 
     if this.isJumping then
-        player.Jump(transform);
+        player.Jump(transform, dt);
     end
 end
 
@@ -44,15 +44,16 @@ function Lerp(startVal, endVal, interval)
     return (1 - interval) * startVal + interval * endVal;
 end
 
-function player.Jump(transform)
-    if transform.Position:X() == this.targetX or this.jumpCount > this.moveSpeed then
+function player.Jump(transform, dt)
+    if transform.Position:X() == this.targetX or this.jumpCount * this.moveSpeed > 1 then
         this.isJumping = false;
         this.jumpCount = 0.0;
+        transform.Position = Vector3(this.targetX, transform.Position:Y(), transform.Position:Z());
         transform.Rotation = Vector3(0, 0, 0);
     else
-        local lerp = Lerp(this.startX, this.targetX, this.jumpCount / this.moveSpeed);
+        local lerp = Lerp(this.startX, this.targetX, this.jumpCount * this.moveSpeed);
         transform.Position = Vector3(lerp, transform.Position:Y(), transform.Position:Z());
-        this.jumpCount = this.jumpCount + 1;
+        this.jumpCount = this.jumpCount + dt;
     end
 end
 
