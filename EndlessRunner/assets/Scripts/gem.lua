@@ -3,6 +3,7 @@ function gem.OnInit()
 end
 
 function gem.OnEnable()
+    gem.mineShaft = nil;
     this.player = Scene.FindObjectWithName("minecart1");
 end
 

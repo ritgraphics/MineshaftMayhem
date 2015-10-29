@@ -35,6 +35,8 @@ end
 function MineShaft.OnEnable()
     math.randomseed(os.time());
     MineShaft.SpawnMoreRails();
+
+    print("Enabling Mineshaft");
 end
 
 function MineShaft.UpdateBoost(dt)
@@ -180,4 +182,5 @@ function MineShaft.OnDestroy()
 	this.brokenPrefab:MarkDelete();
 	this.wallPrefab:MarkDelete();
 	this.speedBoostPrefab:MarkDelete();
+
 end

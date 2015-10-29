@@ -3,6 +3,7 @@ function Hazard.OnInit()
 end
 
 function Hazard.OnEnable()
+    Hazard.mineShaft = nil;
     this.player = Scene.FindObjectWithName("minecart1");
 end
 
@@ -23,6 +24,9 @@ function Hazard.Update(dt)
 
     if distanceSqrd <= 3.0 then
 		Scene.OpenScene("GameOver");
+        Scene.ShowScene("GameOver");
+        Scene.SetOrder("GameOver", 2);
+        Scene.UnpauseScene("GameOver");
 		Scene.PauseScene("scene1");
     end
 end
