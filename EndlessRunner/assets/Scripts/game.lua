@@ -16,7 +16,7 @@ function game.Update(dt)
     if Input.SingleKeyPress(IKEY.P) then
         Scene.ShowScene("pause");
         Scene.UnpauseScene("pause");
-        Scene.PauseScene("scene1");
+        Scene.PauseScene("game");
         --Scene.SetOrder("pause", 1);
     end
 
