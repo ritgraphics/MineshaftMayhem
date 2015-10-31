@@ -4,9 +4,9 @@ function pause.OnInit()
 end
 
 function pause.OnEnable()
-	 Scene.OpenScene("game");
+	 Scene.OpenScene("scene1");
      Scene.SetOrder("pause", 1);
-	 Scene.PauseScene("game");
+	 Scene.PauseScene("scene1");
 end
 
 function pause.Update(dt)
@@ -14,7 +14,7 @@ function pause.Update(dt)
 	if Input.SingleKeyPress(IKEY.SPACE) then
         Scene.HideScene("pause");
         Scene.PauseScene("pause");
-		Scene.UnpauseScene("game");
+		Scene.UnpauseScene("scene1");
 	end
 
 end

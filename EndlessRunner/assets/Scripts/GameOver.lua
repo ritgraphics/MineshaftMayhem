@@ -12,9 +12,9 @@ function GameOver.Update(dt)
 	if Input.SingleKeyPress(IKEY.SPACE) then
         print("Reloading scene 1");
         --Scene.HideScene("GameOver");
-		Scene.ReloadScene("game");
-        Scene.HideScene("over");
-        Scene.PauseScene("over");
+		Scene.ReloadScene("scene1");
+        Scene.HideScene("GameOver");
+        Scene.PauseScene("GameOver");
         --Scene.ShowScene("scene1");
 	end
 
