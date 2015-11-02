@@ -2,7 +2,27 @@
 <scene id="pause">
   <object-list>
 
-    <gameobject name="pause" enabled="true">
+    <gameobject name="test" enabled="true">
+      <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <components>
+        <model file="Raptor.obj" material="Raptor.vmt"/>
+      </components>
+      <children>
+      </children>
+    </gameobject>
+
+    <gameobject name="camera" enabled="true">
+      <transform x="0.0" y="6.0" z="-5.0" rotX="15.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+      <components>
+        <camera mainCamera="true"/>
+        <script file="camera.lua"/>
+        <script file="game.lua"/>
+      </components>
+      <children>
+      </children>
+    </gameobject>
+
+    <!--<gameobject name="pause" enabled="true">
       <transform x="-1.0" y="60.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
         <script file="pause.lua"/>
@@ -18,7 +38,7 @@
       </components>
       <children>
       </children>
-    </gameobject>
+    </gameobject>-->
    
   </object-list>
 </scene>
