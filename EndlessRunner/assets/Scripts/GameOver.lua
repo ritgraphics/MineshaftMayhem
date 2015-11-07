@@ -9,7 +9,7 @@ end
 
 function GameOver.Update(dt)
 	
-	if Input.SingleKeyPress(IKEY.SPACE) then
+	if Input.ControllerButtonPressSingle(IBUTTON.A, 0) or Input.KeyPressSingle(IKEY.SPACE) then
         print("Reloading scene 1");
         --Scene.HideScene("GameOver");
 		Scene.ReloadScene("scene1");

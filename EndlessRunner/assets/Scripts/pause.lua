@@ -13,7 +13,7 @@ end
 
 function pause.Update(dt)
 	
-	if Input.SingleKeyPress(IKEY.SPACE) then
+	if (Input.ControllerButtonPressSingle(IBUTTON.A, 0) or Input.KeyPressSingle(IKEY.SPACE)) then
         Scene.HideScene("pause");
         Scene.PauseScene("pause");
 		Scene.UnpauseScene("scene1");

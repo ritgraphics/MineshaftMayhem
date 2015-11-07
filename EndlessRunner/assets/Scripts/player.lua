@@ -19,7 +19,7 @@ function player.Update(dt)
 
     local transform = go:GetTransform();
 
-    if Input.SingleKeyPress(IKEY.A) and this.position > -1 then
+    if (Input.ControllerButtonPressSingle(IBUTTON.LEFT, 0) or Input.KeyPressSingle(IKEY.A)) and this.position > -1 then
         this.startX = GetTrackPos(this.position);
         this.position = this.position - 1;
         this.targetX = GetTrackPos(this.position);
@@ -27,7 +27,7 @@ function player.Update(dt)
         transform.Rotation = Vector3(0, 0, 10);
     end
 
-    if Input.SingleKeyPress(IKEY.D) and this.position < 1 then
+    if (Input.ControllerButtonPressSingle(IBUTTON.RIGHT, 0) or Input.KeyPressSingle(IKEY.D)) and this.position < 1 then
         this.startX = GetTrackPos(this.position);
         this.position = this.position + 1;
         this.targetX = GetTrackPos(this.position);

@@ -9,11 +9,11 @@ end
 
 function game.Update(dt)
   
-    if Input.SingleKeyPress(IKEY.ESC) or Input.SingleKeyPress(IKEY.F2) then
+    if Input.KeyPressSingle(IKEY.ESC) or Input.KeyPressSingle(IKEY.F2) then
         Game.Exit();
     end
 
-    if Input.SingleKeyPress(IKEY.P) then
+    if Input.KeyPressSingle(IKEY.P) then
         Scene.ShowScene("pause");
         Scene.UnpauseScene("pause");
         Scene.PauseScene("scene1");
