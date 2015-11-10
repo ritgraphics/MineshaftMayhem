@@ -68,9 +68,9 @@ function camera.Update(dt)
 	    deltaY = Input.ControllerAxis(IAXIS.RIGHTY, 0);
 	    transform:RotateX(deltaY * this.mouseLook);
 	    transform:RotateY(deltaX * this.mouseLook);
-    end
 
-    Window.TrapCursorCenter();
+        Window.TrapCursorCenter();
+    end
 end
 
 function camera.OnDisable()

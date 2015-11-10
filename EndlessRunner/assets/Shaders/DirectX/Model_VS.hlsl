@@ -12,7 +12,7 @@ cbuffer externalData : register(b0)
 	matrix		view;
 	matrix		projection;
 	float4x4	transforms[1000];
-	float		time;
+	float		distance;
 	PointLight	pLights[4];
 	int			numPLights;
 };
@@ -30,7 +30,6 @@ struct VertexToPixel
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
 	float  depth		: TEXCOORD1;
-	float  time			: TEXCOORD2;
 };
 
 VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
@@ -44,11 +43,11 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 
 	float depth = output.position.z / output.position.w;
 
-	float t = time * .0157 + depth;
+	float t = distance + depth;
 
 	float curvex = (sin(t*.03) + cos(t*.05) - sin(t*.07)) * 2.0;
 	float curvey = (cos(t*.03) + sin(t*.07) - cos(t*.13)) * 0.5;
-	float ddx = (.03*cos(time*.0157*.03) - .05*sin(time*.0157*.05) - .07*cos(time*.0157*.07)) * 2.0;
+	float ddx = (.03*cos(distance*.03) - .05*sin(distance*.05) - .07*cos(distance*.07)) * 2.0;
 	float ddz = 1;
 	float rot = -atan2(ddx, ddz);
 
@@ -93,7 +92,6 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	output.normal = mul(input.normal, (float3x3)mul(world, depthDistortion));
 	output.uv = input.uv;
 	output.depth = depth;
-	output.time = time;
 
 	return output;
 }

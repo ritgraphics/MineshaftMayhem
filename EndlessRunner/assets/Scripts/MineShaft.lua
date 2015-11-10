@@ -1,19 +1,30 @@
 function MineShaft.OnInit()
 	this.railPrefab = Prefab.Load("rail.pfb");
-	this.gemPrefab = Prefab.Load("GemRail.pfb");
-	this.brokenPrefab = Prefab.Load("BrokenRail.pfb");
 	this.railPrefab:MarkStore();
+	this.gemPrefab = Prefab.Load("GemRail.pfb");
 	this.gemPrefab:MarkStore();
+	this.brokenPrefab = Prefab.Load("BrokenRail.pfb");
     this.brokenPrefab:MarkStore();
 	this.wallPrefab = Prefab.Load("mineSection.pfb");
 	this.wallPrefab:MarkStore();
-
 	this.speedBoostPrefab = Prefab.Load("SpeedBoostRail.pfb");
-
 	this.speedBoostPrefab:MarkStore();
+
+    
+    this.materials = {};
+    local rail = this.gemPrefab:CreateObject();
+    this.materials[0] = rail:GetModelComponent():GetMaterial();
+    this.materials[1] = rail:GetChild(0):GetModelComponent():GetMaterial();
+    rail:Delete();
+    local wall = this.wallPrefab:CreateObject();
+    this.materials[2] = wall:GetChild(0):GetModelComponent():GetMaterial();
+    this.materials[3] = wall:GetChild(1):GetModelComponent():GetMaterial();
+    wall:Delete();
+
+
     this.acceleration = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
     this.moveSpeed = 15.0;
-    
+    this.distance = 0;
 
     this.maxDist = 120.0; --furthest rail position
     this.sectionLength = 12.0;
@@ -40,6 +51,10 @@ function MineShaft.OnEnable()
 end
 
 function MineShaft.UpdateBoost(dt)
+    if Input.KeyPressSingle(IKEY.Z) then
+        this.boostDuration = 5;
+    end
+
 	if this.boostDuration == 0 or this.boostAmt == 0 then
 		return;
 	end
@@ -155,7 +170,8 @@ function MineShaft.Update(dt)
     MineShaft.UpdateBoost(dt);
     this.moveSpeed = this.moveSpeed + this.acceleration;
     this.acceleration = 0.0;
-	
+
+	this.distance = this.distance + (this.moveSpeed * dt);
 	this.score = this.score + (this.moveSpeed * dt);
 
     --Update score ui-text with score value
@@ -169,6 +185,13 @@ function MineShaft.Update(dt)
 
     MineShaft.SpawnMoreRails();
 
+    MineShaft.UpdateShaders();
+end
+
+function MineShaft.UpdateShaders()
+    for i=0, 3, 1 do
+        this.materials[i]:SetFloat(0, "distance", this.distance);
+    end
 end
 
 function MineShaft.OnDisable()
