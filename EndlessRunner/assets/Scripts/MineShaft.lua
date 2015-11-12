@@ -38,8 +38,10 @@ function MineShaft.OnInit()
 	this.hazardHits = 0.0;
 
 	--Speed Boost
-	this.boostAmt = 0.0; --strength of boost
-	this.boostDuration = 0.0; --length of boost remaining
+    this.isBoosting = false;
+	this.boostAmt = 0; --boost progress
+	this.boostDuration = 5.0; --length of boost
+    this.boostDirection = 1 --1 or -1
     this.boostSpeed = 0.0; --actual quantity added to speed
     this.camera = nil;
 
@@ -52,24 +54,33 @@ function MineShaft.OnEnable()
     print("Enabling Mineshaft");
 end
 
+function Lerp(startVal, endVal, interval)
+    return (1 - interval) * startVal + interval * endVal;
+end
+
 function MineShaft.UpdateBoost(dt)
-    if Input.KeyPressSingle(IKEY.Z) then
-        this.boostDuration = 5;
+    if this.boostDirection == 1 then
+        if this.boostAmt >= this.boostDuration or this.boostSpeed >= this.boostDuration then
+            this.boostAmt = this.boostDuration;
+            this.boostSpeed = this.boostDuration;
+            print("stop boosting");
+        else
+            print("boosting");
+            this.boostSpeed = Lerp(0, this.boostDuration, this.boostAmt);
+            this.boostAmt = this.boostAmt + (this.boostDirection * dt);
+        end
+    elseif this.boostDirection == -1 then
+        if this.boostAmt <= 0 or this.boostSpeed <= 0 then
+            this.isBoosting = false;
+            this.boostAmt = 0;
+            this.boostSpeed = 0;
+            print("stop unboosting");
+        else
+            print("unboosting");
+            this.boostSpeed = Lerp(this.boostDuration, 0, this.boostAmt);
+            this.boostAmt = this.boostAmt + (this.boostDirection * dt);
+        end
     end
-
-	if this.boostDuration == 0 or this.boostAmt == 0 then
-		return;
-	end
-
-	this.boostDuration = this.boostDuration - dt;
-
-	if this.boostDuration < 0 then
-		this.boostDuration = 0;
-		this.boostAmt = 0;
-	end
-    
-    this.boostSpeed = this.boostAmt * math.sqrt(this.boostDuration);
-
 end
 
 function MineShaft.GetRandomHazardRail()
@@ -168,8 +179,9 @@ end
 
 
 function MineShaft.Update(dt)
-
-    MineShaft.UpdateBoost(dt);
+    if this.isBoosting then
+        MineShaft.UpdateBoost(dt);
+    end
     this.moveSpeed = this.moveSpeed + this.acceleration;
     this.acceleration = 0.0;
 

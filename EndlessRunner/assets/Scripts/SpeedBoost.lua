@@ -23,11 +23,13 @@ function SpeedBoost.Update(dt)
     local distanceSqrd = distance:Z() * distance:Z() + distance:X() * distance:X();
 
     if distanceSqrd <= 16.0 then
-		SpeedBoost.mineShaft.boostAmt = 5;
-		SpeedBoost.mineShaft.boostDuration = SpeedBoost.mineShaft.boostDuration + 5;
+        SpeedBoost.mineShaft.isBoosting = true;
+        SpeedBoost.mineShaft.boostDirection = 1;
 
         go:Delete();
         go = nil;
+    else
+        SpeedBoost.mineShaft.boostDirection = -1;
     end
 end
 
