@@ -1,5 +1,3 @@
-
-
 struct PointLight
 {
 	float3	ambientColor;
@@ -22,6 +20,7 @@ struct VertexShaderInput
 	float3 position		: POSITION;     // XYZ position
 	float2 uv		    : TEXCOORD;     // tex coord
 	float3 normal       : NORMAL;       // normal
+	float3 tangent		: TANGENT;
 };
 
 struct VertexToPixel
@@ -29,6 +28,7 @@ struct VertexToPixel
 	float4 position		: SV_POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
+	float3 tangent		: TANGENT;
 	float  depth		: TEXCOORD1;
 };
 
@@ -90,6 +90,7 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	output.position = mul(mul(output.position, view), projection);
 
 	output.normal = mul(input.normal, (float3x3)mul(world, depthDistortion));
+	output.tangent = mul(input.tangent, (float3x3)mul(world, depthDistortion));
 	output.uv = input.uv;
 	output.depth = depth;
 

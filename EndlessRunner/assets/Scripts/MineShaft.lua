@@ -41,6 +41,8 @@ function MineShaft.OnInit()
 	this.boostAmt = 0.0; --strength of boost
 	this.boostDuration = 0.0; --length of boost remaining
     this.boostSpeed = 0.0; --actual quantity added to speed
+    this.camera = nil;
+
 end
 
 function MineShaft.OnEnable()
@@ -171,7 +173,7 @@ function MineShaft.Update(dt)
     this.moveSpeed = this.moveSpeed + this.acceleration;
     this.acceleration = 0.0;
 
-	this.distance = this.distance + (this.moveSpeed * dt);
+	this.distance = this.distance + ((this.moveSpeed + this.boostSpeed)* dt);
 	this.score = this.score + (this.moveSpeed * dt);
 
     --Update score ui-text with score value
@@ -188,10 +190,17 @@ function MineShaft.Update(dt)
     MineShaft.UpdateShaders();
 end
 
+--also sets fov if there's a boost
 function MineShaft.UpdateShaders()
     for i=0, 3, 1 do
         this.materials[i]:SetFloat(0, "distance", this.distance);
     end
+    
+    if this.camera == nil then
+        this.camera = Scene.FindObjectWithName("camera"):GetCameraComponent():GetCamera()
+    end
+
+    this.camera:SetFOV(math.rad(45 + this.boostSpeed));
 end
 
 function MineShaft.OnDisable()
