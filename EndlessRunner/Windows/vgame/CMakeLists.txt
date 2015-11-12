@@ -9,7 +9,9 @@ include_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/include"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/SDL2/include"
                     			"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/lua/include"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/luaintf/"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/src")
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/src"
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/include"
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/include")
 
 file(GLOB VGAME_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgame/*.h)
 file(GLOB VGAME_BULLET_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgame/vix_bullet*)
@@ -37,10 +39,12 @@ link_directories(${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxm
 				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage/
 				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/SDL2/
 				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/lua/
-				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/)
+				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/
+				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/
+			 	 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/)
 
 add_library(vgame SHARED ${VGAME_INC} ${VGAME_SRC})
 
 target_compile_definitions(vgame PRIVATE VIX_NONCLIENT_BUILD)
 
-target_link_libraries(vgame vcore vgraphics SDL2 lua tinyxml2 Assimp Freeimage BulletCollision BulletDynamics BulletSoftBody LinearMath)
+target_link_libraries(vgame vcore vgraphics SDL2 lua tinyxml2 Assimp Freeimage BulletCollision BulletDynamics BulletSoftBody LinearMath libcurl_imp jsoncpp)

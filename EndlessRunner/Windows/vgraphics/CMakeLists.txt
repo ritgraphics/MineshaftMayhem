@@ -6,6 +6,7 @@ include_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/include"
                     "${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics"
                     "${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics/directx"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxml2"
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/Assimp/include"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage")
 
@@ -30,6 +31,7 @@ source_group("Header Files\\directx" FILES ${VGRAPHICS_DX_INC})
 source_group("Source Files\\directx" FILES ${VGRAPHICS_DX_SRC})
 
 link_directories(${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxml2/${PLATFORM_TOOLSET}/Debug/ 
+				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/
 				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/Assimp/ 
 				 ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage/)
 
@@ -41,4 +43,4 @@ add_definitions(-DVIX_DIRECTX_BUILD)
 
 target_compile_definitions(vgraphics PRIVATE VIX_NONCLIENT_BUILD)
 
-target_link_libraries(vgraphics vcore d3d11 d3dcompiler Assimp tinyxml2 Freeimage)
+target_link_libraries(vgraphics vcore d3d11 d3dcompiler Assimp tinyxml2 jsoncpp Freeimage)

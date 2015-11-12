@@ -11,7 +11,9 @@ include_directories("${PROJECT_SOURCE_DIR}/../include/"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/SDL2/include"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/lua/include"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/luaintf/"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/src/")
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/src/"
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/include/"
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/include/")
 
 if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 19.0)
 	set(PLATFORM_TOOLSET "VS2013")
@@ -27,7 +29,9 @@ link_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyx
                  		 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage/"
 				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/SDL2/"
 				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/lua/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/")
+				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/"
+				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/"
+				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/")
 
 file(GLOB FONT_FILES ${PROJECT_SOURCE_DIR}/../assets/Fonts/*.fnt)
 file(GLOB MODEL_FILES ${PROJECT_SOURCE_DIR}/../assets/Models/*.mdl)
@@ -97,7 +101,10 @@ add_custom_command(TARGET MineshaftMayhem POST_BUILD
 add_custom_command(TARGET MineshaftMayhem POST_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy
                    ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/SDL2/SDL2.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
+add_custom_command(TARGET MineshaftMayhem POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy
+                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/libcurl/libcurl.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
 
 target_compile_definitions(MineshaftMayhem PRIVATE VIX_DIRECTX_BUILD)
 
-target_link_libraries(MineshaftMayhem vcore vgraphics vgame SDL2 lua tinyxml2 Assimp FreeImage BulletCollision BulletDynamics BulletSoftBody LinearMath)
+target_link_libraries(MineshaftMayhem vcore vgraphics vgame SDL2 lua tinyxml2 Assimp FreeImage BulletCollision BulletDynamics BulletSoftBody LinearMath libcurl_imp jsoncpp)
