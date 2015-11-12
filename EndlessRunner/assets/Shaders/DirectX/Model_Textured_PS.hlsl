@@ -27,7 +27,6 @@ struct VertexToPixel
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
 	float  depth		: TEXCOORD1;
-	float  time			: TEXCOORD2;
 };
 
 float4 main(VertexToPixel input) : SV_TARGET
