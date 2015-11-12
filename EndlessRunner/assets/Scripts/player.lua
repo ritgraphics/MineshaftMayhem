@@ -3,7 +3,7 @@ function player.OnInit()
     this.targetX = 0;
     this.isJumping = false;
     this.jumpCount = 0;
-    this.moveSpeed = 5.0;
+    this.moveSpeed = 6.5;
     this.material = this.GameObject:GetModelComponent():GetMaterial();
 end
 
@@ -24,21 +24,23 @@ function player.Update(dt)
 
     local transform = go:GetTransform();
 
-    if (Input.ControllerButtonPressSingle(IBUTTON.LEFT, 0) or Input.KeyPressSingle(IKEY.A)) and this.position > -1 then
-        this.startX = GetTrackPos(this.position);
-        this.position = this.position - 1;
-        this.targetX = GetTrackPos(this.position);
-        this.isJumping = true;
-        transform.Rotation = Vector3(0, 0, 10);
-    end
+	if not this.isJumping then
+		if (Input.ControllerButtonPressSingle(IBUTTON.LEFT, 0) or Input.KeyPressSingle(IKEY.A)) and this.position > -1 then
+			this.startX = GetTrackPos(this.position);
+			this.position = this.position - 1;
+			this.targetX = GetTrackPos(this.position);
+			this.isJumping = true;
+			transform.Rotation = Vector3(0, 0, 10);
+		end
 
-    if (Input.ControllerButtonPressSingle(IBUTTON.RIGHT, 0) or Input.KeyPressSingle(IKEY.D)) and this.position < 1 then
-        this.startX = GetTrackPos(this.position);
-        this.position = this.position + 1;
-        this.targetX = GetTrackPos(this.position);
-        this.isJumping = true;
-        transform.Rotation = Vector3(0, 0, -10);
-    end
+		if (Input.ControllerButtonPressSingle(IBUTTON.RIGHT, 0) or Input.KeyPressSingle(IKEY.D)) and this.position < 1 then
+			this.startX = GetTrackPos(this.position);
+			this.position = this.position + 1;
+			this.targetX = GetTrackPos(this.position);
+			this.isJumping = true;
+			transform.Rotation = Vector3(0, 0, -10);
+		end
+	end
 
     if this.isJumping then
         player.Jump(transform, dt);
