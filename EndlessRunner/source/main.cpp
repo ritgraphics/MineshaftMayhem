@@ -4,8 +4,13 @@
 #include <vix_jsoncpp.h>
 #include <inttypes.h>
 
+#include <vix_filemanager.h>
+#include <vix_inireader.h>
+
 int main(int argc, char* argv[])
 {
+
+#pragma region JSON_LEADERBOARD_STUFF
     //using namespace Vixen;
 
     //Curl::Initialize();
@@ -51,45 +56,33 @@ int main(int argc, char* argv[])
 
     //Curl::DeInitialize();
 
+#pragma endregion
+
+#pragma region INI_FILE_TESTING
+
+    /*
+    Vixen::FileManager::Initialize();
+
+    Vixen::INIReader* _reader = new Vixen::INIReader;
+
+    Vixen::File* file = Vixen::FileManager::OpenFile(Vixen::os_exec_dir() + VTEXT("test.ini"));
+    if (file)
+    {
+        _reader->Load(file->Handle());
+
+        _reader->PrintValues();
+    }
+    Vixen::FileManager::CloseFile(file);
+    Vixen::FileManager::DeInitialize();
+    */
+#pragma endregion
+
+
+
 	Vixen::Game _game;
 
 	return _game.Run();
 
-    //CURL* curl;
-    //CURLcode res;
-
-    //curl_global_init(CURL_GLOBAL_DEFAULT);
-
-    //curl = curl_easy_init();
-    //if (curl)
-    //{
-    //    //struct string s;
-    //    //init_string(&s);
-
-    //    std::string s;
-    //    curl_easy_setopt(curl, CURLOPT_URL, "https://mineshaftmayhem.herokuapp.com/");
-    //    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Vixen::Curl::WriteFunc);
-    //    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &s);
-
-
-
-    //    res = curl_easy_perform(curl);
-
-    //    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "name=fuckface&score=99999999999999999999999999999");
-
-    //    res = curl_easy_perform(curl);
-
-    //    /*if (res == CURLE_OK)
-    //    {
-    //    char* ct;
-    //    res = curl_easy_getinfo(curl, CURLINFO_CONTENT)
-    //    }*/
-
-    //    /* always cleanup */
-    //    curl_easy_cleanup(curl);
-    //}
-
-    //curl_global_cleanup();
 
     return 0;
 }

@@ -6,6 +6,7 @@ include_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/include"
                     "${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics"
                     "${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics/directx"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxml2"
+					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/inih"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/Assimp/include"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage")

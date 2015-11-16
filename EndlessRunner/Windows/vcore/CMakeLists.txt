@@ -3,10 +3,11 @@
 include_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/include"
                     "${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vcore"
                     "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxml2"
-	            "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/include")
+	            "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/include"
+		    "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/inih")
 					
 file(GLOB VCORE_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vcore/*.h)
-file(GLOB VCORE_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vcore/*.cpp)
+file(GLOB VCORE_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vcore/*.cpp ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/inih/*.c)
 
 
 if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 19.0)
