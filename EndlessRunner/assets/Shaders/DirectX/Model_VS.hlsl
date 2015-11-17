@@ -88,11 +88,12 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	output.position = mul(output.position, depthDistortion);
 
 	output.position = mul(mul(output.position, view), projection);
+	
 
 	output.normal = mul(input.normal, (float3x3)mul(world, depthDistortion));
 	output.tangent = mul(input.tangent, (float3x3)mul(world, depthDistortion));
 	output.uv = input.uv;
-	output.depth = depth;
+	output.depth = output.position.z / output.position.w;
 
 	return output;
 }
