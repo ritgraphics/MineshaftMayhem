@@ -38,11 +38,9 @@ function MineShaft.OnInit()
 	this.hazardHits = 0.0;
 
 	--Speed Boost
-    this.isBoosting = false;
-	this.boostAmt = 0; --boost progress
-	this.boostDuration = 5.0; --length of boost
-    this.boostDirection = 1 --1 or -1
-    this.boostSpeed = 0.0; --actual quantity added to speed
+	this.speedRemaining = 0.0; --remaining speed reserve
+	this.boostSpeed = 0.0;
+
     this.camera = nil;
 
 end
@@ -59,28 +57,12 @@ function Lerp(startVal, endVal, interval)
 end
 
 function MineShaft.UpdateBoost(dt)
-    if this.boostDirection == 1 then
-        if this.boostAmt >= this.boostDuration or this.boostSpeed >= this.boostDuration then
-            this.boostAmt = this.boostDuration;
-            this.boostSpeed = this.boostDuration;
-            print("stop boosting");
-        else
-            print("boosting");
-            this.boostSpeed = Lerp(0, this.boostDuration, this.boostAmt);
-            this.boostAmt = this.boostAmt + (this.boostDirection * dt);
-        end
-    elseif this.boostDirection == -1 then
-        if this.boostAmt <= 0 or this.boostSpeed <= 0 then
-            this.isBoosting = false;
-            this.boostAmt = 0;
-            this.boostSpeed = 0;
-            print("stop unboosting");
-        else
-            print("unboosting");
-            this.boostSpeed = Lerp(this.boostDuration, 0, this.boostAmt);
-            this.boostAmt = this.boostAmt + (this.boostDirection * dt);
-        end
-    end
+	if this.speedRemaining > 0 then 
+		this.boostSpeed = this.boostSpeed + 3.0 * dt;
+		this.speedRemaining = this.speedRemaining - 3.0 * dt;
+	elseif this.boostSpeed > 1 then
+		this.boostSpeed = this.boostSpeed - dt;
+	end
 end
 
 function MineShaft.GetRandomHazardRail()
@@ -179,9 +161,8 @@ end
 
 
 function MineShaft.Update(dt)
-    if this.isBoosting then
-        MineShaft.UpdateBoost(dt);
-    end
+    MineShaft.UpdateBoost(dt);
+
     this.moveSpeed = this.moveSpeed + this.acceleration;
     this.acceleration = 0.0;
 
