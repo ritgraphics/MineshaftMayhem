@@ -34,5 +34,5 @@ float4 main(VertexToPixel input) : SV_TARGET
 	color *= (1 - input.depth*input.depth*.0001);
 
 
-return float4(color, diffuse.a);
+    return float4(diffuse.rgb, diffuse.a);
 }

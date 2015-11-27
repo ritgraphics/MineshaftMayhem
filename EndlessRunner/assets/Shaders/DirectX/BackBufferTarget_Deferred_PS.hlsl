@@ -28,7 +28,7 @@ float4 main( PixelInput input ) : SV_TARGET
 	//diffuseValue = round((diffuseValue+ .5) * 2.0) / 3;
 	color += saturate(diffuseValue * lightDiffuse * diffuse);
 
-	color *= (1 - depth*.001);
+	color *= (1 - depth*depth*.0001);
 	//return (1-input.depth*input.depth*.0001);
 	//return float4((1 + input.normal)*.5, 1.0);
 	return float4(color.rgb, diffuse.a); //float4(d, diffuse.a);
