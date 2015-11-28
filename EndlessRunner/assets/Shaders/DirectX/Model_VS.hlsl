@@ -21,6 +21,7 @@ struct VertexShaderInput
 	float2 uv		    : TEXCOORD;     // tex coord
 	float3 normal       : NORMAL;       // normal
 	float3 tangent		: TANGENT;
+
 };
 
 struct VertexToPixel
