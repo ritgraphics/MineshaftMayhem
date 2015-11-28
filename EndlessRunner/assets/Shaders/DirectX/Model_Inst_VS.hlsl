@@ -29,7 +29,7 @@ struct VertexToPixel
     float2 uv		    : TEXCOORD;
     float3 normal       : NORMAL;
     float3 tangent		: TANGENT;
-    float  depth : TEXCOORD1;
+    float  depth        : TEXCOORD1;
 };
 
 VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
@@ -71,21 +71,7 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 
     depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
 
-    /*matrix curve = {
-    cos((t + output.depth) * .01), 0.0, 0.0, 0.0,
-    0.0, 1.0, 0.0, 0.0,
-    0.0, 0.0, cos((t + output.depth) * .01), 0.0,
-    0.0, 0.0, 0.0, 1.0 };*/
-
-    //depthDistortion = mul(depthDistortion, curve);
-
-    /*matrix depthDistortion = {
-    1.0, 0.0, 0.0, 0.0,
-    0.0, 1.0, 0.0, 0.0,
-    0.0, 0.0, 1.0, 0.0,
-    0.0, 0.0, 0.0, 1.0 };*/
-
-    output.position = mul(output.position, depthDistortion);
+    //output.position = mul(output.position, depthDistortion);
 
     output.position = mul(mul(output.position, view), projection);
 

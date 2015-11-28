@@ -5,6 +5,19 @@ struct PixelInput
 	float2 uv		    : TEXCOORD;
 };
 
+struct PointLight
+{
+    float4 color;
+    float  intensity;
+    float3 position;
+    float  range;
+    float  attenConstant;
+    float  attenLinear;
+    float  attenQuadratic;
+};
+
+StructuredBuffer<PointLight> LightBuffer;
+
 Texture2D		txDiffuse : register(t0);
 Texture2D		txNormal  : register(t1);
 SamplerState	samLinear : register(s0);

@@ -23,15 +23,6 @@
       </children>
     </gameobject>
 
-    <gameobject name="ui-fps" enabled="true">
-      <transform x="20.0" y="20.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
-      <components>
-        <script file="fps.lua"/>
-        <ui-text text="FPS:" font="Consolas_14.fnt"/>
-      </components>
-      <children></children>
-    </gameobject>
-
     <gameobject name="ui-title" enabled="true">
       <transform x="-1.0" y="60.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>

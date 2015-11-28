@@ -5,6 +5,18 @@ struct VertexToPixel
 	float2 uv	   : TEXCOORD0;
 };
 
+struct PointLight
+{
+    float4 color;
+    float  intensity;
+    float3 position;
+    float  range;
+    float  attenConstant;
+    float  attenLinear;
+    float  attenQuadratic;
+};
+
+StructuredBuffer<PointLight> LightBuffer;
 
 VertexToPixel main( uint id : SV_VertexID )
 {
