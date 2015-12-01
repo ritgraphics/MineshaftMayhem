@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 #pragma region INI_FILE_TESTING
 
     
-    Vixen::FileManager::Initialize();
+   /* Vixen::FileManager::Initialize();
 
     Vixen::INIReader* _reader = new Vixen::INIReader;
 
@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
    
 
     Vixen::FileManager::CloseFile(file);
-    Vixen::FileManager::DeInitialize();
+    Vixen::FileManager::DeInitialize();*/
     
 #pragma endregion
 

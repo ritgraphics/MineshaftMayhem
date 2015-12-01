@@ -71,7 +71,7 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 
     depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
 
-    //output.position = mul(output.position, depthDistortion);
+    output.position = mul(output.position, depthDistortion);
 
     output.position = mul(mul(output.position, view), projection);
 
