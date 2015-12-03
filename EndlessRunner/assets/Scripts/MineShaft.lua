@@ -20,6 +20,9 @@ function MineShaft.OnInit()
     this.materials[2] = wall:GetChild(0):GetModelComponent():GetMaterial();
     this.materials[3] = wall:GetChild(1):GetModelComponent():GetMaterial();
     wall:Delete();
+	local hazard = this.brokenPrefab:CreateObject();
+	this.materials[4] = hazard:GetModelComponent():GetMaterial();
+	hazard:Delete();
 
 
     this.acceleration = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
@@ -27,7 +30,7 @@ function MineShaft.OnInit()
     this.distance = 0;
 
     this.maxDist = 120.0; --furthest rail position
-    this.sectionLength = 12.0;
+    this.sectionLength = 14.8;
     this.lastRailSpawned = nil;
 
     this.level = 0;
@@ -114,10 +117,10 @@ function MineShaft.MakeSegment(z)
 
     for i = 1, 3, 1 do
         if(numHazards > 1) then
-	        MineShaft.SpawnRail(columns[i], z - 6.0, MineShaft.GetRandomHazardRail());
+	        MineShaft.SpawnRail(columns[i], z - this.sectionLength/2.0, MineShaft.GetRandomHazardRail());
             numHazards = numHazards - 1;
         else
-	        MineShaft.SpawnRail(columns[i], z - 6.0, MineShaft.GetRandomSafeRail());
+	        MineShaft.SpawnRail(columns[i], z - this.sectionLength/2.0, MineShaft.GetRandomSafeRail());
         end
     end
 
@@ -127,7 +130,7 @@ function MineShaft.MakeSegment(z)
 	this.lastRailSpawned = MineShaft.SpawnRail(1, z, this.railPrefab);
 
 	-- wall section
-	MineShaft.SpawnWall(z - 6.0, this.wallPrefab);
+	MineShaft.SpawnWall(z - this.sectionLength/2.0, this.wallPrefab);
 	MineShaft.SpawnWall(z, this.wallPrefab);
 end
 
@@ -185,7 +188,7 @@ end
 
 --also sets fov if there's a boost
 function MineShaft.UpdateShaders()
-    for i=0, 3, 1 do
+    for i=0, 4, 1 do
         this.materials[i]:SetFloat(0, "distance", this.distance);
     end
     
