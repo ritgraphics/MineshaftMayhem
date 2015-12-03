@@ -26,6 +26,7 @@ struct VertexShaderInput
 struct VertexToPixel
 {
     float4 position		: SV_POSITION;
+	float3 worldPos		: POSITION;
     float2 uv		    : TEXCOORD;
     float3 normal       : NORMAL;
     float3 tangent		: TANGENT;
@@ -40,6 +41,7 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
     matrix world = InstanceBuffer[instanceID].world;
 
     output.position = mul(float4(input.position, 1.0f), world);
+	
 
     float depth = output.position.z / output.position.w;
 
@@ -72,6 +74,8 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
     depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
 
     output.position = mul(output.position, depthDistortion);
+
+	output.worldPos = output.position;
 
     output.position = mul(mul(output.position, view), projection);
 

@@ -11,8 +11,8 @@ SamplerState	samLinear : register(s0);
 
 struct VertexToPixel
 {
-
 	float4 position		: SV_POSITION;
+	float3 worldPos		: POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
 	float3 tangent		: TANGENT;
@@ -23,9 +23,10 @@ struct PixelOutput
 {
 	float4 diffuse : SV_Target0;
 	float4 normal :  SV_Target1;
+	float4 worldPos : SV_Target2;
 };
 
-PixelOutput main(VertexToPixel input) : SV_TARGET
+PixelOutput main(VertexToPixel input)
 {
 
 	PixelOutput output;
@@ -47,6 +48,8 @@ PixelOutput main(VertexToPixel input) : SV_TARGET
 	float4 diffuse = txDiffuse.Sample(samLinear, input.uv);
 	
 	output.diffuse = diffuse;
+
+	output.worldPos = float4(input.worldPos, 1.0);
 
 	return output;
 }

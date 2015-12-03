@@ -7,17 +7,19 @@ cbuffer externalData : register(b0)
 
 struct VertexToPixel
 {
-
 	float4 position		: SV_POSITION;
+	float3 worldPos		: POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
-	float  depth		: TEXCOORD1;
+	float3 tangent		: TANGENT;
+	float  depth : TEXCOORD1;
 };
 
 struct PixelOutput
 {
 	float4 diffuse : SV_Target0;
 	float4 normal  : SV_Target1;
+	float4 worldPos : SV_Target2;
 };
 
 PixelOutput main(VertexToPixel input) : SV_TARGET
@@ -29,6 +31,8 @@ PixelOutput main(VertexToPixel input) : SV_TARGET
 	output.normal = float4(input.normal, input.depth);
 
 	output.diffuse = float4(sin(input.depth * .5)*.5 + .5, cos(input.depth * .5)*.5 + .5, -sin(input.depth *.5)*.5 + .5, 1.0f);
+
+	output.worldPos = float4(input.worldPos, 1.0);
 
 	return output;
 }
