@@ -34,6 +34,7 @@ link_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyx
 				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/"
 				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/")
 
+file(GLOB EMITTER_FILES ${PROJECT_SOURCE_DIR}/../assets/Emitters/*.emt)
 file(GLOB FONT_FILES ${PROJECT_SOURCE_DIR}/../assets/Fonts/*.fnt)
 file(GLOB MODEL_FILES ${PROJECT_SOURCE_DIR}/../assets/Models/*.mdl)
 file(GLOB MATERIAL_FILES ${PROJECT_SOURCE_DIR}/../assets/Materials/*.vmt)
@@ -62,6 +63,8 @@ set_property(SOURCE ${HLSL_VS_FILES} PROPERTY VS_SHADER_ENTRYPOINT main)
 set_property(SOURCE ${HLSL_VS_FILES} PROPERTY VS_SHADER_MODEL 5.0)
 set_property(SOURCE ${HLSL_VS_FILES} PROPERTY VS_SHADER_FLAGS "/DFLAGS_ADDED /Fh \"$(OutDir)%(Filename).h\"")
 
+
+source_group("Asset Files\\Emitters" FILES ${EMITTER_FILES})
 source_group("Asset Files\\Models" FILES ${MODEL_FILES})
 source_group("Asset Files\\Materials" FILES ${MATERIAL_FILES})
 source_group("Asset Files\\Fonts" FILES ${FONT_FILES})
@@ -72,7 +75,7 @@ source_group("Asset Files\\Shaders\\HLSL" FILES ${HLSL_VS_FILES} ${HLSL_GS_FILES
 source_group("Asset Files\\Shaders\\GLSL" FILES ${GLSL_FILES})
 source_group("Asset Files\\Textures" FILES ${TEXTURE_FILES})
 
-set(RESOURCE_FILES ${MODEL_FILES} ${FONT_FILES} ${PREFAB_FILES} ${SCENE_FILES} ${SCENE_CONFIG} ${SCRIPT_FILES} ${HLSL_VS_FILES} ${HLSL_GS_FILES} ${HLSL_PS_FILES} ${GLSL_FILES} ${TEXTURE_FILES} ${MATERIAL_FILES})
+set(RESOURCE_FILES ${MODEL_FILES} ${EMITTER_FILES} ${FONT_FILES} ${PREFAB_FILES} ${SCENE_FILES} ${SCENE_CONFIG} ${SCRIPT_FILES} ${HLSL_VS_FILES} ${HLSL_GS_FILES} ${HLSL_PS_FILES} ${GLSL_FILES} ${TEXTURE_FILES} ${MATERIAL_FILES})
 
 add_executable(MineshaftMayhem ${PROJECT_SOURCE_DIR}/../source/main.cpp ${RESOURCE_FILES})
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<emitter>
+	<settings type="0" age="0" ageToSpawn="0" maxLifetime="0">
+		<colors>
+			<start-color name="black" />
+			<mid-color name="black" />
+			<end-color name="black" />
+		</colors>
+		<startPosition x="0" y="0" z="0" />
+		<startVelocity x="0" y="0" z="0" />
+		<startMidEndSize x="0" y="0" z="0" />
+		<constantAcceleration x="0" y="0" z="0" />
+	</settings>
+	<vertex-shader val="Emitter_VS.hlsl" />
+	<geometry-shader val="Emitter_GS.hlsl" />
+	<particle>
+		<texture file="particle.png" />
+		<vertex-shader val="Particle_VS.hlsl" />
+		<geometry-shader val="Particle_GS.hlsl" />
+		<pixel-shader val="Particle_PS.hlsl" />
+	</particle>
+</emitter>

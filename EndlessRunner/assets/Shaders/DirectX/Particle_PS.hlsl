@@ -1,18 +1,21 @@
-struct GSOutput
+
+// Defines the input to this pixel shader
+// - Should match the output of our corresponding vertex shader
+struct GStoPS
 {
-	float4 pos : SV_POSITION;
+	float4 position		: SV_POSITION;
+	float4 color		: COLOR;
+	float2 uv			: TEXCOORD0;
 };
 
-[maxvertexcount(3)]
-void main(
-	triangle float4 input[3] : SV_POSITION, 
-	inout TriangleStream< GSOutput > output
-)
+// Textures
+Texture2D particleTexture	: register(t0);
+SamplerState trilinear		: register(s0);
+
+// Entry point for this pixel shader
+float4 main(GStoPS input) : SV_TARGET
 {
-	for (uint i = 0; i < 3; i++)
-	{
-		GSOutput element;
-		element.pos = input[i];
-		output.Append(element);
-	}
+	//return input.color;
+
+	return particleTexture.Sample(trilinear, input.uv) * input.color;
 }

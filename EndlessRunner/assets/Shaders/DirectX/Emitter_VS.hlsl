@@ -1,18 +1,17 @@
-struct GSOutput
+struct VStoGS
 {
-	float4 pos : SV_POSITION;
+	int type : TEXCOORD0;
+	float age : TEXCOORD1;
+	float3 startPos		: POSITION;
+	float3 startVel		: TEXCOORD2;
+	float4 startColor	: COLOR0;
+	float4 midColor		: COLOR1;
+	float4 endColor		: COLOR2;
+	float3 sizes		: TEXCOORD3;
 };
 
-[maxvertexcount(3)]
-void main(
-	triangle float4 input[3] : SV_POSITION, 
-	inout TriangleStream< GSOutput > output
-)
+// The entry point for our vertex shader
+VStoGS main(VStoGS input)
 {
-	for (uint i = 0; i < 3; i++)
-	{
-		GSOutput element;
-		element.pos = input[i];
-		output.Append(element);
-	}
+	return input;
 }
