@@ -54,7 +54,7 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	matrix world = InstanceBuffer[instanceID].world;
 	PointLight light = LightBuffer[instanceID];
 
-	output.position = mul(float4(input.position, 1.0f)  * -light.range, world);
+	output.position = mul(float4(input.position * -light.range * 1.2, 1.0f), world);
 
 	output.position = mul(output.position, mul(view, projection));
 	output.instanceID = instanceID;

@@ -28,7 +28,7 @@ SamplerState	samLinear : register(s0);
 PointLight getLight(Texture2D lightIndices, SamplerState ss, float2 uv)
 {
 	float4 light = lightIndices.Sample(ss, uv);
-	int index = 1;// ceil(light.r);
+	int index = ceil(light.r);
 	if (index != 0) 
 	{
 		return LightBuffer[index-1];
