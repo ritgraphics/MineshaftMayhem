@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <material>
   <vertex-shader file="LightPass_VS.hlsl">
-    <float name="distance" val="1"/>
+    <float name="distance" val=".5"/>
   </vertex-shader>
   <pixel-shader file="LightPass_PS.hlsl">
   </pixel-shader>

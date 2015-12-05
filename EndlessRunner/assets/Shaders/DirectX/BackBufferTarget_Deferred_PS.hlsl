@@ -59,23 +59,26 @@ float4 main( PixelInput input ) : SV_TARGET
 	float4 ambientLight = float4(0.2f, 0.2f, 0.2f, 1.0f);
 	
 	//point light
-	PointLight light = getLight(txLight, samLinear, input.uv);
-	float3 lightDir = normalize(light.position -  worldPos.xyz);
-	float4 lightDiffuse = light.color;
-	//attenuation
-	float lightDist = (light.position - worldPos).x / (lightDir.x * light.range);
-	float atten = saturate(1 - (lightDist * lightDist * light.attenQuadratic + lightDist * light.attenLinear + light.attenConstant));
+	//PointLight light = getLight(txLight, samLinear, input.uv);
+	//float3 lightDir = normalize(light.position -  worldPos.xyz);
+	//float4 lightDiffuse = light.color;
+	////attenuation
+	//float lightDist = (light.position - worldPos).x / (lightDir.x * light.range);
+	//float atten = saturate(1 - (lightDist * lightDist * light.attenQuadratic + lightDist * light.attenLinear + light.attenConstant));
 
-	float4 color = diffuse * ambientLight; //ambientLight;
-	float diffuseValue = dot(lightDir, normal) * atten;
-	//diffuseValue = round((diffuseValue+ .5) * 2.0) / 3;
-	color += saturate(diffuseValue * lightDiffuse * diffuse);
+	//float diffuseValue = dot(lightDir, normal) * atten;
+	////diffuseValue = round((diffuseValue+ .5) * 2.0) / 3;
+
+
+	float4 lightDiffuse = txLight.Sample(samLinear, input.uv);
+
+	float4 color = saturate(diffuse * (lightDiffuse + ambientLight));
 
 	color *= (1 - depth*depth*.0001);
 	//return (1-input.depth*input.depth*.0001);
 	//return float4((1 + input.normal)*.5, 1.0);
 	//return float4(light.color.rgb, 1.0);
-	return float4(color.rgb, diffuse.a); //float4(d, diffuse.a);
+	return float4(color.rgb, 1.0); //float4(d, diffuse.a);
 	
 }
 

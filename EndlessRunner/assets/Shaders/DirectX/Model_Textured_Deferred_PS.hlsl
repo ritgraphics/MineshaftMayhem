@@ -43,7 +43,7 @@ PixelOutput main(VertexToPixel input)
 	input.normal = normalize(mul(normalFromMap, TBN));
 
 
-	output.normal = float4(input.normal, input.depth);
+	output.normal = float4(input.normal, 0.0);
 
 	float4 diffuse = txDiffuse.Sample(samLinear, input.uv);
 	
