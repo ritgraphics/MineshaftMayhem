@@ -43,7 +43,7 @@ struct VertexShaderInput
 struct PS_INPUT
 {
 	float4 position   : SV_POSITION;
-	float4 center     : TEXCOORD1;
+	float3 center     : TEXCOORD1;
 	PointLight light : TEXCOORD2;
 };
 
@@ -89,11 +89,10 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
 
 	pos = mul(pos, depthDistortion);
-	output.center = pos;
+	output.center = pos.xyz;
 
-	output.position = float4(input.position * -light.range * 5, 1.0f) + pos;
-	output.position = mul(output.position, mul(view, projection));
-
+	pos = float4(input.position * -light.range * 2.6, 1.0f) + pos;
+	output.position = mul(pos, mul(view, projection));
 	output.light = light;
 
 	return output;

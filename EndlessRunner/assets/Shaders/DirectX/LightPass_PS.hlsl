@@ -14,12 +14,13 @@ cbuffer pixelData : register(b0)
 {
 	float width;
 	float height;
+	matrix invViewProj;
 };
 
 struct PS_INPUT
 {
 	float4 position   : SV_POSITION;
-	float4 center     : TEXCOORD1;
+	float3 center     : TEXCOORD1;
 	PointLight light : TEXCOORD2;
 };
 
@@ -38,22 +39,29 @@ SamplerState samLinear : register(s0);
 
 float4 main( PS_INPUT input ) : SV_TARGET
 {
-	/*PS_OUTPUT output;*/
+	float screenx = input.position.x / width;
+	float screeny = input.position.y / height;
+	float depth = txWorld.Sample(samLinear, float2(screenx, screeny));
 
-	input.position.x = input.position.x / width;
-	input.position.y = input.position.y / height;
+	//convert from screen to world space
+	float4 pos = float4(screenx * 2.0 - 1.0, 1.0 - screeny * 2.0, depth, 1.0);
+	pos = mul(pos, invViewProj);
+	pos = pos / pos.w;
 
-	float4 worldPos = txWorld.Sample(samLinear, input.position.xy);
-	float4 normal = txNormal.Sample(samLinear, input.position.xy);
-	normal = normalize(normal * 2 - 1);
-	float3 lightDir = normalize(input.center - worldPos.xyz);
-	float4 lightDiffuse = input.light.color;
+	//normal
+	float3 normal = txNormal.Sample(samLinear, float2(screenx, screeny));
+	normal = normal * 2.0 - 1.0;
+
+	//ndotl
+	float3 lightDir = (input.center.xyz - pos.xyz) / length(input.center.xyz - pos.xyz);
+	float ndotl = dot(normal.xyz, lightDir.xyz);
+
 	//attenuation
-	float lightDist = (input.center - worldPos).x / (lightDir.x * input.light.range);
+	float lightDist = length(input.center.xyz - pos.xyz) / input.light.range;
 	float atten = saturate(1 - (lightDist * lightDist * input.light.attenQuadratic + lightDist * input.light.attenLinear + input.light.attenConstant));
 
-	float diffuseValue = saturate(dot(lightDir, normal)) * atten;
-	float4 lightData = lightDiffuse * diffuseValue;
+	//combine everything
+	float3 finalLight = input.light.color * ndotl * atten;
 
-	return float4(lightData.xyz, 1.0);
+	return float4(finalLight, 1.0);
 }

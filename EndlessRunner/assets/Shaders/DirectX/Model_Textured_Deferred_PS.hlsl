@@ -12,18 +12,18 @@ SamplerState	samLinear : register(s0);
 struct VertexToPixel
 {
 	float4 position		: SV_POSITION;
-	float3 worldPos		: POSITION;
 	float2 uv		    : TEXCOORD;
 	float3 normal       : NORMAL;
 	float3 tangent		: TANGENT;
-	float  depth        : TEXCOORD1;
+	float  worldz : TEXCOORD1;
+	float  depth : TEXCOORD2;
 };
 
 struct PixelOutput
 {
 	float4 diffuse : SV_Target0;
 	float4 normal :  SV_Target1;
-	float4 worldPos : SV_Target2;
+	float depth : SV_Target2;
 };
 
 PixelOutput main(VertexToPixel input)
@@ -49,7 +49,7 @@ PixelOutput main(VertexToPixel input)
 	
 	output.diffuse = diffuse;
 
-	output.worldPos = float4(input.worldPos, 1.0);
+	output.depth = input.depth;
 
 	return output;
 }

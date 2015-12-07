@@ -26,11 +26,11 @@ struct VertexShaderInput
 struct VertexToPixel
 {
     float4 position		: SV_POSITION;
-	float3 worldPos		: POSITION;
     float2 uv		    : TEXCOORD;
     float3 normal       : NORMAL;
     float3 tangent		: TANGENT;
-    float  depth        : TEXCOORD1;
+    float  worldz       : TEXCOORD1;
+	float  depth		: TEXCOORD2;
 };
 
 VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
@@ -40,12 +40,12 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 
     matrix world = InstanceBuffer[instanceID].world;
 
-    output.position = mul(float4(input.position, 1.0f), world);
+    float4 position = mul(float4(input.position, 1.0f), world);
 	
 
-    float depth = output.position.z / output.position.w;
+    float worldz = position.z / position.w;
 
-    float t = distance + depth;
+    float t = distance + worldz;
 
     float curvex = (sin(t*.03) + cos(t*.05) - sin(t*.07)) * 2.0;
     float curvey = (cos(t*.03) + sin(t*.07) - cos(t*.13)) * 0.5;
@@ -73,17 +73,18 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 
     depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
 
-    output.position = mul(output.position, depthDistortion);
-
-	output.worldPos = output.position;
-
-    output.position = mul(mul(output.position, view), projection);
+    position = mul(position, depthDistortion);
 
 
+	position = mul(mul(position, view), projection);
+
+
+	output.position = position;
     output.normal = mul(input.normal, (float3x3)mul(world, depthDistortion));
     output.tangent = mul(input.tangent, (float3x3)mul(world, depthDistortion));
     output.uv = input.uv;
-    output.depth = depth;
+    output.worldz = worldz;
+	output.depth = position.z / position.w;
 
     return output;
 }
