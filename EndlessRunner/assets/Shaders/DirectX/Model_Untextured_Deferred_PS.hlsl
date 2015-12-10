@@ -28,7 +28,7 @@ PixelOutput main(VertexToPixel input) : SV_TARGET
 
 	input.normal = normalize(input.normal);
 
-	output.normal = float4(input.normal * .5 + .5, 0.0);
+	output.normal = float4(input.normal * .5 + .5, input.worldz * .01);
 	
 	output.diffuse = float4(0.25f, 0.25f, 0.25f, 1.0f);
 
