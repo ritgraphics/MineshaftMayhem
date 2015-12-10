@@ -91,7 +91,7 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	pos = mul(pos, depthDistortion);
 	output.center = pos.xyz;
 
-	pos = float4(input.position * -light.range * 2.6, 1.0f) + pos;
+	pos = float4(input.position * -light.range * 2.8, 1.0f) + pos;
 	output.position = mul(pos, mul(view, projection));
 	output.light = light;
 

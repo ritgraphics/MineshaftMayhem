@@ -50,10 +50,10 @@ float4 main( PS_INPUT input ) : SV_TARGET
 
 	//normal
 	float3 normal = txNormal.Sample(samLinear, float2(screenx, screeny));
-	normal = normal * 2.0 - 1.0;
+	normal = normalize(normal * 2.0 - 1.0);
 
 	//ndotl
-	float3 lightDir = (input.center.xyz - pos.xyz) / length(input.center.xyz - pos.xyz);
+	float3 lightDir = normalize(input.center.xyz - pos.xyz);
 	float ndotl = dot(normal.xyz, lightDir.xyz);
 
 	//attenuation
