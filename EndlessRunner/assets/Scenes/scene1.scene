@@ -55,17 +55,6 @@
       </children>
     </gameobject>-->
     
-    <!--<gameobject name="lighttest" enabled="true">
-      <transform x="0.0" y="4.0" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
-      <components>
-        <light type="point">
-          <color r="1.0" g="1.0" b="0.0" a="1.0"/>
-          <attenuation range="5.0" constant="0.0" linear="0.0" quadratic="0.0"/>
-        </light>
-      </components>
-      <children>
-      </children>
-    </gameobject>-->
     
     <gameobject name="minecart1" enabled="true">
       <transform x="0.0" y="0.35" z="5.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
@@ -74,6 +63,17 @@
         <script file="player.lua"/>
       </components>
       <children>
+        <gameobject name="lighttest" enabled="true">
+          <transform x="0.0" y="0.0" z="0.0" rotX="180.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="0.0"/>
+          <components>
+            <light type="spot">
+              <color r="1.0" g="1.0" b="1.0" a="1.0"/>
+              <attenuation range="10.0" constant="0.0" linear="0.0" quadratic="1.0"/>
+            </light>
+          </components>
+          <children>
+          </children>
+        </gameobject>
         <gameobject name="wheel" enabled="true">
           <transform x="0.0" y="0.0" z="1.2" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
           <components>
