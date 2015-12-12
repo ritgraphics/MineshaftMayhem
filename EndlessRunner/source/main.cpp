@@ -6,6 +6,7 @@
 
 #include <vix_filemanager.h>
 #include <vix_inireader.h>
+#include <vix_iniwriter.h>
 
 int main(int argc, char* argv[])
 {
@@ -60,21 +61,26 @@ int main(int argc, char* argv[])
 
 #pragma region INI_FILE_TESTING
 
-    /*
-    Vixen::FileManager::Initialize();
+    
+   /* Vixen::FileManager::Initialize();
 
     Vixen::INIReader* _reader = new Vixen::INIReader;
 
-    Vixen::File* file = Vixen::FileManager::OpenFile(Vixen::os_exec_dir() + VTEXT("test.ini"));
+    Vixen::File* file = Vixen::FileManager::OpenFile(Vixen::os_exec_dir() + VTEXT("test.ini"), Vixen::FileMode::ReadBinary);
     if (file)
     {
         _reader->Load(file->Handle());
 
         _reader->PrintValues();
     }
+
+    Vixen::INIWriter* _writer = new Vixen::INIWriter;
+    _writer->Write("test2.ini");
+   
+
     Vixen::FileManager::CloseFile(file);
-    Vixen::FileManager::DeInitialize();
-    */
+    Vixen::FileManager::DeInitialize();*/
+    
 #pragma endregion
 
 

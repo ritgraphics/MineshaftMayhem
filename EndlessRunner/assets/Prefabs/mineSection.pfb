@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <prefab id="mineSection">
   <gameobject name="mineSection" enabled="true">
-    <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+    <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.21"/>
     <components>
       <script file = "MineSection.lua"></script>
     </components>
     <children>
       <gameobject name="leftWall" enabled="true">
-        <transform x="-2.5" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+        <transform x="-2.5" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.02"/>
         <components>
           <model file="Wall.obj" material="wall.vmt"/>
         </components>
         <children>
+          <gameobject name="pointLight" enabled="true">
+            <transform x="-5.0" y="5.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+            <components>
+              <light type="point">
+                <color r="0.0" g="0.8" b="0.6" a="1.0"/>
+                <attenuation range="4.0" constant="0.0" linear="1.0" quadratic="0.0"/>
+              </light>
+            </components>
+            <children>
+            </children>
+          </gameobject>
         </children>
       </gameobject>
       <gameobject name="cieling" enabled="true">
@@ -31,11 +42,22 @@
         </children>
       </gameobject>
       <gameobject name="rightWall" enabled="true">
-        <transform x="2.5" y="0.0" z="0.0" rotX="0.0" rotY="180.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+        <transform x="2.5" y="0.0" z="0.0" rotX="0.0" rotY="180.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.02"/>
         <components>
           <model file="Wall.obj" material="wall.vmt"/>
         </components>
         <children>
+          <gameobject name="pointLight" enabled="true">
+            <transform x="-5.0" y="5.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+            <components>
+              <light type="point">
+                <color r="1.0" g="0.8" b="0.6" a="1.0"/>
+                <attenuation range="4.0" constant="0.0" linear="0.0" quadratic="1.0"/>
+              </light>
+            </components>
+            <children>
+            </children>
+          </gameobject>
         </children>
       </gameobject>
     </children>

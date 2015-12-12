@@ -21,6 +21,7 @@ struct VertexShaderInput
 	float2 uv		    : TEXCOORD;     // tex coord
 	float3 normal       : NORMAL;       // normal
 	float3 tangent		: TANGENT;
+
 };
 
 struct VertexToPixel
@@ -88,6 +89,7 @@ VertexToPixel main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	output.position = mul(output.position, depthDistortion);
 
 	output.position = mul(mul(output.position, view), projection);
+	
 
 	output.normal = mul(input.normal, (float3x3)mul(world, depthDistortion));
 	output.tangent = mul(input.tangent, (float3x3)mul(world, depthDistortion));

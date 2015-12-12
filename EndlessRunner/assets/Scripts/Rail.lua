@@ -10,7 +10,10 @@ function Rail.Update(dt)
 
     local moveSpeed = this.manager.moveSpeed + this.manager.boostSpeed;
     
-	GameObject.TranslateZ(-dt * moveSpeed);
+	local transform = this.GameObject:GetTransform();
+
+    --GameObject.TranslateZ(-dt * moveSpeed);
+    transform:TranslateZ(-dt * moveSpeed);
 	if GameObject.GetTransformZ() < -9.0 then
 		this.GameObject:Delete();
 	end
