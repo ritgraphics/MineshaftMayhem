@@ -42,8 +42,8 @@
       </children>
     </gameobject>
 
-    <!--<gameobject name="lighttest" enabled="true">
-      <transform x="5.0" y="4.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
+    <gameobject name="lighttest" enabled="true">
+      <transform x="5.0" y="4.0" z="50.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
       <components>
         <light type="point">
           <color r="0.0" g="0.0" b="1.0" a="1.0"/>
@@ -52,7 +52,7 @@
       </components>
       <children>
       </children>
-    </gameobject>-->
+    </gameobject>
 
     <!--<gameobject name="lighttest" enabled="true">
       <transform x="0.0" y="4.0" z="6.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>

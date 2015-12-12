@@ -4,7 +4,6 @@ function pause.OnInit()
 end
 
 function pause.OnEnable()
-       print("wtf");
 	 Scene.OpenScene("scene1");
 	 Scene.ShowScene("scene1");
 	 Scene.PauseScene("scene1");
