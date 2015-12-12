@@ -58,9 +58,7 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	float4 pos = mul(float4(0, 0, 0, 1), world);
 
 	//transform data requires distance variable that is being set from game
-	float depth = pos.z;// / pos.w;
-
-	float t = distance + depth;
+	float t = distance + pos.z;
 
 	float curvex = (sin(t*.03) + cos(t*.05) - sin(t*.07)) * 2.0;
 	float curvey = (cos(t*.03) + sin(t*.07) - cos(t*.13)) * 0.5;
@@ -91,7 +89,7 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	pos = mul(pos, depthDistortion);
 	output.center = pos.xyz;
 
-	pos = float4(input.position * -light.range * 2.8, 1.0f) + pos;
+	pos = float4(input.position * -light.range * 1.1, 0.0) + pos;
 	output.position = mul(pos, mul(view, projection));
 	output.light = light;
 
