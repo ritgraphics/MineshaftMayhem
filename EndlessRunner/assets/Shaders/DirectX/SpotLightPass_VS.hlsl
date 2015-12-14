@@ -1,6 +1,3 @@
-
-
-
 struct InstanceData
 {
 	float4x4 world;
@@ -11,15 +8,13 @@ StructuredBuffer<InstanceData> InstanceBuffer;
 
 struct SpotLight
 {
-	float4 color;
-	float3 position;
-	float3 forward;
-	float  range;
-	float angle;
-	float  attenConstant;
-	float  attenLinear;
-	float  attenQuadratic;
-	float  intensity;
+	float4	color;
+	float	range;
+	float	angle;
+	float	attenConstant;
+	float	attenLinear;
+	float	attenQuadratic;
+	float3	filler;
 };
 
 StructuredBuffer<SpotLight> LightBuffer;
@@ -44,9 +39,10 @@ struct VertexShaderInput
 
 struct PS_INPUT
 {
-	float4 position   : SV_POSITION;
-	float3 center     : TEXCOORD1;
-	SpotLight light : TEXCOORD2;
+	float4 position		: SV_POSITION;
+	float3 center		: TEXCOORD1;
+	float3 forward		: TEXCOORD2;
+	SpotLight light		: TEXCOORD3;
 };
 
 PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
@@ -58,6 +54,7 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	SpotLight light = LightBuffer[instanceID];
 
 	float4 pos = mul(float4(0, 0, 0, 1), world);
+	float3 forward = (float3)normalize(mul(float3(0, 1, 1), world));
 
 	//transform data requires distance variable that is being set from game
 	float t = distance + pos.z;
@@ -90,9 +87,9 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	
 
 	pos = mul(pos, depthDistortion);
+	//forward = mul(forward, (float3x3)depthDistortion);
 	output.center = pos.xyz;
-
-
+	output.forward = forward;
 
 
 	pos = float4(input.position * -light.range * 1.1, 0.0) + pos;

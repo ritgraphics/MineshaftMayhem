@@ -2,12 +2,10 @@
 struct PointLight
 {
 	float4 color;
-	float3 position;
 	float  range;
 	float  attenConstant;
 	float  attenLinear;
 	float  attenQuadratic;
-	float  intensity;
 };
 
 cbuffer pixelData : register(b0)

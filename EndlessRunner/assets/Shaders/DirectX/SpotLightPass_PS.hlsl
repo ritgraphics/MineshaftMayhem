@@ -1,15 +1,13 @@
 
 struct SpotLight
 {
-	float4 color;
-	float3 position;
-	float3 forward;
-	float  range;
-	float angle;
-	float  attenConstant;
-	float  attenLinear;
-	float  attenQuadratic;
-	float  intensity;
+	float4	color;
+	float	range;
+	float	angle;
+	float	attenConstant;
+	float	attenLinear;
+	float	attenQuadratic;
+	float3	filler;
 };
 
 cbuffer pixelData : register(b0)
@@ -21,9 +19,10 @@ cbuffer pixelData : register(b0)
 
 struct PS_INPUT
 {
-	float4 position   : SV_POSITION;
-	float3 center     : TEXCOORD1;
-	SpotLight light : TEXCOORD2;
+	float4 position		: SV_POSITION;
+	float3 center		: TEXCOORD1;
+	float3 forward		: TEXCOORD2;
+	SpotLight light		: TEXCOORD3;
 };
 
 
@@ -59,5 +58,5 @@ float4 main( PS_INPUT input ) : SV_TARGET
 	//combine everything
 	float3 finalLight = input.light.color * ndotl * atten;
 
-	return float4(finalLight, 1.0);
+	return float4(input.forward, 1.0);
 }
