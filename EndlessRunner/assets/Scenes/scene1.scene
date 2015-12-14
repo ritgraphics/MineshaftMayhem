@@ -68,7 +68,7 @@
           <components>
             <light type="spot">
               <color r="1.0" g="1.0" b="1.0" a="1.0"/>
-              <attenuation range="10.0" constant="0.0" linear="0.0" quadratic="1.0"/>
+              <attenuation range="10.0" angle="45.0" constant="0.0" linear="0.0" quadratic="1.0"/>
             </light>
           </components>
           <children>
