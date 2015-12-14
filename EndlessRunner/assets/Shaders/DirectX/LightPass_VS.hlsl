@@ -12,12 +12,12 @@ StructuredBuffer<InstanceData> InstanceBuffer;
 struct PointLight
 {
 	float4 color;
-	float  intensity;
 	float3 position;
 	float  range;
 	float  attenConstant;
 	float  attenLinear;
 	float  attenQuadratic;
+	float  intensity;
 };
 
 StructuredBuffer<PointLight> LightBuffer;
