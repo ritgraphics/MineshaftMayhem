@@ -64,7 +64,7 @@
       </components>
       <children>
         <gameobject name="lighttest" enabled="true">
-          <transform x="0.0" y="0.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="0.0"/>
+          <transform x="0.0" y="2.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="0.0"/>
           <components>
             <light type="spot">
               <color r="1.0" g="1.0" b="1.0" a="1.0"/>

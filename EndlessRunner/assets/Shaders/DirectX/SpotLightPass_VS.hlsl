@@ -54,7 +54,6 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	SpotLight light = LightBuffer[instanceID];
 
 	float4 pos = mul(float4(0, 0, 0, 1), world);
-	float3 forward = (float3)normalize(mul(float3(0, 1, 1), world));
 
 	//transform data requires distance variable that is being set from game
 	float t = distance + pos.z;
@@ -84,17 +83,15 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 		0.0, 0.0, 0.0, 1.0 };
 
 	depthDistortion = mul(mul(depthDistortion, depthDistortion2), depthDistortion3);
-	
 
 	pos = mul(pos, depthDistortion);
-	//forward = mul(forward, (float3x3)depthDistortion);
 	output.center = pos.xyz;
-	output.forward = forward;
 
-
-	pos = float4(input.position * -light.range * 1.1, 0.0) + pos;
+	input.position.x *= -1;
+	pos = float4(input.position * light.range * 1.1, 0.0) + pos;
 	output.position = mul(pos, mul(view, projection));
 	output.light = light;
+	output.forward = float3(0, 0, 1);
 
 	return output;
 }

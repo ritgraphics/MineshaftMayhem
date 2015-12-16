@@ -23,7 +23,8 @@ function MineShaft.OnInit()
 	local hazard = this.brokenPrefab:CreateObject();
 	this.materials[4] = hazard:GetModelComponent():GetMaterial();
 	hazard:Delete();
-	this.materials[5] = LightManager.GetMaterial();
+	this.materials[5] = LightManager.GetPointMaterial();
+	this.materials[6] = LightManager.GetSpotMaterial();
 
 
     this.acceleration = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
@@ -189,7 +190,7 @@ end
 
 --also sets fov if there's a boost
 function MineShaft.UpdateShaders()
-    for i=0, 5, 1 do
+    for i=0, 6, 1 do
         this.materials[i]:SetFloat(0, "distance", this.distance);
     end
     
