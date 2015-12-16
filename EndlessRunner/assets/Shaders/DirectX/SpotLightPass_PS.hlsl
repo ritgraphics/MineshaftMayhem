@@ -58,5 +58,5 @@ float4 main( PS_INPUT input ) : SV_TARGET
 	//combine everything
 	float3 finalLight = input.light.color * ndotl * atten;
 
-	return float4(input.forward, 1.0);
+	return float4(finalLight, 1.0);
 }
