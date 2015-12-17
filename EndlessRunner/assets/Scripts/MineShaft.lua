@@ -8,7 +8,13 @@ function MineShaft.OnInit()
 	this.bufferPrefab = Prefab.Load("Buffer.pfb");
 	this.bufferPrefab:MarkStore();
 	this.wallPrefab = Prefab.Load("mineSection.pfb");
+	this.wallLeftLampPrefab = Prefab.Load("mineSectionLeftLamp.pfb");
+	this.wallRightLampPrefab = Prefab.Load("mineSectionRightLamp.pfb");
+	this.wallBothLampPrefab = Prefab.Load("mineSectionBothLamp.pfb");
 	this.wallPrefab:MarkStore();
+	this.wallLeftLampPrefab:MarkStore();
+	this.wallRightLampPrefab:MarkStore();
+	this.wallBothLampPrefab:MarkStore();
 	this.speedBoostPrefab = Prefab.Load("SpeedBoostRail.pfb");
 	this.speedBoostPrefab:MarkStore();
 
@@ -18,12 +24,13 @@ function MineShaft.OnInit()
     this.materials[0] = rail:GetModelComponent():GetMaterial();
     this.materials[1] = rail:GetChild(0):GetModelComponent():GetMaterial();
     rail:Delete();
-    local wall = this.wallPrefab:CreateObject();
+    local wall = this.wallLeftLampPrefab:CreateObject();
     this.materials[2] = wall:GetChild(0):GetModelComponent():GetMaterial();
     this.materials[3] = wall:GetChild(1):GetModelComponent():GetMaterial();
+	this.materials[4] = wall:GetChild(0):GetChild(0):GetModelComponent():GetMaterial();
     wall:Delete();
 	local hazard = this.brokenPrefab:CreateObject();
-	this.materials[4] = hazard:GetModelComponent():GetMaterial();
+	this.materials[5] = hazard:GetModelComponent():GetMaterial();
 	hazard:Delete();
 	this.materials[5] = LightManager.GetPointMaterial();
 	this.materials[6] = LightManager.GetSpotMaterial();
@@ -139,7 +146,17 @@ function MineShaft.MakeSegment(z)
 	this.lastRailSpawned = MineShaft.SpawnRail(1, z, this.railPrefab);
 
 	-- wall section
-	MineShaft.SpawnWall(z - this.sectionLength/2.0, this.wallPrefab);
+	local wallNum = math.random();
+	if wallNum > .5 then
+		MineShaft.SpawnWall(z - this.sectionLength/2.0, this.wallPrefab);	
+	elseif wallNum > .3 then
+		MineShaft.SpawnWall(z - this.sectionLength/2.0, this.wallLeftLampPrefab);	
+	elseif wallNum > .1 then
+		MineShaft.SpawnWall(z - this.sectionLength/2.0, this.wallRightLampPrefab);	
+	elseif wallNum > 0 then
+		MineShaft.SpawnWall(z - this.sectionLength/2.0, this.wallBothLampPrefab);	
+	end
+
 	MineShaft.SpawnWall(z, this.wallPrefab);
 end
 

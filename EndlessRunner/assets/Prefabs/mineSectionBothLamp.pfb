@@ -12,6 +12,18 @@
           <model file="Wall.obj" material="wall.vmt"/>
         </components>
         <children>
+          <gameobject name="lantern" enabled="true">
+            <transform x="-5.0" y="5.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.4" scaleY="0.4" scaleZ="0.4"/>
+            <components>
+              <model file="Lamp.obj" material="lamp.vmt" />
+              <light type="point">
+                <color r="1.0" g="0.8" b="0.6" a="1.0"/>
+                <attenuation range="16.0" constant="1" linear="5" quadratic="5"/>
+              </light>
+            </components>
+            <children>
+            </children>
+          </gameobject>
         </children>
       </gameobject>
       <gameobject name="cieling" enabled="true">
@@ -36,6 +48,18 @@
           <model file="Wall.obj" material="wall.vmt"/>
         </components>
         <children>
+          <gameobject name="lantern" enabled="true">
+            <transform x="-5.0" y="5.0" z="0.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="0.4" scaleY="0.4" scaleZ="0.4"/>
+            <components>
+              <model file="Lamp.obj" material="lamp.vmt" />
+              <light type="point">
+                <color r="1.0" g="0.8" b="0.6" a="1.0"/>
+                <attenuation range="16.0" constant="1" linear="5" quadratic="5"/>
+              </light>
+            </components>
+            <children>
+            </children>
+          </gameobject>
         </children>
       </gameobject>
     </children>
