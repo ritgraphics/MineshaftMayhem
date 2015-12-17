@@ -64,15 +64,15 @@
       </components>
       <children>
         <gameobject name="lighttest" enabled="true">
-          <transform x="0.0" y="2.0" z="2.0" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="0.0"/>
+          <transform x="0.0" y="2.0" z="2.2" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="0.0"/>
           <components>
             <light type="spot">
-              <color r=".5" g=".5" b=".5" a="1.0"/>
-              <attenuation range="10.0" angle="20.0" constant="0" linear="0" quadratic="1"/>
+              <color r="1" g=".8" b=".5" a="1.0"/>
+              <attenuation range="24.0" angle="15.0" constant="0" linear="0" quadratic="1"/>
             </light>
             <light type="spot">
-              <color r=".5" g=".5" b=".5" a="1.0"/>
-              <attenuation range="8.0" angle="70.0" constant="0" linear=".5" quadratic="1"/>
+              <color r="1" g=".8" b=".5" a="1.0"/>
+              <attenuation range="8.0" angle="45.0" constant="0" linear="2" quadratic="5"/>
             </light>
           </components>
           <children>

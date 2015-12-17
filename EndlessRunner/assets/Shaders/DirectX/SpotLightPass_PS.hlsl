@@ -53,14 +53,14 @@ float4 main( PS_INPUT input ) : SV_TARGET
 
 	float angle = degrees(acos(-dot(lightDir, input.forward)));
 
-	//attenuation
+	//attenuation distance
 	float lightDist = length(input.center.xyz - pos.xyz) / input.light.range;
 	float atten = min(1 / (lightDist * lightDist * input.light.attenQuadratic + lightDist * input.light.attenLinear + input.light.attenConstant), 1);
 
+	//attenuation angle
+	float atten2 = saturate(input.light.angle / angle);
+
 	//combine everything
-	float3 finalLight = input.light.color * ndotl * atten;
-	if (angle < input.light.angle)
-		return float4(finalLight, 1);
-	else
-		return float4(0, 0, 0, 1);
+	float3 finalLight = input.light.color * ndotl * atten * atten2;
+	return float4(finalLight, 1);
 }
