@@ -5,6 +5,8 @@ function MineShaft.OnInit()
 	this.gemPrefab:MarkStore();
 	this.brokenPrefab = Prefab.Load("BrokenRail.pfb");
     this.brokenPrefab:MarkStore();
+	this.bufferPrefab = Prefab.Load("Buffer.pfb");
+	this.bufferPrefab:MarkStore();
 	this.wallPrefab = Prefab.Load("mineSection.pfb");
 	this.wallPrefab:MarkStore();
 	this.speedBoostPrefab = Prefab.Load("SpeedBoostRail.pfb");
@@ -25,6 +27,9 @@ function MineShaft.OnInit()
 	hazard:Delete();
 	this.materials[5] = LightManager.GetPointMaterial();
 	this.materials[6] = LightManager.GetSpotMaterial();
+	local buffer = this.bufferPrefab:CreateObject();
+	this.materials[7] = buffer:GetChild(0):GetModelComponent():GetMaterial();
+	buffer:Delete();
 
 
     this.acceleration = 0.0; --add to this in external scripts instead of directly to speed variable gets added to during this objects update
@@ -72,8 +77,10 @@ end
 
 function MineShaft.GetRandomHazardRail()
     local rand = math.random();
-    if (rand > 0.0) then
+    if (rand > 0.4) then
         return this.brokenPrefab;
+	else 
+		return this.bufferPrefab;
     end
 end
 
@@ -190,7 +197,7 @@ end
 
 --also sets fov if there's a boost
 function MineShaft.UpdateShaders()
-    for i=0, 6, 1 do
+    for i=0, 7, 1 do
         this.materials[i]:SetFloat(0, "distance", this.distance);
     end
     
@@ -212,5 +219,6 @@ function MineShaft.OnDestroy()
 	this.brokenPrefab:MarkDelete();
 	this.wallPrefab:MarkDelete();
 	this.speedBoostPrefab:MarkDelete();
+	this.bufferPrefab:MarkDelete();
 
 end
