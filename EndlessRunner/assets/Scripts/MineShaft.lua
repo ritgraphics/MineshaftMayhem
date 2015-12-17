@@ -25,17 +25,18 @@ function MineShaft.OnInit()
     this.materials[1] = rail:GetChild(0):GetModelComponent():GetMaterial();
     rail:Delete();
     local wall = this.wallLeftLampPrefab:CreateObject();
-    this.materials[2] = wall:GetChild(0):GetModelComponent():GetMaterial();
-    this.materials[3] = wall:GetChild(1):GetModelComponent():GetMaterial();
-	this.materials[4] = wall:GetChild(0):GetChild(0):GetModelComponent():GetMaterial();
+	this.materials[2] = wall:GetChild(2):GetModelComponent():GetMaterial();
+    this.materials[3] = wall:GetChild(0):GetModelComponent():GetMaterial();
+    this.materials[4] = wall:GetChild(1):GetModelComponent():GetMaterial();
+	this.materials[5] = wall:GetChild(0):GetChild(0):GetModelComponent():GetMaterial();
     wall:Delete();
 	local hazard = this.brokenPrefab:CreateObject();
-	this.materials[5] = hazard:GetModelComponent():GetMaterial();
+	this.materials[6] = hazard:GetModelComponent():GetMaterial();
 	hazard:Delete();
-	this.materials[6] = LightManager.GetPointMaterial();
-	this.materials[7] = LightManager.GetSpotMaterial();
+	this.materials[7] = LightManager.GetPointMaterial();
+	this.materials[8] = LightManager.GetSpotMaterial();
 	local buffer = this.bufferPrefab:CreateObject();
-	this.materials[8] = buffer:GetChild(0):GetModelComponent():GetMaterial();
+	this.materials[9] = buffer:GetChild(0):GetModelComponent():GetMaterial();
 	buffer:Delete();
 
 
@@ -214,7 +215,7 @@ end
 
 --also sets fov if there's a boost
 function MineShaft.UpdateShaders()
-    for i=0, 8, 1 do
+    for i=0, 9, 1 do
         this.materials[i]:SetFloat(0, "distance", this.distance);
     end
     
