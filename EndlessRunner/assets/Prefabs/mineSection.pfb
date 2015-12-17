@@ -17,7 +17,7 @@
       <gameobject name="cieling" enabled="true">
         <transform x="0.0" y="9.5" z="0.0" rotX="0.0" rotY="0.0" rotZ="180.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
         <components>
-          <model file="floor.obj" material="floor.vmt"/>
+          <model file="Ceiling.obj" material="ceiling.vmt"/>
         </components>
         <children>
         </children>
