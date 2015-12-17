@@ -88,7 +88,10 @@ PS_INPUT main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 	output.center = pos.xyz;
 
 	input.position.x *= -1;
-	pos = float4(input.position * light.range * 1.1, 0.0) + pos;
+	input.position.z *= light.range;
+	input.position.xy *= light.range * 2 * tan(radians(light.angle));
+
+	pos = float4(input.position * 1.1, 0.0) + pos;
 	output.position = mul(pos, mul(view, projection));
 	output.light = light;
 	output.forward = float3(0, 0, 1);
