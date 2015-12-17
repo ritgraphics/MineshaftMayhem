@@ -5,10 +5,12 @@ function player.OnInit()
     this.jumpCount = 0;
     this.moveSpeed = 6.5;
     this.material = this.GameObject:GetModelComponent():GetMaterial();
+	
+	
 end
 
 function player.OnEnable()
-    this.position = 0;
+    this.position = 0;	
 end
 
 function GetTrackPos(pos)
@@ -19,6 +21,8 @@ function player.Update(dt)
     if this.mineShaft == nil then
         this.mineShaft = MineShaft.hash[Scene.FindObjectWithName("railspawner"):GetID()..""];
     end
+
+	
 
     local go = this.GameObject;
 
@@ -47,7 +51,8 @@ function player.Update(dt)
     end
 
     
-    this.material:SetFloat(0, "distance", this.mineShaft.distance);
+    this.material:SetFloat(0, "distance", this.mineShaft.distance);	
+	go:GetChild(2):GetModelComponent():GetMaterial():SetFloat(0, "distance", this.mineShaft.distance);
 end
 
 function Lerp(startVal, endVal, interval)

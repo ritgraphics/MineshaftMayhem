@@ -81,7 +81,7 @@
         <gameobject name="wheel" enabled="true">
           <transform x="0.0" y="0.0" z="1.2" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
           <components>
-            <model file="Wheels.obj" material="minecart.vmt"/>
+            <model file="Wheels.obj" material="wheel.vmt"/>
           </components>
           <children>
           </children>
@@ -89,7 +89,7 @@
         <gameobject name="whee2" enabled="true">
           <transform x="0.0" y="0.0" z="-1.2" rotX="0.0" rotY="0.0" rotZ="0.0" scaleX="1.0" scaleY="1.0" scaleZ="1.0"/>
           <components>
-            <model file="Wheels.obj" material="minecart.vmt"/>
+            <model file="Wheels.obj" material="wheel.vmt"/>
           </components>
           <children>
           </children>
