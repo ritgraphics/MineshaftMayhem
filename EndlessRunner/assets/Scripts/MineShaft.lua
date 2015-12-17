@@ -32,10 +32,10 @@ function MineShaft.OnInit()
 	local hazard = this.brokenPrefab:CreateObject();
 	this.materials[5] = hazard:GetModelComponent():GetMaterial();
 	hazard:Delete();
-	this.materials[5] = LightManager.GetPointMaterial();
-	this.materials[6] = LightManager.GetSpotMaterial();
+	this.materials[6] = LightManager.GetPointMaterial();
+	this.materials[7] = LightManager.GetSpotMaterial();
 	local buffer = this.bufferPrefab:CreateObject();
-	this.materials[7] = buffer:GetChild(0):GetModelComponent():GetMaterial();
+	this.materials[8] = buffer:GetChild(0):GetModelComponent():GetMaterial();
 	buffer:Delete();
 
 
@@ -214,7 +214,7 @@ end
 
 --also sets fov if there's a boost
 function MineShaft.UpdateShaders()
-    for i=0, 7, 1 do
+    for i=0, 8, 1 do
         this.materials[i]:SetFloat(0, "distance", this.distance);
     end
     
@@ -235,6 +235,9 @@ function MineShaft.OnDestroy()
 	this.gemPrefab:MarkDelete();
 	this.brokenPrefab:MarkDelete();
 	this.wallPrefab:MarkDelete();
+	this.wallLeftLampPrefab:MarkDelete();
+	this.wallRightLampPrefab:MarkDelete();
+	this.wallBothLampPrefab:MarkDelete();
 	this.speedBoostPrefab:MarkDelete();
 	this.bufferPrefab:MarkDelete();
 
