@@ -1,5 +1,5 @@
 cd _build
-mkdir VS2015
-cd VS2015
-cmake ../../ -G "Visual Studio 14 2015 Win64"
+mkdir VS2019
+cd VS2019
+cmake ../../ -G "Visual Studio 16 2019" -Ax64
 cd ..
