@@ -5,34 +5,11 @@ include_directories("${PROJECT_SOURCE_DIR}/../include/"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics/directx"
 					"${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgame"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxml2"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/inih"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/Assimp/include"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/SDL2/include"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/lua/include"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/luaintf/"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/src/"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/include/"
-					"${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/include/")
+                    "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/LuaIntf")
 
-if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 19.0)
-	set(PLATFORM_TOOLSET "VS2013")
-else()
-	set(PLATFORM_TOOLSET "VS2015")
-endif()
 
 
 add_definitions(-D_UNICODE)
-
-link_directories("${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/tinyxml2/${PLATFORM_TOOLSET}/Debug/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/Assimp/"
-                 		 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/FreeImage/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/SDL2/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/lua/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/bullet3/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/libcurl/"
-				 "${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/x64/jsoncpp/")
 
 file(GLOB FONT_FILES ${PROJECT_SOURCE_DIR}/../assets/Fonts/*.fnt)
 file(GLOB MODEL_FILES ${PROJECT_SOURCE_DIR}/../assets/Models/*.mdl)
@@ -69,9 +46,33 @@ source_group("Asset Files\\Textures" FILES ${TEXTURE_FILES})
 
 set(RESOURCE_FILES ${MODEL_FILES} ${FONT_FILES} ${PREFAB_FILES} ${SCENE_FILES} ${SCENE_CONFIG} ${SCRIPT_FILES} ${HLSL_VS_FILES} ${HLSL_PS_FILES} ${GLSL_FILES} ${TEXTURE_FILES} ${MATERIAL_FILES})
 
-add_executable(MineshaftMayhem ${PROJECT_SOURCE_DIR}/../source/main.cpp ${RESOURCE_FILES})
+file(GLOB VCORE_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vcore/*.h)
+file(GLOB VCORE_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vcore/*.cpp)
+
+file(GLOB VGRAPHICS_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics/*.h)
+file(GLOB VGRAPHICS_DX_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgraphics/directx/*.h)
+file(GLOB VGRAPHICS_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vgraphics/*.cpp)
+file(GLOB VGRAPHICS_DX_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vgraphics/directx/*.cpp)
+
+file(GLOB VGAME_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgame/*.h)
+file(GLOB VGAME_BULLET_INC ${PROJECT_SOURCE_DIR}/../../VixenEngine/include/vgame/vix_bullet*)
+file(GLOB VGAME_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vgame/*.cpp)
+file(GLOB VGAME_BULLET_SRC ${PROJECT_SOURCE_DIR}/../../VixenEngine/source/vgame/vix_bullet*)
 
 
+add_executable(MineshaftMayhem
+    ${PROJECT_SOURCE_DIR}/../source/main.cpp
+    ${VCORE_INC}
+    ${VCORE_SRC}
+    ${VGRAPHICS_INC}
+    ${VGRAPHICS_DX_INC}
+    ${VGRAPHICS_SRC}
+    ${VGRAPHICS_DX_SRC}
+    ${VGAME_INC}
+    ${VGAME_BULLET_INC}
+    ${VGAME_SRC}
+    ${VGAME_BULLET_SRC}
+    ${RESOURCE_FILES})
 
 add_custom_command(TARGET MineshaftMayhem POST_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy
@@ -79,34 +80,18 @@ add_custom_command(TARGET MineshaftMayhem POST_BUILD
 add_custom_command(TARGET MineshaftMayhem POST_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy
                    ${CMAKE_SOURCE_DIR}/vixen.config $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   $(SolutionDir)vcore/$(Configuration)/vcore.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   $(SolutionDir)vgraphics/$(Configuration)/vgraphics.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   $(SolutionDir)vgame/$(Configuration)/vgame.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/Assimp/assimp.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/tinyxml2/${PLATFORM_TOOLSET}/$(Configuration)/tinyxml2.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/lua/lua.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/FreeImage/FreeImage.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/SDL2/SDL2.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
-add_custom_command(TARGET MineshaftMayhem POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy
-                   ${PROJECT_SOURCE_DIR}/../../VixenEngine/dependencies/$(Platform)/libcurl/libcurl.dll $<TARGET_FILE_DIR:MineshaftMayhem>)
 
-target_compile_definitions(MineshaftMayhem PRIVATE VIX_DIRECTX_BUILD)
+target_compile_definitions(MineshaftMayhem PRIVATE LUAINTF_HEADERS_ONLY UNICODE _UNICODE VIX_STATIC VIX_DIRECTX_BUILD)
 
-target_link_libraries(MineshaftMayhem vcore vgraphics vgame SDL2 lua tinyxml2 Assimp FreeImage BulletCollision BulletDynamics BulletSoftBody LinearMath libcurl_imp jsoncpp)
+target_link_libraries(MineshaftMayhem PRIVATE
+    SDL3::SDL3
+    tinyxml2::tinyxml2
+    JsonCpp::JsonCpp
+    unofficial::inih::libinih
+    ${LUA_LIBRARIES}
+    ${BULLET_LIBRARIES}
+    d3d11
+    d3dcompiler
+    assimp::assimp
+    freeimage::FreeImage
+)

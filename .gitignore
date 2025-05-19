@@ -18,3 +18,6 @@
 *.dll
 *.lib
 *.sbr
+
+out/
+.vs/

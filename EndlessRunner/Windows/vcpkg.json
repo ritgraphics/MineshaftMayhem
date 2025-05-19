@@ -1,0 +1,13 @@
+{
+  "name": "mineshaft-mayhem",
+  "dependencies": [
+    "assimp",
+    "bullet3",
+    "freeimage",
+    "inih",
+    "jsoncpp",
+    "lua",
+    "sdl3",
+    "tinyxml2"
+  ]
+}

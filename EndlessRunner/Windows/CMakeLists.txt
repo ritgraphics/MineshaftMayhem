@@ -1,11 +1,4 @@
-
-if(WIN32)
-cmake_minimum_required (VERSION 3.1)
-else()
-cmake_minimum_required (VERSION 3.0)
-endif()
-
-
+cmake_minimum_required(VERSION 3.25)
 project(MineshaftMayhem)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -22,7 +15,14 @@ configure_file (
     "${PROJECT_SOURCE_DIR}/../include/MineshaftMayhem.h"
 )
 
-add_subdirectory("${PROJECT_SOURCE_DIR}/vcore")
+find_package(assimp CONFIG REQUIRED)
+find_package(Bullet CONFIG REQUIRED)
+find_package(freeimage CONFIG REQUIRED)
+find_package(unofficial-inih CONFIG REQUIRED)
+find_package(jsoncpp CONFIG REQUIRED)
+find_package(SDL3 CONFIG REQUIRED)
+find_package(tinyxml2 CONFIG REQUIRED)
+find_package(Lua REQUIRED)
+
+
 add_subdirectory("${PROJECT_SOURCE_DIR}/MineshaftMayhem")
-add_subdirectory("${PROJECT_SOURCE_DIR}/vgraphics")
-add_subdirectory("${PROJECT_SOURCE_DIR}/vgame")
