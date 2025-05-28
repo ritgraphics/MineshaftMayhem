@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{aa2529b6-7b6b-49d1-be61-57a34dc001ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Textures">
+      <UniqueIdentifier>{406c6d27-aea7-421b-aab0-85e5aacecc63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Levels">
+      <UniqueIdentifier>{580d95fe-7807-4a49-9389-84644af5ae16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Scripts">
+      <UniqueIdentifier>{128c99b7-7abe-456f-85c5-ec51987cbaf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{4d36d120-3811-4111-b909-ec9f98751800}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MineshaftMayhem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D12Context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DDSTextureLoader12.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticGeometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteBatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MineshaftMayhem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D12Context.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DDSTextureLoader12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteBatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MineshaftMayhem.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MineshaftMayhem.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="..\Assets\Shaders\Common.hlsli">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\Arial_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\broken_rails.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\broken_rails_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\buffer.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\buffer_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\ceiling.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\ceiling_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\Consolas_12_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\Consolas_14_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\Consolas_16_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\Consolas_24_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\Consolas_36_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\dirt.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\dirt_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\floor.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\lamp.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\lamp_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\lightbulb.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\minecart.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\minecart_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\mineshaft_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\mineshaft_72_0.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\player.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\rail_start.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\rail_start_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\rails.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\rails_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\raptor.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\raptor_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\sign.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\sign_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\stackedTileSheet.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\test.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\wall.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\wall_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\wheels.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\wheels_normal.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Textures\DDS\wood_wall.dds">
+      <Filter>Assets\Textures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Scenes\level1.xml">
+      <Filter>Assets\Levels</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Scripts\test.lua">
+      <Filter>Assets\Scripts</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Assets\Scripts\test2.lua">
+      <Filter>Assets\Scripts</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\Assets\Shaders\SimpleTextureVS.hlsl">
+      <Filter>Assets\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Assets\Shaders\SimpleTexturePS.hlsl">
+      <Filter>Assets\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Assets\Shaders\RootSignature1.hlsl">
+      <Filter>Assets\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

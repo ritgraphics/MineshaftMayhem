@@ -1,7 +1,7 @@
 BasedOnStyle: Microsoft
 NamespaceIndentation: All
 AlignTrailingComments: true
-AlignConsecutiveDeclarations: AcrossComments
+AlignConsecutiveDeclarations: AcrossEmptyLinesAndComments
 BinPackParameters: false
 ReferenceAlignment: Left
 PointerAlignment: Left

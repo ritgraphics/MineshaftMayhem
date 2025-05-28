@@ -4,7 +4,7 @@
     <float name="distance" val="1"/>
   </vertex-shader>
   <pixel-shader file="Model_Textured_Deferred_PS.hlsl">
-    <texture name="txDiffuse" file="lamp.png"/>
-    <texture name="txNormal" file="lamp_normal.png"/>
+    <texture name="txDiffuse" file="lamp.dds"/>
+    <texture name="txNormal" file="lamp_normal.dds"/>
   </pixel-shader>
 </material>

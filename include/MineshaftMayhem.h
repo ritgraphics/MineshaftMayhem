@@ -1,3 +1,0 @@
-#define MineshaftMayhem_VERSION_MAJOR 0
-#define MineshaftMayhem_VERSION_MINOR 1
-#define MineshaftMayhem_VERSION_BUILD 1

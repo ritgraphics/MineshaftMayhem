@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 project(MineshaftMayhem)
 
+set(CMAKE_CXX_STANDARD 17)
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 #Version info
@@ -25,6 +27,8 @@ configure_file (
 find_package(assimp CONFIG REQUIRED)
 find_package(Bullet CONFIG REQUIRED)
 find_package(freeimage CONFIG REQUIRED)
+find_package(directxtk CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
 find_package(unofficial-inih CONFIG REQUIRED)
 find_package(jsoncpp CONFIG REQUIRED)
 find_package(SDL3 CONFIG REQUIRED)
@@ -80,7 +84,7 @@ file(GLOB VGAME_SRC ${PROJECT_SOURCE_DIR}/VixenEngine/source/vgame/*.cpp)
 file(GLOB VGAME_BULLET_SRC ${PROJECT_SOURCE_DIR}/VixenEngine/source/vgame/vix_bullet*)
 
 
-add_executable(MineshaftMayhem
+add_executable(MineshaftMayhem WIN32
     ${PROJECT_SOURCE_DIR}/source/main.cpp
     ${VCORE_INC}
     ${VCORE_SRC}
@@ -92,7 +96,11 @@ add_executable(MineshaftMayhem
     ${VGAME_BULLET_INC}
     ${VGAME_SRC}
     ${VGAME_BULLET_SRC}
-    ${RESOURCE_FILES} "source/game.h" "source/game.cpp")
+    ${RESOURCE_FILES}
+    "source/GameTimer.hpp"
+    "source/GameTimer.cpp"
+    "source/Game.hpp"
+    "source/Game.cpp")
 
 target_include_directories(${PROJECT_NAME} PRIVATE
                     "${PROJECT_SOURCE_DIR}/include"
@@ -114,6 +122,8 @@ target_compile_definitions(MineshaftMayhem PRIVATE LUAINTF_HEADERS_ONLY UNICODE 
 
 target_link_libraries(MineshaftMayhem PRIVATE
     SDL3::SDL3
+    Microsoft::DirectXTK
+    fmt::fmt
     tinyxml2::tinyxml2
     JsonCpp::JsonCpp
     unofficial::inih::libinih

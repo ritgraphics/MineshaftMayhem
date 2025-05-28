@@ -1,8 +1,5 @@
 
 
-function test.OnInit()
-	
-	local go = SpawnObject("raptor");
-	go:
+function Tick()
+	--CustomPrint("Hello, world")
 end
-
